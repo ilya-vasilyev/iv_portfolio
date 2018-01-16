@@ -1,0 +1,17 @@
+@mixin flex($direction, $justify, $align, $wrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+$textColor: #4d4b63;
+$baseColor: #4eb16c;
+$grey: #999;
+$lightGrey: #ddd;
+$lightColor: adjust-color($baseColor, $lightness: 45%);
+$transColor: rgba($baseColor, .75);
+$successColor: #4eb16c;
+$warningColor: #e88935;
+$failColor: #b94242;
