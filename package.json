@@ -5,12 +5,13 @@
   "author": "Ilya Vasilyev",
   "license": "ISC",
   "scripts": {
-    "dev": "webpack-dev-server --open --config webpack.dev.js",
+    "dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
   "dependencies": {
     "billboard.js": "^1.7.1",
     "es6-promise": "^4.2.5",
+    "tabulator-tables": "^4.2.0",
     "vue": "^2.6.4",
     "vue-meta": "^1.5.8",
     "vue-router": "^3.0.2",

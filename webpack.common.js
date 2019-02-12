@@ -9,12 +9,10 @@ const ASSET_PATH = process.env.ASSET_PATH || '/'
 module.exports = {
   entry: ['./src/index.js'],
   output: {
-    filename: '[name].[contenthash].bundle.js',
+    filename: '[name].[hash].js',
     publicPath: ASSET_PATH,
     path: path.resolve(__dirname, 'dist')
   },
-  mode: 'development',
-
   module: {
     rules: [
       {
@@ -61,10 +59,9 @@ module.exports = {
       }
     ]
   },
-
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: path.join(__dirname, 'src', 'index.html')
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css'
@@ -74,15 +71,10 @@ module.exports = {
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
     })
   ],
-
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': path.join(__dirname, 'src')
     }
-  },
-
-  optimization: {
-
   }
-
 }

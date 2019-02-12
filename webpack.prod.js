@@ -8,13 +8,14 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 module.exports = merge(common, {
   mode: 'production',
-
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new PrerenderSpaPlugin({
       staticDir: path.join(__dirname, 'dist'),
       routes: [ '/', '/b' ]
     }),
-    new BundleAnalyzerPlugin()
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static'
+    })
   ]
 })
