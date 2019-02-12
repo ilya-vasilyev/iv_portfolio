@@ -4,6 +4,7 @@ const common = require('./webpack.common.js')
 
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const PrerenderSpaPlugin = require('prerender-spa-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = merge(common, {
   mode: 'production',
@@ -12,7 +13,8 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(['dist']),
     new PrerenderSpaPlugin({
       staticDir: path.join(__dirname, 'dist'),
-      routes: [ '/' ]
-    })
+      routes: [ '/', '/b' ]
+    }),
+    new BundleAnalyzerPlugin()
   ]
 })

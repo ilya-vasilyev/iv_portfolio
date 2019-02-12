@@ -1,12 +1,16 @@
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
+const ASSET_PATH = process.env.ASSET_PATH || '/'
+
 module.exports = {
   entry: ['./src/index.js'],
   output: {
-    filename: '[hash].[name].js',
+    filename: '[name].[contenthash].bundle.js',
+    publicPath: ASSET_PATH,
     path: path.resolve(__dirname, 'dist')
   },
   mode: 'development',
@@ -26,10 +30,7 @@ module.exports = {
         exclude: path.join(__dirname, 'src/assets'),
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '../'
-            }
+            loader: MiniCssExtractPlugin.loader
           },
           'css-loader',
           'sass-loader'
@@ -65,8 +66,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html'
     }),
-    new MiniCssExtractPlugin(),
-    new VueLoaderPlugin()
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css'
+    }),
+    new VueLoaderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
+    })
   ],
 
   resolve: {
@@ -76,10 +82,7 @@ module.exports = {
   },
 
   optimization: {
-    splitChunks: {
-      chunks: 'all'
-    },
-    usedExports: true
+
   }
 
 }
