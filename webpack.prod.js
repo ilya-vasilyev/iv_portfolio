@@ -14,9 +14,5 @@ module.exports = merge(common, {
       staticDir: path.join(__dirname, 'dist'),
       routes: [ '/' ]
     })
-  ],
-
-  optimization: {
-    usedExports: true
-  }
+  ]
 })

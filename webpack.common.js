@@ -1,11 +1,12 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['./src/index.js'],
   output: {
-    filename: 'bundle.js',
+    filename: '[hash].[name].js',
     path: path.resolve(__dirname, 'dist')
   },
   mode: 'development',
@@ -13,16 +14,34 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        exclude: path.join(__dirname, 'src/assets'),
         use: [
-          'style-loader',
-          'css-loader'
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../'
+            }
+          },
+          'css-loader',
+          'sass-loader'
         ]
       },
       {
-        test: /\.scss$/,
+        test: /\.(sa|sc|c)ss$/,
+        include: [
+          path.join(__dirname, 'src/assets')
+        ],
         use: [
-          'vue-style-loader',
+          'style-loader',
           'css-loader',
           'sass-loader'
         ]
@@ -38,12 +57,7 @@ module.exports = {
         use: [
           'file-loader'
         ]
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
       }
-
     ]
   },
 
@@ -51,6 +65,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html'
     }),
+    new MiniCssExtractPlugin(),
     new VueLoaderPlugin()
   ],
 
@@ -61,9 +76,10 @@ module.exports = {
   },
 
   optimization: {
-    // splitChunks: {
-    //   chunks: 'all'
-    // }
+    splitChunks: {
+      chunks: 'all'
+    },
+    usedExports: true
   }
 
 }
