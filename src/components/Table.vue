@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import Tabulator from 'tabulator-tables'
+
 export default {
   name: 'Chart',
   data: function () {
@@ -26,20 +28,18 @@ export default {
     }
   },
   mounted() {
-    import( /* webpackChunkName: 'tabulator' */  'tabulator-tables').then(module => {
-      this.tabulator = new module.default(this.$refs.table, {
-        data: this.tableData,
-        reactiveData:true,
-        columns: [
-          { title: "Name", field: "name", width: 150 },
-          { title: "Age", field: "age", align: "left", formatter: "progress" },
-          { title: "Favourite Color", field: "col" },
-          { title: "Date Of Birth", field: "dob", align: "center" },
-          { title: "Rating", field: "rating", align: "center", formatter: "star" },
-          { title: "Passed?", field: "passed", align: "center", formatter: "tickCross" }
-        ]
-      });
-});
+    this.tabulator = new Tabulator(this.$refs.table, {
+      data: this.tableData,
+      reactiveData:true,
+      columns: [
+        { title: "Name", field: "name", width: 150 },
+        { title: "Age", field: "age", align: "left", formatter: "progress" },
+        { title: "Favourite Color", field: "col" },
+        { title: "Date Of Birth", field: "dob", align: "center" },
+        { title: "Rating", field: "rating", align: "center", formatter: "star" },
+        { title: "Passed?", field: "passed", align: "center", formatter: "tickCross" }
+      ]
+    });
   }
 }
 </script>
