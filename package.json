@@ -4,6 +4,7 @@
   "description": "static porfolio site",
   "author": "Ilya Vasilyev",
   "license": "ISC",
+  "private": true,
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
@@ -38,6 +39,7 @@
     "style-loader": "^0.23.1",
     "vue-loader": "^15.6.2",
     "vue-template-compiler": "^2.6.4",
+    "webapp-webpack-plugin": "^2.6.0",
     "webpack": "^4.29.3",
     "webpack-bundle-analyzer": "^3.0.4",
     "webpack-cli": "^3.2.3",
