@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const WebappWebpackPlugin = require('webapp-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const ASSET_PATH = process.env.ASSET_PATH || '/'
 
@@ -76,8 +77,8 @@ module.exports = {
     }),
     new VueLoaderPlugin(),
     new WebappWebpackPlugin({
-      logo: './src/assets/icon.png',
-      prefix: '/',
+      logo: './src/assets/images/icon.png',
+      prefix: '/assets',
       favicons: {
         appName: 'IV portfolio',
         appDescription: 'personal portfolio',
@@ -86,6 +87,9 @@ module.exports = {
         theme_color: '#444'
       }
     }),
+    new CopyWebpackPlugin([
+      { from: './src/assets/images', to: './assets/images' }
+    ]),
     new webpack.DefinePlugin({
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
     })
