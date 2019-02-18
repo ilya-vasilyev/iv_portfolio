@@ -1,9 +1,10 @@
 <template>
   <div class="a">
-    <button @click="loadedChart = true">load chart</button>
-    <Chart v-if="loadedChart"/>
-    <button @click="loadedTable = true">load table</button>
-    <Table v-if="loadedTable"/>
+    <button @click="loadSkills()">
+      load
+    </button>
+    <Chart v-if="isChartLoaded" :data="$store.state.skills" />
+    <Table v-if="isTableLoaded" :data="$store.state.skills" />
   </div>
 </template>
 
@@ -27,24 +28,30 @@ export default {
       error: ErrorComponent,
       delay: 0,
       timeout: 10000
-    }),
+    })
   },
-  data() {
+  data  () {
     return {
-      loadedChart: false,
-      loadedTable: false
+      isChartLoaded: false,
+      isTableLoaded: false
     }
   },
-  metaInfo() {
+  metaInfo () {
     return {
       title: 'frontend'
     }
   },
-  mounted() {
+  mounted () {
     this.$anime({
       targets: 'h1',
       translateX: 250
     })
+  },
+  methods: {
+    loadSkills () {
+      this.$store.dispatch('loadSkills')
+      this.isChartLoaded = true
+    }
   }
 }
 </script>
