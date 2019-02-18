@@ -1,25 +1,38 @@
 <template>
   <div id="app">
-    <router-link :to="{ name: 'A' }">a</router-link>
-    <router-link :to="{ name: 'B' }">b</router-link>
-    <router-view></router-view>
+    <Bio />
+    <nav>
+      <router-link :to="{ name: 'frontend' }">
+        frontend dev
+      </router-link>
+      <router-link :to="{ name: 'motion' }">
+        motion designer
+      </router-link>
+      <router-link :to="{ name: 'minimalism' }">
+        minimalism
+      </router-link>
+    </nav>
+    <router-view />
     <a href="/report.html">report.html</a>
   </div>
 </template>
 
 <script>
+import Bio from '@/components/Bio.vue'
 export default {
+  components: {
+    Bio
+  },
   data () {
     return {
       title: 'Ilya Vasilyev | homepage',
       description: 'personal web page of Ilya Vasilyev',
-      url: 'https://www.my-site.com/my-special-page',
-      image: 'https://www.my-site.com/my-special-image.jpg'
+      url: 'https://iv.netlify.com/',
+      image: 'https://iv.netlify.com/assets/images/preview.jpg'
     }
   },
   metaInfo () {
     return {
-      title: 'homepage',
       titleTemplate: 'Ilya Vasilyev | %s',
       links: [
         { rel: 'canonical', href: this.url }

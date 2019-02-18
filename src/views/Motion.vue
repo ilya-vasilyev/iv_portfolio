@@ -4,6 +4,19 @@
   </div>
 </template>
 
+
+<script>
+
+export default {
+  name: 'Motion',
+  metaInfo () {
+    return {
+      title: 'motion',
+    }
+  }
+}
+</script>
+
 <style>
   .b {
     color: #fed;

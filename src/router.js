@@ -7,15 +7,24 @@ export default new VueRouter({
   mode: 'history',
   routes: [
     {
-      path: '/',
-      name: 'A',
-      // eslint-disable-next-line
-      component: () => import( /* webpackChunkName: 'a' */ './views/A.vue')
+      path: '/frontend',
+      alias: '/',
+      name: 'frontend',
+      component: () => import( /* webpackChunkName: 'a' */ './views/Frontend.vue')
     },
     {
-      path: '/b',
-      name: 'B',
-      component: () => import( /* webpackChunkName: 'b' */ './views/B.vue')
-    }
+      path: '/motion',
+      name: 'motion',
+      component: () => import( /* webpackChunkName: 'b' */ './views/Motion.vue')
+    },
+    {
+      path: '/minimalism',
+      name: 'minimalism',
+      component: () => import( /* webpackChunkName: 'b' */ './views/Minimalism.vue')
+    },
+    {
+      path: '**',
+      redirect: '/frontend'
+    },
   ]
 })

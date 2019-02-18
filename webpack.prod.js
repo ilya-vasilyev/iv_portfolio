@@ -14,7 +14,7 @@ module.exports = merge(common, {
     require('autoprefixer'),
     new PrerenderSpaPlugin({
       staticDir: path.join(__dirname, 'dist'),
-      routes: [ '/', '/b' ]
+      routes: [ '/', '/frontend', '/motion', '/minimalism' ]
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static'
