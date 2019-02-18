@@ -1,0 +1,18 @@
+{
+  "skills": [
+    {
+      "name": "vue",
+      "area": "front",
+      "years": 2,
+      "level": 7,
+      "rating": 10
+    },
+    {
+      "name": "git",
+      "area": "devops",
+      "years": 4,
+      "level": 5,
+      "rating": 6
+    }
+  ]
+}

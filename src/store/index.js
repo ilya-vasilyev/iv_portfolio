@@ -5,11 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    count: 0
+    skills: null
   },
   mutations: {
-    increment (state) {
-      state.count++
+    setSkills (state, data) {
+      state.skills = data
+    }
+  },
+  actions: {
+    loadSkills ({ state, commit }) {
+      import(/* webpackChunkName: 'skills', webpackPrefetch: true */ './skills.json')
+        .then(data => commit('setSkills', data.skills))
     }
   }
 })
