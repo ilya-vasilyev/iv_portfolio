@@ -22,7 +22,7 @@ export default {
 
 <style lang="scss">
 
-@import '~billboard.js/dist/theme/insight.css';
+@import 'billboard.js/dist/theme/insight.css';
 
 .bb-line {
   stroke-width: 3px;

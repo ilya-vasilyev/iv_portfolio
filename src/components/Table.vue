@@ -46,7 +46,7 @@ export default {
 
 <style lang="scss">
 
-@import '~tabulator-tables/dist/css/tabulator_simple.min.css';
+@import 'tabulator-tables/dist/css/tabulator_simple.min.css';
 
 .bb-line {
   stroke-width: 33px;
