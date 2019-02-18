@@ -10,6 +10,7 @@
     "build": "webpack --config webpack.prod.js"
   },
   "dependencies": {
+    "animejs": "^3.0.1",
     "billboard.js": "^1.7.1",
     "es6-promise": "^4.2.5",
     "tabulator-tables": "^4.2.0",
