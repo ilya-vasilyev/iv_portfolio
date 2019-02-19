@@ -1,25 +1,13 @@
 <template>
   <div class="">
-    <button @click="updateSettings({ type: 'bar' })">
-      bar
+    <button @click="updateSettings({ type: 'bar', area: '', field: 'rating' })">
+      ratings
     </button>
-    <button @click="updateSettings({ type: 'gauge' })">
-      gauge
-    </button>
-    <button @click="updateSettings({ field: 'rating' })">
-      rating
-    </button>
-    <button @click="updateSettings({ field: 'years' })">
+    <button @click="updateSettings({ type: 'donut', area: 'front', field: 'years' })">
       years
     </button>
-    <button @click="updateSettings({ field: 'level' })">
+    <button @click="updateSettings({ type: 'scatter', area: '', field: 'level' })">
       level
-    </button>
-    <button @click="updateSettings({ area: 'front' })">
-      front
-    </button>
-    <button @click="updateSettings({ area: '' })">
-      all
     </button>
     <div id="chart" />
   </div>
@@ -44,18 +32,6 @@ export default {
       }
     }
   },
-  watch: {
-    'settings.field': function (newVal, oldVal) {
-      // let fields = ['name', newVal]
-      // let rows = this.format(fields)
-      // let unload = [oldVal]
-      // this.$options.chart.load({ rows })
-      // this.$nextTick(() => this.$options.chart.load({ unload }))
-    },
-    'settings.type': function (newVal) {
-      // this.$options.chart.transform(newVal)
-    }
-  },
   mounted () {
     this.$options.chart = bb.generate({
       bindto: '#chart',
@@ -67,22 +43,13 @@ export default {
       },
       axis: {
         rotated: true,
-        x: {
-          type: 'category'
-        },
-        y: {
-          show: false
-        }
+        x: { type: 'category' },
+        y: { show: false }
       },
-      tooltip: {
-        show: false
-      },
-      legend: {
-        show: false
-      },
-      color: {
-        pattern: ['#def', '#fed', '#efd', '#dfe']
-      }
+      tooltip: { show: false },
+      legend: { show: false },
+      color: { pattern: ['#444'] },
+      transition: { duration: 0 }
     })
     this.updateSettings({ field: 'years' })
   },
@@ -100,15 +67,40 @@ export default {
       return result
     },
     updateSettings ({ field = this.settings.field, area = this.settings.area, type = this.settings.type }) {
-      this.$options.chart.transform(type)
-      // debugger
-      this.$options.chart.unload()
-      this.$options.chart.load({
-        rows: this.format(['name', field], area)
+      this.$anime({
+        targets: '#chart svg',
+        scaleY: 1.4,
+        opacity: 0,
+        filter: 'blur(10px)',
+        duration: 300,
+        easing: 'easeInBack',
+        complete: unload.bind(this)
       })
-      this.settings.field = field
-      this.settings.area = area
-      this.settings.type = type
+      function unload () {
+        this.$options.chart.unload({
+          done: load.bind(this)
+        })
+      }
+      function load () {
+        this.$options.chart.load({
+          rows: this.format(['name', field], area),
+          done: transform.bind(this)
+        })
+      }
+      function transform () {
+        this.$options.chart.transform(type)
+        this.settings.field = field
+        this.settings.area = area
+        this.settings.type = type
+        this.$anime({
+          targets: '#chart svg',
+          scaleY: 1,
+          opacity: 1,
+          filter: 'blur(0px)',
+          duration: 200,
+          easing: 'easeOutBack'
+        })
+      }
     }
   }
 }
@@ -118,8 +110,8 @@ export default {
 
 @import 'billboard.js/dist/theme/insight.css';
 
-.bb-line {
-  stroke-width: 3px;
+.bb text {
+  font-size: 18px;
 }
 
 </style>
