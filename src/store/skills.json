@@ -26,14 +26,16 @@
       "area": "devops",
       "years": 0.15,
       "level": 3,
-      "rating": 7
+      "rating": 7,
+      "isNew": true
     },
     {
-      "name": "D3",
+      "name": "jQuery",
       "area": "front",
       "years": 2,
       "level": 5,
-      "rating": 7
+      "rating": 7,
+      "isDisgrace": true
     },
     {
       "name": "arangoDB",

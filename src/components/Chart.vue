@@ -1,13 +1,22 @@
 <template>
   <div class="">
-    <button @click="loadBar('rating')">
+    <button @click="loadBar('rating', 'barData')">
       rating
     </button>
-    <button @click="loadBar('years')">
+    <button @click="loadBar('years', 'barData')">
       years
     </button>
-    <button @click="loadBar('level')">
+    <button @click="loadBar('level', 'barData')">
       level
+    </button>
+    <button @click="loadBar('rating', 'barDataNew')">
+      rating New
+    </button>
+    <button @click="loadBar('years', 'barDataNew')">
+      years New
+    </button>
+    <button @click="loadBar('level', 'barDataNew')">
+      level New
     </button>
     <button @click="loadYearsLevel()">
       loadYearsLevel
@@ -42,11 +51,25 @@ export default {
     }
   },
   computed: {
-    oneDimensionData () {
+    barData () {
       let result = {}
       let skills = this.$store.state.skills
       skills
-        // .filter(skill => skill.isNew === this.showNew && skill.isDisgrace === this.showDisgrace)
+        .filter(skill => !(skill.isNew || skill.isDisgrace))
+        .sort((a, b) => b[this.sortBy] - a[this.sortBy])
+        .forEach(skill => {
+          Object.entries(skill).forEach(([key, value]) => {
+            if (!result[key]) result[key] = []
+            result[key].push(value)
+          })
+        })
+      return result
+    },
+    barDataNew () {
+      let result = {}
+      let skills = this.$store.state.skills
+      skills
+        .filter(skill => skill.isNew)
         .sort((a, b) => b[this.sortBy] - a[this.sortBy])
         .forEach(skill => {
           Object.entries(skill).forEach(([key, value]) => {
@@ -59,7 +82,7 @@ export default {
   },
   mounted () {
     this.$options.chart = { destroy: () => {} }
-    this.loadBar('years')
+    this.loadBar('years', 'barData')
   },
   methods: {
     hideChart (callback) {
@@ -111,7 +134,7 @@ export default {
       })
     },
 
-    loadBar (field) {
+    loadBar (field, data) {
       this.hideChart(rebuild)
       function rebuild () {
         this.sortBy = field
@@ -121,7 +144,7 @@ export default {
           data: {
             type: 'bar',
             columns: [
-              [ field, ...this.oneDimensionData[field] ]
+              [ field, ...this[data][field] ]
             ],
             labels: true
           },
@@ -129,7 +152,7 @@ export default {
             rotated: true,
             x: {
               type: 'category',
-              categories: this.oneDimensionData.name
+              categories: this[data].name
             },
             y: { show: false }
           }
