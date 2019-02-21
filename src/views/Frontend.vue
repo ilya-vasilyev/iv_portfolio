@@ -1,14 +1,23 @@
 <template>
-  <div class="a">
+  <main>
     <button @click="loadSkills()">
-      load
+      load Skills
     </button>
-    <Chart v-if="isChartLoaded" :data="$store.state.skills" />
-    <Table v-if="isTableLoaded" :data="$store.state.skills" />
+    <button @click="isTableLoaded = true">
+      load Table
+    </button>
+    <Chart
+      v-if="isChartLoaded"
+      :data="$store.state.skills"
+    />
+    <Table
+      v-if="isTableLoaded"
+      :data="$store.state.skills"
+    />
     <noscript>
       Can't show with JavaScript turned off
     </noscript>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -45,10 +54,7 @@ export default {
     }
   },
   mounted () {
-    this.$anime({
-      targets: 'h1',
-      translateX: 250
-    })
+
   },
   methods: {
     loadSkills () {

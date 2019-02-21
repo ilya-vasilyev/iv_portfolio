@@ -1,7 +1,7 @@
 <template>
-  <div class="a">
+  <main>
     M I N I
-  </div>
+  </main>
 </template>
 
 <script>
