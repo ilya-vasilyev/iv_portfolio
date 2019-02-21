@@ -1,25 +1,17 @@
 <template>
   <div class="">
-    <button @click="loadBar('rating', 'barData')">
+    <button @click="loadBar({ field: 'rating' })">
       rating
     </button>
-    <button @click="loadBar('years', 'barData')">
-      years
+    <button @click="loadBar({ field: 'level', showBase: false, showDisgrace: true })">
+      showDisgrace
     </button>
-    <button @click="loadBar('level', 'barData')">
-      level
-    </button>
-    <button @click="loadBar('rating', 'barDataNew')">
-      rating New
-    </button>
-    <button @click="loadBar('years', 'barDataNew')">
-      years New
-    </button>
-    <button @click="loadBar('level', 'barDataNew')">
-      level New
-    </button>
-    <button @click="loadYearsLevel()">
+
+    <button @click="loadYearsLevel({ fieldX: 'level',fieldY: 'years' })">
       loadYearsLevel
+    </button>
+    <button @click="loadYearsLevel({ fieldX: 'years',fieldY: 'level' })">
+      loadLevelYears
     </button>
     <div id="chart" />
   </div>
@@ -44,45 +36,17 @@ export default {
         transition: { duration: 0 },
         legend: { show: false },
         color: { pattern: ['#444'] }
-      },
-      sortBy: 'level',
-      showNew: false,
-      showDisgrace: false
-    }
-  },
-  computed: {
-    barData () {
-      let result = {}
-      let skills = this.$store.state.skills
-      skills
-        .filter(skill => !(skill.isNew || skill.isDisgrace))
-        .sort((a, b) => b[this.sortBy] - a[this.sortBy])
-        .forEach(skill => {
-          Object.entries(skill).forEach(([key, value]) => {
-            if (!result[key]) result[key] = []
-            result[key].push(value)
-          })
-        })
-      return result
-    },
-    barDataNew () {
-      let result = {}
-      let skills = this.$store.state.skills
-      skills
-        .filter(skill => skill.isNew)
-        .sort((a, b) => b[this.sortBy] - a[this.sortBy])
-        .forEach(skill => {
-          Object.entries(skill).forEach(([key, value]) => {
-            if (!result[key]) result[key] = []
-            result[key].push(value)
-          })
-        })
-      return result
+      }
     }
   },
   mounted () {
     this.$options.chart = { destroy: () => {} }
-    this.loadBar('years', 'barData')
+    this.loadBar({
+      field: 'rating',
+      showNew: true,
+      showDisgrace: true,
+      areas: ['front']
+    })
   },
   methods: {
     hideChart (callback) {
@@ -107,7 +71,6 @@ export default {
       })
     },
     showBars () {
-      let staggerDelay = 0
       let animationKeyframes = [
         {
           value: 0,
@@ -115,7 +78,7 @@ export default {
         }, {
           value: 1,
           duration: 250,
-          delay: this.$anime.stagger(50, { start: staggerDelay }),
+          delay: this.$anime.stagger(50, { start: 0 }),
           easing: 'easeOutQuad'
         }
       ]
@@ -125,7 +88,7 @@ export default {
         opacity: animationKeyframes
       })
 
-      staggerDelay = 200
+      animationKeyframes[1].delay = this.$anime.stagger(50, { start: 200 })
 
       this.$anime({
         targets: '#chart .bb-chart-texts .bb-text',
@@ -134,8 +97,28 @@ export default {
       })
     },
 
-    loadBar (field, data) {
+    loadBar ({ field, sort = field, showBase = true, showNew = false, showDisgrace = false, areas = [] }) {
+      const data = {}
+      const skills = this.$store.state.skills
+
+      skills
+        .filter(skill => {
+          const ifBase = showBase && !skill.isNew && !skill.isDisgrace
+          const ifNew = showNew && skill.isNew
+          const ifDisgrace = showDisgrace && skill.isDisgrace
+          const ifArea = !areas.length || areas.includes(skill.area)
+          return (ifBase || ifNew || ifDisgrace) && ifArea
+        })
+        .sort((a, b) => b[sort] - a[sort])
+        .forEach(skill => {
+          Object.entries(skill).forEach(([key, value]) => {
+            if (!data[key]) data[key] = []
+            data[key].push(value)
+          })
+        })
+
       this.hideChart(rebuild)
+
       function rebuild () {
         this.sortBy = field
         this.$options.chart.destroy()
@@ -143,16 +126,14 @@ export default {
           ...this.bbDefaults,
           data: {
             type: 'bar',
-            columns: [
-              [ field, ...this[data][field] ]
-            ],
+            columns: [ [ field, ...data[field] ] ],
             labels: true
           },
           axis: {
             rotated: true,
             x: {
               type: 'category',
-              categories: this[data].name
+              categories: data.name
             },
             y: { show: false }
           }
@@ -162,7 +143,34 @@ export default {
       }
     },
 
-    loadYearsLevel () {
+    loadYearsLevel ({ fieldX, fieldY, showBase = true, showNew = false, showDisgrace = false, areas = [] }) {
+      const data = {
+        columns: [],
+        xs: {},
+        axis: { x: {}, y: {} }
+      }
+      const skills = this.$store.state.skills
+
+      skills
+        .filter(skill => {
+          const ifBase = showBase && !skill.isNew && !skill.isDisgrace
+          const ifNew = showNew && skill.isNew
+          const ifDisgrace = showDisgrace && skill.isDisgrace
+          const ifArea = !areas.length || areas.includes(skill.area)
+          return (ifBase || ifNew || ifDisgrace) && ifArea
+        })
+        .forEach(skill => {
+          data.columns.push([skill.name + '_' + fieldX, skill[fieldX]])
+          data.columns.push([skill.name, skill[fieldY]])
+          data.xs[skill.name] = skill.name + '_' + fieldX
+        })
+
+      const pad = 1
+      data.axis.x.min = skills.reduce((a, c) => (c[fieldX] < a ? c[fieldX] : a), 0) - pad
+      data.axis.x.max = skills.reduce((a, c) => (c[fieldX] > a ? c[fieldX] : a), 0) + pad
+      data.axis.y.min = skills.reduce((a, c) => (c[fieldY] < a ? c[fieldY] : a), 0) - pad
+      data.axis.y.max = skills.reduce((a, c) => (c[fieldY] > a ? c[fieldY] : a), 0) + pad
+
       this.hideChart(rebuild)
       function rebuild () {
         this.$options.chart.destroy()
@@ -170,30 +178,22 @@ export default {
           ...this.bbDefaults,
           data: {
             type: 'scatter',
-            columns: [
-              ['vue_level', 8],
-              ['vue', 4],
-              ['docker_level', 2],
-              ['docker', 1]
-            ],
-            xs: {
-              'vue': 'vue_level',
-              'docker': 'docker_level'
-            },
+            columns: data.columns,
+            xs: data.xs,
             labels: {
               format: (v, id) => id
             }
           },
           axis: {
             x: {
-              label: 'level',
-              min: 1,
-              max: 10
+              label: fieldX,
+              min: data.axis.x.min,
+              max: data.axis.x.max
             },
             y: {
-              label: 'years',
-              min: 1,
-              max: 10
+              label: fieldY,
+              min: data.axis.y.min,
+              max: data.axis.y.max
             }
           },
           grid: {

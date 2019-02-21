@@ -5,6 +5,9 @@
     </button>
     <Chart v-if="isChartLoaded" :data="$store.state.skills" />
     <Table v-if="isTableLoaded" :data="$store.state.skills" />
+    <noscript>
+      Can't show with JavaScript turned off
+    </noscript>
   </div>
 </template>
 
