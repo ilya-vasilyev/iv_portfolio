@@ -13,6 +13,10 @@
     </nav>
     <router-view />
     <a href="/report.html">report.html</a>
+    <div
+      class="colorist"
+      :class="{ loaded }"
+    />
     <div class="fog big" />
     <div class="fog small" />
   </div>
@@ -34,7 +38,8 @@ export default {
       title: 'Ilya Vasilyev | homepage',
       description: 'personal web page of Ilya Vasilyev',
       url: 'https://iv.netlify.com/',
-      image: 'https://iv.netlify.com/assets/images/preview.jpg'
+      image: 'https://iv.netlify.com/assets/images/preview.jpg',
+      loaded: false
     }
   },
   metaInfo () {
@@ -70,7 +75,7 @@ export default {
     }
   },
   mounted () {
-
+    setTimeout(() => { this.loaded = true }, 5000)
   }
 
 }
@@ -120,6 +125,29 @@ nav {
     background-size: 400px 266px;
     animation: fogAnimation 60s infinite;
     animation-timing-function: linear;
+  }
+}
+
+@keyframes coloristAnimation {
+	0% {background-position: 0% 0%; }
+	50% {	background-position: 100% 0%;	}
+	100% { background-position: 0% 0%;	}
+}
+.colorist {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(90deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+  background-size: 400% 100%;
+	mix-blend-mode: lighten;
+  pointer-events: none;
+  opacity: 0;
+  animation: coloristAnimation 30s ease infinite;
+  transition: opacity 60s;
+  &.loaded {
+    opacity: 0.9;
   }
 }
 
