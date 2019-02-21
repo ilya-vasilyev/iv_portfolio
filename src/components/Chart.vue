@@ -13,7 +13,7 @@
     <button @click="loadXY({ fieldX: 'years',fieldY: 'level', showNew: true, showDisgrace: true })">
       loadLevelYears
     </button>
-    <button @click="loadPie({})">
+    <button @click="loadPie({field: 'level', showNew: true, showDisgrace: true})">
       loadPie
     </button>
     <div id="chart" />
@@ -34,11 +34,12 @@ export default {
     return {
       bbDefaults: {
         bindto: '#chart',
+        size: { height: 500 },
         bar: { width: { ratio: 0.8, max: 100 } },
         tooltip: { show: false },
         transition: { duration: 0 },
         legend: { show: false },
-        color: { pattern: ['#666'] }
+        color: { pattern: ['#444'] }
       }
     }
   },
@@ -102,7 +103,7 @@ export default {
       })
     },
 
-    showDots () {
+    showXY () {
       let opacityKeyframes = [
         {
           value: 0,
@@ -136,6 +137,48 @@ export default {
         opacity: opacityKeyframes,
         translateY: yKeyframes
 
+      })
+    },
+
+    showPie () {
+      this.$anime({
+        targets: '#chart .bb-chart-arcs .bb-chart-arc',
+        opacity: [
+          {
+            value: 0,
+            duration: 0
+          }, {
+            value: 1,
+            duration: 750,
+            delay: this.$anime.stagger(100, { start: 0 }),
+            easing: 'easeOutSine'
+          }
+        ],
+        rotate: [
+          {
+            value: -60,
+            duration: 0
+          }, {
+            value: 0,
+            duration: 500,
+            delay: this.$anime.stagger(100, { start: 0 }),
+            easing: 'easeOutSine'
+          }
+        ]
+      })
+      this.$anime({
+        targets: '#chart .bb-chart-arcs text',
+        opacity: [
+          {
+            value: 0,
+            duration: 0
+          }, {
+            value: 1,
+            duration: 200,
+            delay: this.$anime.stagger(100, { start: 500 }),
+            easing: 'easeOutSine'
+          }
+        ]
       })
     },
 
@@ -183,7 +226,6 @@ export default {
             radius: 10,
             width: { ratio: 0.8 }
           }
-
         })
         this.showChart()
         this.showBars()
@@ -229,7 +271,8 @@ export default {
             columns: data.columns,
             xs: data.xs,
             labels: {
-              format: (v, id) => id
+              format: (v, id) => id,
+              position: { y: -5 }
             }
           },
           axis: {
@@ -237,22 +280,13 @@ export default {
               label: fieldX,
               min: data.axis.x.min,
               max: data.axis.x.max
-              // padding: {
-              //   // left: 30,
-              //   // right: 30
-              // }
             },
             y: {
               label: fieldY,
               min: data.axis.y.min,
               max: data.axis.y.max
-              // padding: {
-              //   top: 30,
-              //   bottom: 30
-              // }
             }
           },
-          color: { pattern: ['#522', '#252', '#225'] },
           grid: {
             x: { show: true },
             y: { show: true }
@@ -263,16 +297,12 @@ export default {
           }
         })
         this.showChart()
-        this.showDots()
+        this.showXY()
       }
     },
 
-    loadPie ({ showBase = true, showNew = false, showDisgrace = false, areas = ['front', 'back', 'devops'] }) {
-      const data = {
-        columns: [],
-        xs: {},
-        axis: { x: {}, y: {} }
-      }
+    loadPie ({ field, showBase = true, showNew = false, showDisgrace = false, areas = ['front', 'back', 'devops'] }) {
+      const accumulator = {}
       const skills = this.$store.state.skills
 
       skills
@@ -283,12 +313,11 @@ export default {
           const ifArea = !areas.length || areas.includes(skill.area)
           return (ifBase || ifNew || ifDisgrace) && ifArea
         })
-        // .sort((a, b) => a[fieldX] - b[fieldX])
         .forEach(skill => {
-          // data.columns.push([skill.name + '_' + fieldX, skill[fieldX]])
-          // data.columns.push([skill.name, skill[fieldY]])
-          // data.xs[skill.name] = skill.name + '_' + fieldX
+          if (!accumulator[skill.area]) accumulator[skill.area] = 0
+          accumulator[skill.area] += skill[field]
         })
+      const data = Object.entries(accumulator)
 
       this.hideChart(rebuild)
       function rebuild () {
@@ -297,27 +326,22 @@ export default {
           ...this.bbDefaults,
           data: {
             type: 'pie',
-            columns: [
-              ['front', 1, 3],
-              ['back', 1, 4],
-              ['devops', 1, 5]
-
-            ],
-            onover: () => {}
+            columns: data
           },
           pie: {
             label: {
-              format: (v, r, id) => `${id}: ${Math.round(r * 100)}%`,
-              ratio: 1
+              format: (v, r) => Math.round(r * 100) + '%',
+              ratio: 1.1
             },
             padding: 5,
             innerRadius: 20,
             expand: false
           },
-          color: { pattern: ['#666', '#333', '#999'] }
+          color: { pattern: ['#444', '#777', '#aaa'] },
+          legend: { show: true }
         })
         this.showChart()
-        this.showDots()
+        this.showPie()
       }
     }
 
@@ -334,8 +358,13 @@ export default {
   max-width: 600px;
   margin: 0 auto;
 }
-.bb text {
-  font-size: 18px;
+.bb {
+  text {
+    font-size: 18px;
+  }
+  .bb-chart-lines .bb-circle {
+    opacity: 1!important;
+  }
 }
 
 </style>
