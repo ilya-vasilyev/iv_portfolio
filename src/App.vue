@@ -13,6 +13,8 @@
     </nav>
     <router-view />
     <a href="/report.html">report.html</a>
+    <div class="fog big" />
+    <div class="fog small" />
   </div>
 </template>
 
@@ -93,6 +95,32 @@ nav {
   background: #444;
   color: rgba(255, 255, 255, 0);
 }
+
+@keyframes fogAnimation {
+  from {background-position-y: 0px;}
+  to {background-position-y: -533px;}
+}
+.fog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url('./assets/images/fog.png');
+  background-repeat: repeat;
+  &.big {
+    opacity: 0.3;
+    background-size: 800px 533px;
+    animation: fogAnimation 30s infinite;
+    animation-timing-function: linear;
+  }
+  &.small{
+    opacity: 0.2;
+    background-size: 400px 266px;
+    animation: fogAnimation 60s infinite;
+    animation-timing-function: linear;
+  }
 }
 
 </style>
