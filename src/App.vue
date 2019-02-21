@@ -1,15 +1,14 @@
 <template>
   <div id="app">
-    <Bio />
     <nav>
-      <router-link :to="{ name: 'frontend' }">
-        frontend dev
-      </router-link>
-      <router-link :to="{ name: 'motion' }">
-        motion designer
-      </router-link>
-      <router-link :to="{ name: 'minimalism' }">
-        minimalism
+      <Bio />
+      <router-link
+        v-for="el in nav"
+        :key="el.to"
+        :to="{ name: el.to }"
+        :style="{letterSpacing: el.spacing + 'px'}"
+      >
+        {{ el.text }}
       </router-link>
     </nav>
     <router-view />
@@ -25,6 +24,11 @@ export default {
   },
   data () {
     return {
+      nav: [
+        { to: 'frontend', text: 'frontend dev', spacing: 14 },
+        { to: 'motion', text: 'motion designer', spacing: 9 },
+        { to: 'minimalism', text: 'minimalist', spacing: 19 }
+      ],
       title: 'Ilya Vasilyev | homepage',
       description: 'personal web page of Ilya Vasilyev',
       url: 'https://iv.netlify.com/',
@@ -62,14 +66,33 @@ export default {
         { itemprop: 'image', content: this.image }
       ]
     }
+  },
+  mounted () {
+
   }
+
 }
 </script>
 
 <style lang="scss">
 
-a {
-  color: #444;
+@import url('https://fonts.googleapis.com/css?family=Six+Caps');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+nav {
+  h1 {
+    font-family: 'Six Caps', sans-serif;
+    font-size: 91px;
+  }
+  a {
+    font-family: 'Source Code Pro', monospace;
+  }
+}
+
+::selection {
+  background: #444;
+  color: rgba(255, 255, 255, 0);
+}
 }
 
 </style>
