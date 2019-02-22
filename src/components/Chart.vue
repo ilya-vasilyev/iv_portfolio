@@ -291,10 +291,7 @@ export default {
             x: { show: true },
             y: { show: true }
           },
-          point: {
-            r: 5,
-            focus: { expand: { r: 6 } }
-          }
+          point: { r: 5 }
         })
         this.showChart()
         this.showXY()
@@ -330,15 +327,14 @@ export default {
           },
           pie: {
             label: {
-              format: (v, r) => Math.round(r * 100) + '%',
+              format: (v, r, id) => id,
               ratio: 1.1
             },
             padding: 5,
             innerRadius: 20,
             expand: false
-          },
-          color: { pattern: ['#444', '#777', '#aaa'] },
-          legend: { show: true }
+          }
+          // color: { pattern: ['#444', '#666', '#888'] }
         })
         this.showChart()
         this.showPie()
@@ -359,6 +355,7 @@ export default {
   margin: 0 auto;
 }
 .bb {
+  pointer-events: none;
   text {
     font-size: 18px;
   }
