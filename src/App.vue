@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{ loaded }">
     <nav>
       <Bio />
       <router-link
@@ -7,6 +7,7 @@
         :key="el.to"
         :to="{ name: el.to }"
         :style="{letterSpacing: el.spacing + 'px'}"
+        :selected="el.to === $route.name"
       >
         {{ el.text }}
       </router-link>
@@ -93,13 +94,36 @@ nav {
   }
   a {
     font-family: 'Source Code Pro', monospace;
-  }
+    white-space: nowrap;
+    &[selected] {
+      font-weight: 800;
+      &::before {
+        content: '>';
+      	display: inline-block;
+        opacity: 0.25;
+        animation: leftRight 1s infinite forwards;
+      }
+      &::after {
+        content: '<';
+      	display: inline-block;
+        opacity: 0.25;
+        animation: leftRight 1s 0.5s infinite backwards;
+      }
+    }
+   }
+}
+
+@keyframes leftRight {
+  0% { transform: translateX(-10px); }
+  50% { transform: translateX(0px); }
+  100% { transform: translateX(-10px); }
 }
 
 ::selection {
   background: #444;
   color: rgba(255, 255, 255, 0);
 }
+
 
 @keyframes fogAnimation {
   from {background-position-y: 0px;}

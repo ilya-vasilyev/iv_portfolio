@@ -1,10 +1,7 @@
 <template>
   <div class="bio">
-    <div>
-      <h1>ILYA VASILYEV</h1>
-      <hr>
-      <!-- <span>\/</span> -->
-    </div>
+    <h1>ILYA VASILYEV</h1>
+    <hr>
     <!-- <div
       itemscope
       itemtype="http://schema.org/Person">
