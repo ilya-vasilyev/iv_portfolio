@@ -1,9 +1,14 @@
 <template>
   <div
     id="app"
+    class="app"
     :class="{ loaded, lightMode, darkMode }"
   >
     <nav>
+      <h1>ILYA VASILYEV</h1>
+      <hr>
+      <small>expand basic info</small>
+      <hr>
       <Bio />
       <router-link
         v-for="el in nav"
@@ -14,6 +19,7 @@
       >
         {{ el.text }}
       </router-link>
+      <hr>
     </nav>
     <router-view />
     <a href="/report.html">report.html</a>
@@ -88,13 +94,29 @@ export default {
 
 @import url('https://fonts.googleapis.com/css?family=Six+Caps');
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:300,600');
 
-.lightMode {
-  background: #fff;
-}
+.app {
+  overflow-x: hidden;
+  font-family: 'Fira Sans Condensed', sans-serif;
 
-.darkMode {
-  background: #444;
+  &.lightMode {
+    background: #fff;
+    color: #444;
+    ::selection {
+      background: #444;
+      color: rgba(255, 255, 255, 0);
+    }
+  }
+
+  &.darkMode {
+    background: #444;
+    color: #fff;
+    ::selection {
+      background: #fff;
+      color: rgba(255, 255, 255, 0);
+    }
+  }
 }
 
 nav {
@@ -114,29 +136,28 @@ nav {
       &::before {
         content: '>';
         display: inline-block;
-        opacity: 0.25;
+        opacity: 0.5;
         animation: leftRight 1s infinite forwards;
       }
 
       &::after {
         content: '<';
         display: inline-block;
-        opacity: 0.25;
+        opacity: 0.5;
         animation: leftRight 1s 0.5s infinite backwards;
       }
     }
    }
 }
 
+label {
+  user-select: none;
+}
+
 @keyframes leftRight {
   0% {transform: translateX(-10px);}
   50% {transform: translateX(0px);}
   100% {transform: translateX(-10px);}
-}
-
-::selection {
-  background: #444;
-  color: rgba(255, 255, 255, 0);
 }
 
 @keyframes fogAnimation {
@@ -155,14 +176,14 @@ nav {
   background-repeat: repeat;
 
   &.big {
-    opacity: 0.3;
+    opacity: 0.2;
     background-size: 800px 533px;
     animation: fogAnimation 30s infinite;
     animation-timing-function: linear;
   }
 
   &.small{
-    opacity: 0.2;
+    opacity: 0.1;
     background-size: 400px 266px;
     animation: fogAnimation 60s infinite;
     animation-timing-function: linear;
@@ -170,9 +191,9 @@ nav {
 }
 
 @keyframes coloristAnimation {
-	0% {background-position-x: 0%; }
-	50% {background-position-x: 100%;}
-	100% {background-position-x: 0%;}
+  0% {background-position-x: 0%; }
+  50% {background-position-x: 100%;}
+  100% {background-position-x: 0%;}
 }
 
 .colorist {
@@ -184,7 +205,7 @@ nav {
     height: 100%;
     top: 0;
     left: 0;
-    background: linear-gradient(90deg, #e0872b, #e44680,  #2e9ac1, #32af91);
+    background: linear-gradient(90deg, #d67034, #d04175, #2e9ac1, #32af91);
     background-size: 400% 100%;
     mix-blend-mode: lighten;
     pointer-events: none;
