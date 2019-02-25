@@ -14,6 +14,7 @@ export default new Vuex.Store({
   },
   actions: {
     loadSkills ({ state, commit }) {
+      if (state.skills) return
       import(/* webpackChunkName: 'skills', webpackPrefetch: true */ './skills.json')
         .then(data => commit('setSkills', data.skills))
     }
