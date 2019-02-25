@@ -1,5 +1,8 @@
 <template>
-  <div id="app" :class="{ loaded }">
+  <div
+    id="app"
+    :class="{ loaded, lightMode, darkMode }"
+  >
     <nav>
       <Bio />
       <router-link
@@ -37,7 +40,9 @@ export default {
       description: 'personal web page of Ilya Vasilyev',
       url: 'https://iv.netlify.com/',
       image: 'https://iv.netlify.com/assets/images/preview.jpg',
-      loaded: false
+      loaded: false,
+      lightMode: true,
+      darkMode: false
     }
   },
   metaInfo () {
@@ -83,6 +88,14 @@ export default {
 
 @import url('https://fonts.googleapis.com/css?family=Six+Caps');
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+.lightMode {
+  background: #fff;
+}
+
+.darkMode {
+  background: #444;
+}
 
 nav {
 
