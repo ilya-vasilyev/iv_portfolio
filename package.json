@@ -13,6 +13,7 @@
     "animejs": "^3.0.1",
     "billboard.js": "^1.7.1",
     "es6-promise": "^4.2.5",
+    "prismjs": "^1.15.0",
     "tabulator-tables": "^4.2.0",
     "vue": "^2.6.4",
     "vue-meta": "^1.5.8",
