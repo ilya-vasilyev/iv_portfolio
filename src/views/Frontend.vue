@@ -1,18 +1,25 @@
 <template>
   <main>
-    <button @click="loadSkills()">
-      load Skills
+    <button @click="loadChart()">
+      load Chart
     </button>
-    <button @click="isTableLoaded = true">
+    <button @click="loadTable()">
       load Table
+    </button>
+    <button @click="loadRaw()">
+      load Raw
     </button>
     <Chart
       v-if="isChartLoaded"
-      :data="$store.state.skills"
+      v-show="viewMode === 'chart'"
     />
     <Table
       v-if="isTableLoaded"
-      :data="$store.state.skills"
+      v-show="viewMode === 'table'"
+    />
+    <Raw
+      v-if="isRawLoaded"
+      v-show="viewMode === 'raw'"
     />
     <noscript>
       Can't show with JavaScript turned off
@@ -40,12 +47,21 @@ export default {
       error: ErrorComponent,
       delay: 0,
       timeout: 10000
+    }),
+    Raw: () => ({
+      component: import(/* webpackChunkName: 'raw', webpackPrefetch: true */ '@/components/Raw.vue'),
+      loading: LoadingComponent,
+      error: ErrorComponent,
+      delay: 0,
+      timeout: 10000
     })
   },
   data  () {
     return {
       isChartLoaded: false,
-      isTableLoaded: false
+      isTableLoaded: false,
+      isRawLoaded: false,
+      viewMode: 'chart'
     }
   },
   metaInfo () {
@@ -57,9 +73,23 @@ export default {
 
   },
   methods: {
-    loadSkills () {
-      this.$store.dispatch('loadSkills')
-      this.isChartLoaded = true
+    loadChart () {
+      this.$store.dispatch('loadSkills').then(() => {
+        this.isChartLoaded = true
+        this.viewMode = 'chart'
+      })
+    },
+    loadTable () {
+      this.$store.dispatch('loadSkills').then(() => {
+        this.isTableLoaded = true
+        this.viewMode = 'table'
+      })
+    },
+    loadRaw () {
+      this.$store.dispatch('loadSkills').then(() => {
+        this.isRawLoaded = true
+        this.viewMode = 'raw'
+      })
     }
   }
 }
