@@ -1,5 +1,6 @@
 <template>
-  <div class="">
+  <section class="">
+    <div id="chart" />
     <button @click="loadBar({ field: 'rating' })">
       rating
     </button>
@@ -16,8 +17,7 @@
     <button @click="loadPie({field: 'level', showNew: true, showDisgrace: true})">
       loadPie
     </button>
-    <div id="chart" />
-  </div>
+  </section>
 </template>
 
 <script>
@@ -327,7 +327,7 @@ export default {
           },
           pie: {
             label: {
-              format: (v, r, id) => id,
+              format: (v, r, id) => r > 0.1 ? id : '',
               ratio: 1.1
             },
             padding: 5,
@@ -355,13 +355,25 @@ export default {
   min-height: 500px;
   margin: 0 auto;
 }
+
 .bb {
   pointer-events: none;
-  text {
+
+  svg,
+  svg text {
+    font-family: 'Fira Sans Condensed', sans-serif;
     font-size: 18px;
   }
+
   .bb-chart-lines .bb-circle {
-    opacity: 1!important;
+    opacity: 1!important; /* to override inline styles, that's why */
+  }
+
+  .bb-chart-arcs text,
+  .bb-axis-x .tick text,
+  .bb-axis-x-label,
+  .bb-axis-y-label {
+    font-weight: 700;
   }
 }
 
