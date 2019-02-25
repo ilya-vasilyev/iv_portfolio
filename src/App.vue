@@ -85,24 +85,29 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 
 nav {
+
   h1 {
     font-family: 'Six Caps', sans-serif;
     font-size: 91px;
   }
+
   a {
     font-family: 'Source Code Pro', monospace;
     white-space: nowrap;
+
     &[selected] {
       font-weight: 800;
+
       &::before {
         content: '>';
-      	display: inline-block;
+        display: inline-block;
         opacity: 0.25;
         animation: leftRight 1s infinite forwards;
       }
+
       &::after {
         content: '<';
-      	display: inline-block;
+        display: inline-block;
         opacity: 0.25;
         animation: leftRight 1s 0.5s infinite backwards;
       }
@@ -111,9 +116,9 @@ nav {
 }
 
 @keyframes leftRight {
-  0% { transform: translateX(-10px); }
-  50% { transform: translateX(0px); }
-  100% { transform: translateX(-10px); }
+  0% {transform: translateX(-10px);}
+  50% {transform: translateX(0px);}
+  100% {transform: translateX(-10px);}
 }
 
 ::selection {
@@ -121,11 +126,11 @@ nav {
   color: rgba(255, 255, 255, 0);
 }
 
-
 @keyframes fogAnimation {
   from {background-position-y: 0px;}
   to {background-position-y: -533px;}
 }
+
 .fog {
   position: fixed;
   top: 0;
@@ -135,12 +140,14 @@ nav {
   pointer-events: none;
   background-image: url('./assets/images/fog.png');
   background-repeat: repeat;
+
   &.big {
     opacity: 0.3;
     background-size: 800px 533px;
     animation: fogAnimation 30s infinite;
     animation-timing-function: linear;
   }
+
   &.small{
     opacity: 0.2;
     background-size: 400px 266px;
@@ -151,9 +158,10 @@ nav {
 
 @keyframes coloristAnimation {
 	0% {background-position-x: 0%; }
-	50% {	background-position-x: 100%;	}
-	100% { background-position-x: 0%;	}
+	50% {background-position-x: 100%;}
+	100% {background-position-x: 0%;}
 }
+
 .colorist {
   display: none;
   @supports (mix-blend-mode: overlay) {
@@ -170,6 +178,7 @@ nav {
     opacity: 0;
     animation: coloristAnimation 30s ease infinite;
     transition: opacity 60s;
+
     .loaded & {
       opacity: 0.9;
     }

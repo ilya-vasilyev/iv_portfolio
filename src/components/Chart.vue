@@ -352,6 +352,7 @@ export default {
 #chart {
   width: 100%;
   max-width: 600px;
+  min-height: 500px;
   margin: 0 auto;
 }
 .bb {
