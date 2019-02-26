@@ -1,9 +1,8 @@
 <template>
   <section class="skills raw">
-    <pre><code
-class="language-javascript"
-               v-html="html"
-    /></pre>
+    <pre>
+      <code class="language-javascript" v-html="html"/>
+    </pre>
   </section>
 </template>
 

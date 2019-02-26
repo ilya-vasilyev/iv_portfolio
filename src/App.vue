@@ -221,8 +221,8 @@ footer {
     height: 100%;
     top: 0;
     left: 0;
-    background: linear-gradient(90deg, #d67034, #d04175, #2e9ac1, #32af91);
-    background-size: 400% 100%;
+    background: linear-gradient(90deg, #d439ba, #2e9ac1, #2dc1ad);
+    background-size: 300% 100%;
     mix-blend-mode: lighten;
     pointer-events: none;
     opacity: 0;
@@ -230,7 +230,7 @@ footer {
     transition: opacity 60s;
 
     .loaded & {
-      opacity: 0.9;
+      opacity: 0.8;
     }
   }
 }
