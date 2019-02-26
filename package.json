@@ -12,6 +12,7 @@
   "dependencies": {
     "animejs": "^3.0.1",
     "billboard.js": "^1.7.1",
+    "dragscroll": "0.0.8",
     "es6-promise": "^4.2.5",
     "prismjs": "^1.15.0",
     "tabulator-tables": "^4.2.0",

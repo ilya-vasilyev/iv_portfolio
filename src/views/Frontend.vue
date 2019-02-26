@@ -24,6 +24,9 @@
     <noscript>
       Can't show with JavaScript turned off
     </noscript>
+    <hr>
+    <h2>Recent timeline</h2>
+    <Timeline />
   </main>
 </template>
 
@@ -50,6 +53,13 @@ export default {
     }),
     Raw: () => ({
       component: import(/* webpackChunkName: 'raw', webpackPrefetch: true */ '@/components/Raw.vue'),
+      loading: LoadingComponent,
+      error: ErrorComponent,
+      delay: 0,
+      timeout: 10000
+    }),
+    Timeline: () => ({
+      component: import(/* webpackChunkName: 'timeline', webpackPrefetch: true */ '@/components/Timeline.vue'),
       loading: LoadingComponent,
       error: ErrorComponent,
       delay: 0,
