@@ -22,7 +22,10 @@
       <hr>
     </nav>
     <router-view />
-    <a href="/report.html">report.html</a>
+    <footer>
+      <div class="footer-dots"/>
+      <a href="/report.html">report.html</a>
+    </footer>
     <div class="colorist" />
     <div class="fog big" />
     <div class="fog small" />
@@ -152,6 +155,19 @@ nav {
 
 label {
   user-select: none;
+}
+
+footer {
+  position: relative;
+}
+.footer-dots {
+  width: 100%;
+  height: 150px;
+  position: absolute;
+  top: -149px;
+  left: 0;
+  background: 50% 50% repeat-x url('./assets/images/footer_dot.svg');
+  background-size: contain;
 }
 
 @keyframes leftRight {
