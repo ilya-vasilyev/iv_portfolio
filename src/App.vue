@@ -214,23 +214,23 @@ footer {
 
 .colorist {
   display: none;
-  @supports (mix-blend-mode: overlay) {
+  @supports (mix-blend-mode: screen) {
     display: block;
     position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    background: linear-gradient(90deg, #d439ba, #2e9ac1, #2dc1ad);
-    background-size: 300% 100%;
-    mix-blend-mode: lighten;
+    background: linear-gradient(90deg, #d439ba, #2e9ac1, #2dc1ad, #2e9ac1, #d439ba);
+    background-size: 500% 100%;
+    mix-blend-mode: screen;
     pointer-events: none;
     opacity: 0;
-    animation: coloristAnimation 30s ease infinite;
+    animation: coloristAnimation 60s ease infinite;
     transition: opacity 60s;
 
     .loaded & {
-      opacity: 0.8;
+      opacity: 1;
     }
   }
 }
