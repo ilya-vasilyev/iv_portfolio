@@ -1,17 +1,6 @@
 <template>
   <section>
     <div
-      class="timeline-controls"
-      :lockScroll="lockScroll"
-    >
-      <button @click="scrollTimeline(`-=${ windowWidth() }`)">
-        (L)
-      </button>
-      <button @click="scrollTimeline(`+=${ windowWidth() }`)">
-        (R)
-      </button>
-    </div>
-    <div
       ref="timeline"
       class="timeline dragscroll"
     >
@@ -21,6 +10,17 @@
         <div class="near" />
       </div>
     </div>
+    <div
+    class="timeline-controls"
+    :lockScroll="lockScroll"
+    >
+    <button @click="scrollTimeline(`-=${ windowWidth() }`)">
+      (L)
+    </button>
+    <button @click="scrollTimeline(`+=${ windowWidth() }`)">
+      (R)
+    </button>
+  </div>
   </section>
 </template>
 
@@ -42,13 +42,13 @@ export default {
       timeout = window.requestAnimationFrame(() => {
         this.progress = e.target.scrollLeft / (e.target.scrollWidth - window.innerWidth)
         this.$anime({
-          targets: '.timeline .wrap .far',
-          translateX: `${200 * this.progress}vmin`,
+          targets: '.timeline .wrap .near',
+          translateX: `${-300 * this.progress}vmin`,
           duration: 0
         })
         this.$anime({
           targets: '.timeline .wrap .mid',
-          translateX: `${100 * this.progress}vmin`,
+          translateX: `${-150 * this.progress}vmin`,
           duration: 0
         })
       })
@@ -78,9 +78,6 @@ export default {
   width: 100%;
   overflow-x: scroll;
   cursor: grab;
-  &:active {
-    cursor: grabbing;
-  }
 
   .wrap {
     width: 8000px;
@@ -105,16 +102,16 @@ export default {
   }
 
   .far {
-    /* background-image: url('../assets/images/timeline_mid.svg');*/
+    /*background-image: url('../assets/images/timeline_far.svg');*/
 
   }
 
   .mid {
-    background-image: url('../assets/images/timeline_mid.svg');
+    /*background-image: url('../assets/images/timeline_mid.svg');*/
   }
 
   .near {
-    /* background: url('https://pngimage.net/wp-content/uploads/2018/06/pattern-png-4.png');*/
+    background-image: url('../assets/images/timeline.svg');
   }
 }
 
