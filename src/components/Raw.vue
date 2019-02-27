@@ -39,17 +39,12 @@ export default {
   margin: 0 auto;
   max-height: 400px;
   overflow-y: scroll;
-  background: #000;
+  position: relative;
+	z-index: 1;
 
   & .language-javascript {
     font-family: 'Source Code Pro', monospace;
-    background: #000;
     font-size: 18px;
-
-    .token.punctuation {color: #fff;}
-    .token.string {color: #cfc;}
-    .token.number {color: #fcc;}
-    .token.boolean {color: #ffc;}
   }
 
 }

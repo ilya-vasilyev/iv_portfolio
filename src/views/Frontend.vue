@@ -24,9 +24,16 @@
     <noscript>
       Can't show with JavaScript turned off
     </noscript>
-    <hr>
+    <br>
+    <br>
+    <br>
+    <br>
     <h2>Recent timeline</h2>
     <Timeline />
+    <br>
+    <br>
+    <br>
+    <br>
   </main>
 </template>
 
@@ -49,21 +56,21 @@ export default {
       loading: LoadingComponent,
       error: ErrorComponent,
       delay: 0,
-      timeout: 10000
+      timeout: 15000
     }),
     Raw: () => ({
       component: import(/* webpackChunkName: 'raw', webpackPrefetch: true */ '@/components/Raw.vue'),
       loading: LoadingComponent,
       error: ErrorComponent,
       delay: 0,
-      timeout: 10000
+      timeout: 15000
     }),
     Timeline: () => ({
       component: import(/* webpackChunkName: 'timeline', webpackPrefetch: true */ '@/components/Timeline.vue'),
       loading: LoadingComponent,
       error: ErrorComponent,
       delay: 0,
-      timeout: 10000
+      timeout: 15000
     })
   },
   data  () {
@@ -80,7 +87,7 @@ export default {
     }
   },
   mounted () {
-
+    this.loadChart()
   },
   methods: {
     loadChart () {

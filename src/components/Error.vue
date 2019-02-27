@@ -9,14 +9,13 @@
 .component-loading,
 .component-error  {
   align-items: center;
-  background: #fafafa;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 80%;
   margin: 40px auto;
   height: 400px;
-  color: #ccc;
+  color: #444;
   * {
     margin: 1rem;
   }
