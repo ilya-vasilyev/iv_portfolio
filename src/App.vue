@@ -119,7 +119,7 @@ export default {
 
 @import url('https://fonts.googleapis.com/css?family=Six+Caps');
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:300,600');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:300,400,600');
 
 .app {
   overflow-x: hidden;
@@ -162,6 +162,10 @@ nav {
       }
     }
    }
+}
+
+button {
+  font-family: 'Fira Sans Condensed', sans-serif;
 }
 
 label {

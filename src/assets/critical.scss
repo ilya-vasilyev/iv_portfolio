@@ -1,3 +1,10 @@
+$textColor: #444;
+$backColor: #fff;
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
 }
@@ -46,7 +53,35 @@ main {
 }
 
 footer {
-  background: currentColor;
+  background: $textColor;
+  color: $backColor;
   padding: 100px 20px;
   margin-top: 200px;
+
+  button {
+    background: $textColor;
+    color: $backColor;
+  }
+}
+
+button {
+  font-size: 18px;
+  background: $backColor;
+  color: $textColor;
+  border: 1px solid currentColor;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 0 tranaparent;
+  transition: box-shadow 0.2s;
+
+  &:not([active]):hover {
+    padding: 9px 19px;
+    border-width: 2px;
+  }
+
+  &[active] {
+    box-shadow: 0 10px 0 currentColor;
+    cursor: default;
+  }
 }
