@@ -1,5 +1,5 @@
 <template>
-  <div class="bio" itemscope itemtype="http://schema.org/Person">
+  <div class="bio">
 
     <p class="row">
       <small class="key">
@@ -7,8 +7,8 @@
       </small>
       <span class="value">
         <span itemprop="name">Ilya</span>
-        <span aria-hidden="true">[iːl'jɑː]</span>
-        <i @click="loadAudio('firstName')" >▣</i>
+        <span aria-hidden="true" class="transcription">[iːl'jɑː]</span>
+        <i @click="loadAudio('firstName')" class="icon speaker" />
       </span>
     </p>
 
@@ -18,8 +18,8 @@
       </small>
       <span class="value">
         <span>Vasilyev</span>
-        <span aria-hidden="true">[væs'iːljeəv]</span>
-        <i @click="loadAudio('lastName')" >▣</i>
+        <span aria-hidden="true" class="transcription">[væs'iːljeəv]</span>
+        <i @click="loadAudio('lastName')" class="icon speaker" />
       </span>
     </p>
 
@@ -38,7 +38,12 @@
       </small>
       <span class="value">
         Moscow, Russia
-        <i>▣</i>
+        <a
+          href="https://www.google.com/maps/place/Moscow/"
+          target="_blank"
+          tabindex="-1">
+          <i class="icon globe" />
+        </a>
       </span>
     </p>
 
@@ -90,26 +95,61 @@ export default {
   width: 100%;
   margin: 30px 0;
 
+  a {
+    margin: 0;
+		line-height: 0;
+  }
+
   .row {
     width: 100%;
     margin: 0;
     display: flex;
-  }
-
-  .key,
-  .value {
-    width: 50%;
-    padding: 10px;
+    align-items: flex-end;
   }
 
   .key {
-    text-align: right
+    width: 30%;
+    padding: 10px;
+    text-align: right;
   }
 
   .value {
+    width: 70%;
+    padding: 10px;
     text-align: left;
+    display: flex;
+    align-items: center;
   }
 
-  i {user-select: none;}
+  .transcription {
+    opacity: 0.6;
+    margin-left: 10px;
+  }
+
+  .icon {
+    user-select: none;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-left: 10px;
+    background: 50% 50% no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &.speaker {
+      background-image: url('../assets/images/speaker.svg');
+    }
+
+    &.globe {
+      background-image: url('../assets/images/globe.svg');
+    }
+  }
 }
 </style>
