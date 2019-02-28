@@ -61,7 +61,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        test: /\.(woff|woff2|eot|ttf|otf|mp3)$/,
         use: [
           'file-loader'
         ]
@@ -88,7 +88,8 @@ module.exports = {
       }
     }),
     new CopyWebpackPlugin([
-      { from: './src/assets/images', to: './assets/images' }
+      { from: './src/assets/images', to: './assets/images' },
+      { from: './src/assets/audio', to: './assets/audio' }
     ]),
     new webpack.DefinePlugin({
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
