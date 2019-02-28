@@ -1,8 +1,17 @@
 <template>
-  <section class="skills raw" aria-hidden="true">
-    <pre>
-      <code class="language-javascript" v-html="html"/>
-    </pre>
+  <section class="raw-container">
+    <h2>This is JSON</h2>
+    <div
+      class="raw"
+      aria-hidden="true"
+    >
+      <pre>
+        <code
+          class="language-javascript"
+          v-html="html"
+          />
+      </pre>
+    </div>
   </section>
 </template>
 
@@ -17,14 +26,10 @@ export default {
     }
   },
   mounted () {
-    this.html = Prism.highlight(
-      JSON.stringify(this.$store.state.skills, null, 2),
-      Prism.languages.javascript,
-      'javascript'
-    )
-  },
-  methods: {
-
+    this.html = JSON.stringify(this.$store.state.skills, null, 2)
+    this.$nextTick(() => {
+      Prism.highlightAll()
+    })
   }
 }
 </script>
@@ -33,14 +38,17 @@ export default {
 
 @import 'prismjs/themes/prism-tomorrow.css';
 
-.skills.raw {
+.raw-container {
+  position: relative;
+  z-index: 1;
+}
+
+.raw {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
   max-height: 400px;
   overflow-y: scroll;
-  position: relative;
-	z-index: 1;
 
   & .language-javascript {
     font-family: 'Source Code Pro', monospace;
