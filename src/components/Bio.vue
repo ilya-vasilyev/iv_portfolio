@@ -1,45 +1,55 @@
 <template>
   <div class="bio" itemscope itemtype="http://schema.org/Person">
 
-    <div class="key">
-      <small>first name</small>
-    </div>
-    <div class="value">
-      <span itemprop="name">Ilya</span>
-      <span aria-hidden="true">[iːl'jɑː]</span>
-      <i @click="loadAudio('firstName')" >▣</i>
-    </div>
+    <p class="row">
+      <small class="key">
+        first name
+      </small>
+      <span class="value">
+        <span itemprop="name">Ilya</span>
+        <span aria-hidden="true">[iːl'jɑː]</span>
+        <i @click="loadAudio('firstName')" >▣</i>
+      </span>
+    </p>
 
-    <div class="key">
-      <small>last name</small>
-    </div>
-    <div class="value">
-      <span>Vasilyev</span>
-      <span aria-hidden="true">[væs'iːljeəv]</span>
-      <i @click="loadAudio('lastName')" >▣</i>
-    </div>
+    <p class="row">
+      <small class="key">
+        last name
+      </small>
+      <span class="value">
+        <span>Vasilyev</span>
+        <span aria-hidden="true">[væs'iːljeəv]</span>
+        <i @click="loadAudio('lastName')" >▣</i>
+      </span>
+    </p>
 
-    <div class="key">
-      <small>age</small>
-    </div>
-    <div class="value">
-      <span>{{ age }}</span>
-    </div>
+    <p class="row">
+      <small class="key">
+        age
+      </small>
+      <span class="value">
+        {{ age }}
+      </span>
+    </p>
 
-    <div class="key">
-      <small>from</small>
-    </div>
-    <div class="value">
-      <span>Moscow, Russia</span>
-      <i>▣</i>
-    </div>
+    <p class="row">
+      <small class="key">
+        from
+      </small>
+      <span class="value">
+        Moscow, Russia
+        <i>▣</i>
+      </span>
+    </p>
 
-    <div class="key">
-      <small>languages</small>
-    </div>
-    <div class="value">
-      <span>English, Russian</span>
-    </div>
+    <p class="row">
+      <small class="key">
+        languages
+      </small>
+      <span class="value">
+        English, Russian
+      </span>
+    </p>
     <!-- <div
       itemscope
       itemtype="http://schema.org/Person">
@@ -54,7 +64,7 @@
 <script>
 export default {
   name: 'Bio',
-  computed: { 
+  computed: {
     age () {
       let currentTime = new Date()
       return currentTime.getMonth() + 1 < 9
@@ -78,11 +88,13 @@ export default {
 <style lang="scss">
 .bio {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
   margin: 30px 0;
 
-  i {user-select: none;}
+  .row {
+    width: 100%;
+    margin: 0;
+    display: flex;
+  }
 
   .key,
   .value {
@@ -97,5 +109,7 @@ export default {
   .value {
     text-align: left;
   }
+
+  i {user-select: none;}
 }
 </style>
