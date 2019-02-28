@@ -1,7 +1,18 @@
 <template>
   <section class="">
-    <div id="chart" />
-    <button @click="loadBar({ field: 'rating' })">
+    <div
+      id="chart"
+      aria-hidden="true"
+    />
+    <button
+      v-for="mode in modes"
+      :key="mode.display"
+      :active="currentMode === mode.display"
+      @click="load(mode)"
+    >
+      {{ mode.display }}
+    </button>
+    <!-- <button @click="loadBar({ field: 'rating' }); debugger" :active="1">
       rating
     </button>
     <button @click="loadBar({ field: 'level', showBase: false, showDisgrace: true })">
@@ -16,7 +27,7 @@
     </button>
     <button @click="loadPie({field: 'level', showNew: true, showDisgrace: true})">
       loadPie
-    </button>
+    </button> -->
   </section>
 </template>
 
@@ -40,17 +51,51 @@ export default {
         transition: { duration: 0 },
         legend: { show: false },
         color: { pattern: ['#444'] }
-      }
+      },
+      currentMode: null,
+      modes: [
+        {
+          display: 'Rating',
+          type: 'bar',
+          props: {
+            field: 'rating'
+          }
+        },
+        {
+          display: 'Disgrace',
+          type: 'bar',
+          props: {
+            field: 'level',
+            showBase: false,
+            showDisgrace: true
+          }
+        },
+        {
+          display: 'Years vs Level',
+          type: 'xy',
+          props: {
+            fieldX: 'level',
+            fieldY: 'years',
+            showNew: true,
+            showDisgrace: true
+          }
+        },
+        {
+          display: 'Areas',
+          type: 'pie',
+          props: {
+            field: 'level',
+            showNew: true,
+            showDisgrace: true
+          }
+        }
+      ]
+
     }
   },
   mounted () {
     this.$options.chart = { destroy: () => {} }
-    this.loadBar({
-      field: 'rating',
-      showNew: true,
-      showDisgrace: true,
-      areas: ['front']
-    })
+    this.load(this.modes[0])
   },
   methods: {
     hideChart (callback) {
@@ -180,6 +225,23 @@ export default {
           }
         ]
       })
+    },
+
+    load ({ display, type, props }) {
+      this.currentMode = display
+      switch (type) {
+        case 'bar':
+          this.loadBar(props)
+          break
+        case 'xy':
+          this.loadXY(props)
+          break
+        case 'pie':
+          this.loadPie(props)
+          break
+        default:
+          break
+      }
     },
 
     loadBar ({ field, sort = field, showBase = true, showNew = false, showDisgrace = false, areas = [] }) {
