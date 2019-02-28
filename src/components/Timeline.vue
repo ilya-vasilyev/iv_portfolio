@@ -11,16 +11,18 @@
       </div>
     </div>
     <div
-    class="timeline-controls"
-    :lockScroll="lockScroll"
+      class="timeline-controls"
+      :lockScroll="lockScroll"
     >
-    <button @click="scrollTimeline(`-=${ windowWidth() }`)">
-      (L)
-    </button>
-    <button @click="scrollTimeline(`+=${ windowWidth() }`)">
-      (R)
-    </button>
-  </div>
+      <button
+        class="arrow left"
+        @click="scrollTimeline(`-=${ windowWidth() }`)"
+      />
+      <button
+        class="arrow right"
+        @click="scrollTimeline(`+=${ windowWidth() }`)"
+      />
+    </div>
   </section>
 </template>
 
@@ -32,14 +34,18 @@ export default {
   data: function () {
     return {
       progress: 0,
-      lockScroll: false
+      lockScroll: false,
+      timeout: null
     }
   },
   mounted () {
-    let timeout
-    this.$refs.timeline.addEventListener('scroll', (e) => {
-      if (timeout) window.cancelAnimationFrame(timeout)
-      timeout = window.requestAnimationFrame(() => {
+    dragscroll.reset()
+    this.$refs.timeline.addEventListener('scroll', this.scroller, false)
+  },
+  methods: {
+    scroller (e) {
+      if (this.timeout) window.cancelAnimationFrame(this.timeout)
+      this.timeout = window.requestAnimationFrame(() => {
         this.progress = e.target.scrollLeft / (e.target.scrollWidth - window.innerWidth)
         this.$anime({
           targets: '.timeline .wrap .near',
@@ -52,9 +58,7 @@ export default {
           duration: 0
         })
       })
-    }, false)
-  },
-  methods: {
+    },
     scrollTimeline (pos) {
       if (this.lockScroll) return
       this.lockScroll = true
@@ -117,9 +121,26 @@ export default {
 
 .timeline-controls {
   width: 300px;
-  margin: 0 auto;
+  margin: 30px auto 0;
   display: flex;
   justify-content: center;
+
+  .arrow {
+    width: 80px;
+    height: 80px;
+    border-radius: 60px;
+    background: 50% 50% no-repeat;
+    background-size: 40px 40px;
+    margin: 0 10px;
+
+    &.left {
+      background-image: url('../assets/images/left.svg');
+    }
+
+    &.right {
+      background-image: url('../assets/images/right.svg');
+    }
+  }
 
   &[lockScroll] {
     opacity: 0.5;
