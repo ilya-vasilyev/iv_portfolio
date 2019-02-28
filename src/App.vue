@@ -5,11 +5,11 @@
     :class="{ loaded, lightMode, darkMode }"
   >
     <nav>
-      <h1>ILYA VASILYEV</h1>
+      <h1 @click="showBio = !showBio">ILYA VASILYEV</h1>
       <hr>
-      <small>expand basic info</small>
+      <small @click="showBio = !showBio">{{ showBio ? 'hide' : 'show' }} basic info</small>
+      <Bio v-if="showBio"/>
       <hr>
-      <Bio />
       <router-link
         v-for="el in nav"
         :key="el.to"
