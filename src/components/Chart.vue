@@ -1,33 +1,21 @@
 <template>
-  <section class="">
-    <div
-      id="chart"
-      aria-hidden="true"
-    />
-    <button
-      v-for="mode in modes"
-      :key="mode.display"
-      :active="currentMode === mode.display"
-      @click="load(mode)"
-    >
-      {{ mode.display }}
-    </button>
-    <!-- <button @click="loadBar({ field: 'rating' }); debugger" :active="1">
-      rating
-    </button>
-    <button @click="loadBar({ field: 'level', showBase: false, showDisgrace: true })">
-      showDisgrace
-    </button>
-
-    <button @click="loadXY({ fieldX: 'level',fieldY: 'years', showNew: true, showDisgrace: true })">
-      loadYearsLevel
-    </button>
-    <button @click="loadXY({ fieldX: 'years',fieldY: 'level', showNew: true, showDisgrace: true })">
-      loadLevelYears
-    </button>
-    <button @click="loadPie({field: 'level', showNew: true, showDisgrace: true})">
-      loadPie
-    </button> -->
+  <section>
+    <h2>This is chart</h2>
+    <div class="chart-container">
+      <div class="chart-controls">
+        <button
+          v-for="mode in modes"
+          :key="mode.display"
+          :active="currentMode === mode.display"
+          @click="load(mode)">
+          {{ mode.display }}
+        </button>
+      </div>
+      <div
+        id="chart"
+        aria-hidden="true"
+      />
+    </div>
   </section>
 </template>
 
@@ -54,6 +42,27 @@ export default {
       },
       currentMode: null,
       modes: [
+        {
+          display: 'Rating 0',
+          type: 'bar',
+          props: {
+            field: 'rating'
+          }
+        },
+        {
+          display: 'Rating 0 0',
+          type: 'bar',
+          props: {
+            field: 'rating'
+          }
+        },
+        {
+          display: 'Rating 0 0 0 Rating 0 0 0',
+          type: 'bar',
+          props: {
+            field: 'rating'
+          }
+        },
         {
           display: 'Rating',
           type: 'bar',
@@ -410,6 +419,37 @@ export default {
 <style lang="scss">
 
 @import 'billboard.js/dist/theme/insight.css';
+
+.chart-container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-controls {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+
+@media (min-width: 900px) {
+  .chart-container {
+    max-width: 900px;
+    flex-direction: row;
+  }
+
+  .chart-controls {
+    flex-shrink: 0;
+    max-width: 250px;
+    margin-right: 50px;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
 
 #chart {
   width: 100%;
