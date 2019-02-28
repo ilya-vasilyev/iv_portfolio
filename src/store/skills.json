@@ -43,6 +43,50 @@
       "years": 0.5,
       "level": 1,
       "rating": 8
+    },
+    {
+      "name": "vue1",
+      "area": "front",
+      "years": 8,
+      "level": 2,
+      "rating": 4
+    },
+    {
+      "name": "git1",
+      "area": "devops",
+      "years": 10,
+      "level": 8,
+      "rating": 3
+    },
+    {
+      "name": "feathers1",
+      "area": "back",
+      "years": 6,
+      "level": 4,
+      "rating": 2
+    },
+    {
+      "name": "docker1",
+      "area": "devops",
+      "years": 5,
+      "level": 8,
+      "rating": 10,
+      "isNew": true
+    },
+    {
+      "name": "jQuery1",
+      "area": "front",
+      "years": 1,
+      "level": 2,
+      "rating": 8,
+      "isDisgrace": true
+    },
+    {
+      "name": "arangoDB1",
+      "area": "db",
+      "years": 3,
+      "level": 6,
+      "rating": 6
     }
   ]
 }
