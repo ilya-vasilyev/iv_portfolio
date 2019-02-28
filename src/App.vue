@@ -2,7 +2,7 @@
   <div
     id="app"
     class="app"
-    :class="{ loaded, lightMode, darkMode }"
+    :class="{ loaded }"
   >
     <nav>
       <h1 @click="showBio = !showBio">ILYA VASILYEV</h1>
@@ -24,11 +24,23 @@
     <router-view />
     <footer>
       <div class="footer-dots"/>
+      <button @click="showEffects = !showEffects" :active="showEffects">
+        effects: {{showEffects ? 'ON' : 'OFF'}}
+      </button>
+      <button
+        v-for="palette in palettes"
+        :key="palette.value"
+        @click="currentPalette = palette"
+        :active="currentPalette === palette">
+        {{ palette.display }}
+      </button>
       <a href="/report.html">report.html</a>
     </footer>
-    <div class="colorist" />
-    <div class="fog big" />
-    <div class="fog small" />
+    <div v-if="showEffects" class="effects">
+      <div class="colorist" :class="{ [currentPalette.value]: true }" />
+      <div class="fog big" />
+      <div class="fog small" />
+    </div>
   </div>
 </template>
 
@@ -50,8 +62,15 @@ export default {
       url: 'https://iv.netlify.com/',
       image: 'https://iv.netlify.com/assets/images/preview.jpg',
       loaded: false,
-      lightMode: true,
-      darkMode: false
+      showBio: false,
+      showEffects: true,
+      currentPalette: {},
+      palettes: [
+        { value:'palette1', display: 'Shore' },
+        { value:'palette2', display: 'Dawn' },
+        { value:'palette3', display: 'Cloud' },
+        { value:'palette4', display: 'Rainbow' }
+      ]
     }
   },
   metaInfo () {
@@ -86,6 +105,9 @@ export default {
       ]
     }
   },
+  created () {
+    this.currentPalette = this.palettes[0]
+  },
   mounted () {
     setTimeout(() => { this.loaded = true }, 5000)
   }
@@ -102,23 +124,12 @@ export default {
 .app {
   overflow-x: hidden;
   font-family: 'Fira Sans Condensed', sans-serif;
+  background: #fff;
+  color: #444;
 
-  &.lightMode {
-    background: #fff;
-    color: #444;
-    ::selection {
-      background: #444;
-      color: rgba(255, 255, 255, 0);
-    }
-  }
-
-  &.darkMode {
+  ::selection {
     background: #444;
-    color: #fff;
-    ::selection {
-      background: #fff;
-      color: rgba(255, 255, 255, 0);
-    }
+    color: rgba(255, 255, 255, 0);
   }
 }
 
@@ -221,8 +232,6 @@ footer {
     height: 100%;
     top: 0;
     left: 0;
-    background: linear-gradient(90deg, #d439ba, #2e9ac1, #2dc1ad, #2e9ac1, #d439ba);
-    background-size: 500% 100%;
     mix-blend-mode: screen;
     pointer-events: none;
     opacity: 0;
@@ -231,6 +240,23 @@ footer {
 
     .loaded & {
       opacity: 1;
+    }
+
+    &.palette1 {
+      background: linear-gradient(90deg, #d439ba, #2e9ac1, #2dc1ad, #2e9ac1, #d439ba);
+      background-size: 500% 100%;
+    }
+    &.palette2 {
+      background: linear-gradient(90deg, #f3a61a, #d439ba, #5a2ed6, #d439ba, #f3a61a);
+      background-size: 500% 100%;
+    }
+    &.palette3 {
+      background: linear-gradient(90deg, #5fad97, #558596, #6663a7, #ada57d, #6eab78);
+      background-size: 500% 100%;
+    }
+    &.palette4 {
+      background: linear-gradient(90deg, #ff0000, #ffd504, #28d428, #21e2e2, #191fe6, #f107be);
+      background-size: 300% 100%;
     }
   }
 }
