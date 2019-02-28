@@ -1,13 +1,13 @@
 <template>
   <main>
-    <button @click="loadChart()">
-      load Chart
+    <button @click="loadChart()" :active="viewMode === 'chart'">
+      view as <b>CHART</b>
     </button>
-    <button @click="loadTable()">
-      load Table
+    <button @click="loadTable()" :active="viewMode === 'table'">
+      view as <b>TABLE</b>
     </button>
-    <button @click="loadRaw()">
-      load Raw
+    <button @click="loadRaw()" :active="viewMode === 'raw'">
+      view as <b>JSON</b>
     </button>
     <Chart
       v-if="isChartLoaded"
