@@ -3,12 +3,20 @@
     id="app"
     class="app"
     :class="{ loaded }"
+    itemscope
+    itemtype="http://schema.org/Person"
   >
     <nav>
-      <h1 @click="showBio = !showBio">ILYA VASILYEV</h1>
+      <h1 @click="showBio = true" tabindex="1">
+        ILYA VASILYEV
+      </h1>
       <hr>
-      <small @click="showBio = !showBio">{{ showBio ? 'hide' : 'show' }} basic info</small>
       <Bio v-if="showBio"/>
+      <small
+        @click="showBio = !showBio"
+        tabindex="1">
+        {{ showBio ? 'hide' : 'show' }} basic info
+      </small>
       <hr>
       <router-link
         v-for="el in nav"
@@ -16,6 +24,7 @@
         :to="{ name: el.to }"
         :style="{letterSpacing: el.spacing + 'px'}"
         :selected="el.to === $route.name"
+        class="link"
       >
         {{ el.text }}
       </router-link>
@@ -24,7 +33,9 @@
     <router-view />
     <footer>
       <div class="footer-dots"/>
-      <button @click="showEffects = !showEffects" :active="showEffects">
+      <button
+        @click="showEffects = !showEffects"
+        :active="showEffects">
         effects: {{showEffects ? 'ON' : 'OFF'}}
       </button>
       <button
@@ -140,7 +151,7 @@ nav {
     font-size: 91px;
   }
 
-  a {
+  a.link {
     font-family: 'Source Code Pro', monospace;
     white-space: nowrap;
 

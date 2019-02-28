@@ -1,5 +1,6 @@
 <template>
   <section>
+    <h2>This is table</h2>
     <div ref="table" aria-hidden="true"/>
     <label for="tableShowNew">tableShowNew</label>
     <input

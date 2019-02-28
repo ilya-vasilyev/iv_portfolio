@@ -1,37 +1,72 @@
 <template>
   <main>
-    <button @click="loadChart()" :active="viewMode === 'chart'">
-      view as <b>CHART</b>
-    </button>
-    <button @click="loadTable()" :active="viewMode === 'table'">
-      view as <b>TABLE</b>
-    </button>
-    <button @click="loadRaw()" :active="viewMode === 'raw'">
-      view as <b>JSON</b>
-    </button>
+    <p>Hi, I'm Ilya, this is my personal page, stuffed to the gills with...</p>
+    <img
+      v-show="tldrImage"
+      src="../assets/images/peacock.gif"
+      alt=""
+      class="tldr-image"
+    >
+    <div>
+      <button v-if="!tldrImage" @click="tldrImage = true">
+        TL;DR
+      </button>
+    </div>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    <div class="skill-controls">
+      <button
+        :active="viewMode === 'chart'"
+        @click="loadChart()"
+      >
+        view as <b>CHART</b>
+      </button>
+      <button
+        :active="viewMode === 'table'"
+        @click="loadTable()"
+      >
+        view as <b>TABLE</b>
+      </button>
+      <button
+        :active="viewMode === 'raw'"
+        @click="loadRaw()"
+      >
+        view as <b>JSON</b>
+      </button>
+    </div>
+
     <Chart
       v-if="isChartLoaded"
       v-show="viewMode === 'chart'"
+      class="skills"
     />
+
     <Table
       v-if="isTableLoaded"
       v-show="viewMode === 'table'"
+      class="skills"
     />
+
     <Raw
       v-if="isRawLoaded"
       v-show="viewMode === 'raw'"
+      class="skills"
     />
+
     <noscript>
       Can't show with JavaScript turned off
     </noscript>
     <br>
     <br>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     <br>
     <br>
     <h2>Recent timeline</h2>
     <Timeline />
     <br>
     <br>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     <br>
     <br>
   </main>
@@ -49,28 +84,28 @@ export default {
       loading: LoadingComponent,
       error: ErrorComponent,
       delay: 0,
-      timeout: 15000
+      timeout: 25000
     }),
     Table: () => ({
       component: import(/* webpackChunkName: 'table', webpackPrefetch: true */ '@/components/Table.vue'),
       loading: LoadingComponent,
       error: ErrorComponent,
       delay: 0,
-      timeout: 15000
+      timeout: 25000
     }),
     Raw: () => ({
       component: import(/* webpackChunkName: 'raw', webpackPrefetch: true */ '@/components/Raw.vue'),
       loading: LoadingComponent,
       error: ErrorComponent,
       delay: 0,
-      timeout: 15000
+      timeout: 25000
     }),
     Timeline: () => ({
       component: import(/* webpackChunkName: 'timeline', webpackPrefetch: true */ '@/components/Timeline.vue'),
       loading: LoadingComponent,
       error: ErrorComponent,
       delay: 0,
-      timeout: 15000
+      timeout: 25000
     })
   },
   data  () {
@@ -78,7 +113,8 @@ export default {
       isChartLoaded: false,
       isTableLoaded: false,
       isRawLoaded: false,
-      viewMode: 'chart'
+      viewMode: 'chart',
+      tldrImage: false
     }
   },
   metaInfo () {
@@ -90,22 +126,57 @@ export default {
     this.loadChart()
   },
   methods: {
+    hideSkills (callback) {
+      this.$anime({
+        targets: '.skills',
+        translateY: 50,
+        opacity: 0,
+        filter: 'blur(5px)',
+        duration: 200,
+        easing: 'easeInSine',
+        complete: callback
+      })
+    },
+    showSkills () {
+      this.$anime({
+        targets: '.skills',
+        translateY: -50,
+        duration: 0
+      })
+      this.$anime({
+        targets: '.skills',
+        translateY: 0,
+        opacity: 1,
+        filter: 'blur(0px)',
+        duration: 300,
+        easing: 'easeOutBack'
+      })
+    },
     loadChart () {
-      this.$store.dispatch('loadSkills').then(() => {
-        this.isChartLoaded = true
-        this.viewMode = 'chart'
+      this.hideSkills(() => {
+        this.$store.dispatch('loadSkills').then(() => {
+          this.isChartLoaded = true
+          this.viewMode = 'chart'
+          this.showSkills()
+        })
       })
     },
     loadTable () {
-      this.$store.dispatch('loadSkills').then(() => {
-        this.isTableLoaded = true
-        this.viewMode = 'table'
+      this.hideSkills(() => {
+        this.$store.dispatch('loadSkills').then(() => {
+          this.isTableLoaded = true
+          this.viewMode = 'table'
+          this.showSkills()
+        })
       })
     },
     loadRaw () {
-      this.$store.dispatch('loadSkills').then(() => {
-        this.isRawLoaded = true
-        this.viewMode = 'raw'
+      this.hideSkills(() => {
+        this.$store.dispatch('loadSkills').then(() => {
+          this.isRawLoaded = true
+          this.viewMode = 'raw'
+          this.showSkills()
+        })
       })
     }
   }
@@ -113,5 +184,24 @@ export default {
 </script>
 
 <style lang="scss">
+
+.skill-controls {
+  margin: 120px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 540px) {
+    flex-direction: row;
+  }
+}
+
+.tldr-image {
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  z-index: 1;
+}
 
 </style>
