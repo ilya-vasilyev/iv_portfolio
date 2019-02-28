@@ -1,5 +1,5 @@
 <template>
-  <section class="skills raw">
+  <section class="skills raw" aria-hidden="true">
     <pre>
       <code class="language-javascript" v-html="html"/>
     </pre>

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div ref="table" />
+    <div ref="table" aria-hidden="true"/>
     <label for="tableShowNew">tableShowNew</label>
     <input
       id="tableShowNew"
