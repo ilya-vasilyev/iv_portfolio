@@ -1,92 +1,244 @@
 {
   "skills": [
     {
-      "name": "vue",
-      "area": "front",
+      "name": "HTML",
+      "area": "lang",
+      "years": 5,
+      "level": 8,
+      "rating": 7
+    },
+    {
+      "name": "CSS",
+      "area": "lang",
+      "years": 5,
+      "level": 9,
+      "rating": 8
+    },
+    {
+      "name": "JavaScript",
+      "area": "lang",
+      "years": 4,
+      "level": 6,
+      "rating": 7
+    },
+    {
+      "name": "TypeScript",
+      "area": "lang",
+      "years": 0.5,
+      "level": 2,
+      "rating": 6,
+      "isNew": true
+    },
+    {
+      "name": "Python",
+      "area": "lang",
+      "years": 0.5,
+      "level": 3,
+      "rating": 6,
+      "isNew": true
+    },
+    {
+      "name": "SCSS",
+      "area": "lang",
       "years": 2,
-      "level": 7,
+      "level": 8,
+      "rating": 8
+    },
+    {
+      "name": "Vue",
+      "area": "front",
+      "years": 2.5,
+      "level": 8,
       "rating": 10
     },
     {
-      "name": "git",
-      "area": "devops",
-      "years": 4,
-      "level": 5,
-      "rating": 6
-    },
-    {
-      "name": "feathers",
-      "area": "back",
-      "years": 0.5,
-      "level": 3,
+      "name": "SVG",
+      "area": "front",
+      "years": 3,
+      "level": 6,
       "rating": 8
     },
     {
-      "name": "docker",
-      "area": "devops",
-      "years": 0.15,
+      "name": "GSAP",
+      "area": "front",
+      "years": 4,
+      "level": 6.5,
+      "rating": 6
+    },
+    {
+      "name": "Anime.js",
+      "area": "front",
+      "years": 0.5,
+      "level": 6,
+      "rating": 7
+    },
+    {
+      "name": "AngularJS",
+      "area": "front",
+      "years": 4,
+      "level": 4,
+      "rating": 1
+    },
+    {
+      "name": "axios",
+      "area": "front",
+      "years": 1.5,
+      "level": 6,
+      "rating": 9
+    },
+    {
+      "name": "Nuxt.js",
+      "area": "front",
+      "years": 0.5,
+      "level": 4,
+      "rating": 7,
+      "isNew": true
+    },
+    {
+      "name": "Vuex",
+      "area": "front",
+      "years": 2,
+      "level": 7.5,
+      "rating": 9
+    },
+    {
+      "name": "D3.js",
+      "area": "front",
+      "years": 4,
+      "level": 5,
+      "rating": 9
+    },
+    {
+      "name": "Tailwind CSS",
+      "area": "front",
+      "years": 0,
       "level": 3,
       "rating": 7,
       "isNew": true
     },
     {
-      "name": "jQuery",
+      "name": "Svelte",
       "area": "front",
-      "years": 2,
-      "level": 5.5,
+      "years": 0,
+      "level": 0,
       "rating": 7,
-      "isDisgrace": true
+      "isNew": true
     },
     {
-      "name": "arangoDB",
+      "name": "TensorFlow.js",
+      "area": "front",
+      "years": 0,
+      "level": 2,
+      "rating": 8,
+      "isNew": true
+    },
+    {
+      "name": "Babylon.js",
+      "area": "front",
+      "years": 0.5,
+      "level": 2,
+      "rating": 7
+    },
+    {
+      "name": "GraphQL",
+      "area": "front",
+      "years": 0,
+      "level": 0,
+      "rating": 7,
+      "isNew": true
+    },
+    {
+      "name": "FeathersJS",
+      "area": "back",
+      "years": 1,
+      "level": 3,
+      "rating": 9
+    },
+    {
+      "name": "Strapi",
+      "area": "back",
+      "years": 1,
+      "level": 4,
+      "rating": 9
+    },
+    {
+      "name": "Firebase",
+      "area": "back",
+      "years": 2,
+      "level": 5,
+      "rating": 7
+    },
+    {
+      "name": "Node.js",
+      "area": "back",
+      "years": 3,
+      "level": 4,
+      "rating": 7
+    },
+    {
+      "name": "Express.js",
+      "area": "back",
+      "years": 2,
+      "level": 3,
+      "rating": 5
+    },
+    {
+      "name": "Git",
+      "area": "devops",
+      "years": 3.5,
+      "level": 6,
+      "rating": 6
+    },
+    {
+      "name": "Webpack",
+      "area": "devops",
+      "years": 2,
+      "level": 4,
+      "rating": 6
+    },
+    {
+      "name": "Docker",
+      "area": "devops",
+      "years": 1,
+      "level": 2,
+      "rating": 7,
+      "isNew": true
+    },
+    {
+      "name": "ArangoDB",
       "area": "db",
       "years": 0.5,
       "level": 1,
-      "rating": 8
-    },
-    {
-      "name": "vue1",
-      "area": "front",
-      "years": 8,
-      "level": 2,
-      "rating": 4
-    },
-    {
-      "name": "git1",
-      "area": "devops",
-      "years": 10,
-      "level": 8,
-      "rating": 3
-    },
-    {
-      "name": "feathers1",
-      "area": "back",
-      "years": 6,
-      "level": 4,
-      "rating": 2
-    },
-    {
-      "name": "docker1",
-      "area": "devops",
-      "years": 5,
-      "level": 8,
-      "rating": 10,
+      "rating": 9,
       "isNew": true
     },
     {
-      "name": "jQuery1",
-      "area": "front",
+      "name": "MongoDB",
+      "area": "db",
       "years": 1,
-      "level": 2,
-      "rating": 8,
-      "isDisgrace": true
+      "level": 3,
+      "rating": 7
     },
     {
-      "name": "arangoDB1",
-      "area": "db",
-      "years": 3,
-      "level": 6,
-      "rating": 6
+      "name": "Storybook",
+      "area": "test",
+      "years": 1,
+      "level": 5,
+      "rating": 7
+    },
+    {
+      "name": "Jest",
+      "area": "test",
+      "years": 1,
+      "level": 4,
+      "rating": 5
+    },
+    {
+      "name": "Cypress",
+      "area": "test",
+      "years": 0,
+      "level": 4,
+      "rating": 8
     }
   ]
 }
