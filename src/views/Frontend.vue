@@ -1,6 +1,18 @@
 <template>
   <main>
-    <p>Hi, I'm Ilya, this is my personal page, stuffed to the gills with...</p>
+    <p>Hi, I'm 
+      <span>Ilya</span>
+      <span>Vasilyev</span>, 
+      <span>front-end developer</span>, 
+      this is my personal page, stuffed to the gills with highly annoying, CPU intensive and absolutely unnecesary visual effects.
+      I've created them just because I can. 
+      And you can 
+      <button
+        @click="$store.dispatch('switchEffects', !$store.state.showEffects)"
+        class="inline">turn them {{$store.state.showEffects ? 'OFF' : 'ON'}}</button> 
+      anytime.
+
+    </p>
     <img
       v-show="tldrImage"
       src="../assets/images/peacock.gif"
