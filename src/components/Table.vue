@@ -9,13 +9,6 @@
       :value="filters.isNew"
       @change="toggleFilter('isNew', !filters.isNew)"
     >
-    <label for="tableShowDisgrace">tableShowDisgrace</label>
-    <input
-      id="tableShowDisgrace"
-      type="checkbox"
-      :value="filters.isDisgrace"
-      @change="toggleFilter('isDisgrace', !filters.isDisgrace)"
-    >
   </section>
 </template>
 
@@ -80,14 +73,6 @@ export default {
             allowEmpty: false,
             allowTruthy: true
           }
-        },
-
-        { title: 'is Disgrace',
-          field: 'isDisgrace',
-          visible: false,
-          formatter: 'tickCross',
-          formatterParams: {
-          }
         }
       ]
     })
@@ -100,14 +85,6 @@ export default {
       Object.entries(this.filters).forEach(([field, val]) => {
         if (!val) this.$options.tabulator.addFilter(field, '!=', true)
       })
-      // if (value) {
-      //
-      // } else {
-      //   this.$options.tabulator.setFilter(value, '!=', true)
-      // }
-    },
-    toggleDisgrace () {
-
     }
   }
 }
