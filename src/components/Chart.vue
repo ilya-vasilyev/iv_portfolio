@@ -33,7 +33,6 @@ export default {
     return {
       bbDefaults: {
         bindto: '#chart',
-        size: { height: 500 },
         bar: { width: { ratio: 0.8, max: 100 } },
         tooltip: { show: false },
         transition: { duration: 0 },
@@ -43,59 +42,46 @@ export default {
       currentMode: null,
       modes: [
         {
-          display: 'Rating 0',
-          type: 'bar',
-          props: {
-            field: 'rating'
-          }
-        },
-        {
-          display: 'Rating 0 0',
-          type: 'bar',
-          props: {
-            field: 'rating'
-          }
-        },
-        {
-          display: 'Rating 0 0 0 Rating 0 0 0',
-          type: 'bar',
-          props: {
-            field: 'rating'
-          }
-        },
-        {
-          display: 'Rating',
-          type: 'bar',
-          props: {
-            field: 'rating'
-          }
-        },
-        {
-          display: 'Disgrace',
+          display: 'Level of knowledge of front-end libraries',
           type: 'bar',
           props: {
             field: 'level',
-            showBase: false,
-            showDisgrace: true
+            areas:['front']
           }
         },
         {
-          display: 'Years vs Level',
+          display: 'Years of experience in programming languages',
+          type: 'bar',
+          props: {
+            field: 'years',
+            areas: ['lang'],
+            showNew: true
+          }
+        },
+        {
+          display: 'Rating of newly learned technologies',
+          type: 'bar',
+          props: {
+            field: 'rating',
+            showBase: false,
+            showNew: true
+          }
+        },
+        {
+          display: 'Years of experience vs level of knowledge',
           type: 'xy',
           props: {
-            fieldX: 'level',
-            fieldY: 'years',
-            showNew: true,
-            showDisgrace: true
+            fieldX: 'years',
+            fieldY: 'level',
+            areas: ['front', 'devops', 'back'],
           }
         },
         {
-          display: 'Areas',
+          display: 'Ratio of experience in various areas',
           type: 'pie',
           props: {
             field: 'level',
-            showNew: true,
-            showDisgrace: true
+            showNew: true
           }
         }
       ]
@@ -253,17 +239,16 @@ export default {
       }
     },
 
-    loadBar ({ field, sort = field, showBase = true, showNew = false, showDisgrace = false, areas = [] }) {
+    loadBar ({ field, sort = field, showBase = true, showNew = false, areas = [] }) {
       const data = {}
       const skills = this.$store.state.skills
 
       skills
         .filter(skill => {
-          const ifBase = showBase && !skill.isNew && !skill.isDisgrace
+          const ifBase = showBase && !skill.isNew
           const ifNew = showNew && skill.isNew
-          const ifDisgrace = showDisgrace && skill.isDisgrace
           const ifArea = !areas.length || areas.includes(skill.area)
-          return (ifBase || ifNew || ifDisgrace) && ifArea
+          return (ifBase || ifNew) && ifArea
         })
         .sort((a, b) => b[sort] - a[sort])
         .forEach(skill => {
@@ -280,6 +265,7 @@ export default {
         this.$options.chart.destroy()
         this.$options.chart = bb.generate({
           ...this.bbDefaults,
+          size: { height: Math.max(data[field].length * 30, 500) },
           data: {
             type: 'bar',
             columns: [ [ field, ...data[field] ] ],
@@ -289,21 +275,20 @@ export default {
             rotated: true,
             x: {
               type: 'category',
-              categories: data.name
+              categories: data.name,
+              tick: { width: 130 }
             },
             y: { show: false }
           },
-          bar: {
-            radius: 10,
-            width: { ratio: 0.8 }
-          }
+          bar: { width: { ratio: 0.8 } },
+          
         })
         this.showChart()
         this.showBars()
       }
     },
 
-    loadXY ({ fieldX, fieldY, showBase = true, showNew = false, showDisgrace = false, areas = [] }) {
+    loadXY ({ fieldX, fieldY, showBase = true, showNew = false, areas = [] }) {
       const data = {
         columns: [],
         xs: {},
@@ -313,11 +298,10 @@ export default {
 
       skills
         .filter(skill => {
-          const ifBase = showBase && !skill.isNew && !skill.isDisgrace
+          const ifBase = showBase && !skill.isNew
           const ifNew = showNew && skill.isNew
-          const ifDisgrace = showDisgrace && skill.isDisgrace
           const ifArea = !areas.length || areas.includes(skill.area)
-          return (ifBase || ifNew || ifDisgrace) && ifArea
+          return (ifBase || ifNew) && ifArea
         })
         .sort((a, b) => a[fieldX] - b[fieldX])
         .forEach(skill => {
@@ -326,17 +310,17 @@ export default {
           data.xs[skill.name] = skill.name + '_' + fieldX
         })
 
-      const pad = 1
-      data.axis.x.min = skills.reduce((a, c) => (c[fieldX] < a ? c[fieldX] : a), 3) - pad
-      data.axis.x.max = skills.reduce((a, c) => (c[fieldX] > a ? c[fieldX] : a), 3) + pad
-      data.axis.y.min = skills.reduce((a, c) => (c[fieldY] < a ? c[fieldY] : a), 3) - pad
-      data.axis.y.max = skills.reduce((a, c) => (c[fieldY] > a ? c[fieldY] : a), 3) + pad
+      data.axis.x.min = skills.reduce((a, c) => (c[fieldX] < a ? c[fieldX] : a), 3) 
+      data.axis.x.max = skills.reduce((a, c) => (c[fieldX] > a ? c[fieldX] : a), 3)
+      data.axis.y.min = skills.reduce((a, c) => (c[fieldY] < a ? c[fieldY] : a), 3)
+      data.axis.y.max = skills.reduce((a, c) => (c[fieldY] > a ? c[fieldY] : a), 3)
 
       this.hideChart(rebuild)
       function rebuild () {
         this.$options.chart.destroy()
         this.$options.chart = bb.generate({
           ...this.bbDefaults,
+          size: { height: 600 },
           data: {
             type: 'scatter',
             columns: data.columns,
@@ -369,17 +353,16 @@ export default {
       }
     },
 
-    loadPie ({ field, showBase = true, showNew = false, showDisgrace = false, areas = ['front', 'back', 'devops'] }) {
+    loadPie ({ field, showBase = true, showNew = false, areas = ['front', 'back', 'devops'] }) {
       const accumulator = {}
       const skills = this.$store.state.skills
 
       skills
         .filter(skill => {
-          const ifBase = showBase && !skill.isNew && !skill.isDisgrace
+          const ifBase = showBase && !skill.isNew
           const ifNew = showNew && skill.isNew
-          const ifDisgrace = showDisgrace && skill.isDisgrace
           const ifArea = !areas.length || areas.includes(skill.area)
-          return (ifBase || ifNew || ifDisgrace) && ifArea
+          return (ifBase || ifNew) && ifArea
         })
         .forEach(skill => {
           if (!accumulator[skill.area]) accumulator[skill.area] = 0
@@ -392,6 +375,7 @@ export default {
         this.$options.chart.destroy()
         this.$options.chart = bb.generate({
           ...this.bbDefaults,
+          size: { height: 500 },
           data: {
             type: 'pie',
             columns: data
@@ -448,13 +432,13 @@ export default {
     margin-right: 50px;
     flex-direction: column;
     align-items: flex-end;
+    justify-content: flex-start;
   }
 }
 
 #chart {
   width: 100%;
   max-width: 600px;
-  min-height: 500px;
   margin: 0 auto;
 }
 
