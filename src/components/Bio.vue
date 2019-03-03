@@ -2,43 +2,33 @@
   <div class="bio">
 
     <p class="row">
-      <small class="key">
-        first name
-      </small>
+      <small class="key">first name</small>
       <span class="value">
         <span itemprop="name">Ilya</span>
-        <span aria-hidden="true" class="transcription">[iːl'jɑː]</span>
+        <span aria-hidden="true" class="transcription">/iːl'jɑː/</span>
         <i @click="loadAudio('firstName')" class="icon speaker" />
       </span>
     </p>
 
     <p class="row">
-      <small class="key">
-        last name
-      </small>
+      <small class="key">last name</small>
       <span class="value">
         <span>Vasilyev</span>
-        <span aria-hidden="true" class="transcription">[væs'iːljeəv]</span>
+        <span aria-hidden="true" class="transcription">/væs'iːljeəv/</span>
         <i @click="loadAudio('lastName')" class="icon speaker" />
       </span>
     </p>
 
     <p class="row">
-      <small class="key">
-        age
-      </small>
-      <span class="value">
-        {{ age }}
-      </span>
+      <small class="key">age</small>
+      <span class="value">{{ age }}</span>
     </p>
 
+    <br>
+
     <p class="row">
-      <small class="key">
-        from
-      </small>
-      <span class="value">
-        Moscow, Russia
-        <a
+      <small class="key">from</small>
+      <span class="value">Moscow, Russia<a
           href="https://www.google.com/maps/place/Moscow/"
           target="_blank"
           tabindex="-1">
@@ -48,21 +38,42 @@
     </p>
 
     <p class="row">
-      <small class="key">
-        languages
-      </small>
-      <span class="value">
-        English, Russian
-      </span>
+      <small class="key">languages</small>
+      <span class="value">English, Russian</span>
     </p>
-    <!-- <div
-      itemscope
-      itemtype="http://schema.org/Person">
-      hi, my name is
-      <span itemprop="name">Ilya</span>
-      and I'm a
-      <span itemprop="disambiguatingDescription">frontend web developer</span>
-    </div> -->
+
+    <br>
+
+    <p class="row">
+      <small class="key">Big Five personality traits:</small>
+      <span class="value"></span>
+    </p>
+    
+    <p class="row">
+      <small class="key">openness to experience</small>
+      <span class="value">100%</span>
+    </p>
+    
+    <p class="row">
+      <small class="key">agreeableness</small>
+      <span class="value">71%</span>
+    </p>
+    
+    <p class="row">
+      <small class="key">conscientiousness</small>
+      <span class="value">67%</span>
+    </p>
+    
+    <p class="row">
+      <small class="key">neuroticism</small>
+      <span class="value">63%</span>
+    </p>
+    
+    <p class="row">
+      <small class="key">extraversion</small>
+      <span class="value">46%</span>
+    </p>
+
   </div>
 </template>
 
@@ -103,20 +114,20 @@ export default {
   .row {
     width: 100%;
     margin: 0;
+    padding: 0;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 1;
   }
 
   .key {
-    width: 30%;
-    padding: 10px;
-    text-align: right;
+    padding: 5px;
+    white-space: normal;
   }
 
   .value {
-    width: 70%;
-    padding: 10px;
-    text-align: left;
+    padding: 5px;
     display: flex;
     align-items: center;
   }
@@ -136,11 +147,11 @@ export default {
     background: 50% 50% no-repeat;
     background-size: contain;
     cursor: pointer;
-    opacity: 1;
+    opacity: 0.6;
     transition: opacity 0.2s;
 
     &:hover {
-      opacity: 0.6;
+    opacity: 1;
     }
 
     &.speaker {
