@@ -11,7 +11,9 @@
         ILYA VASILYEV
       </h1>
       <hr>
-      <Bio v-if="showBio"/>
+      <transition name="fade">
+        <Bio v-if="showBio"/>
+      </transition>
       <small
         @click="showBio = !showBio"
         tabindex="1">
@@ -34,17 +36,19 @@
     <footer>
       <div class="footer-dots"/>
       <button
-        @click="showEffects = !showEffects"
+        @click="switchEffects()"
         :active="showEffects">
         effects: {{showEffects ? 'ON' : 'OFF'}}
       </button>
-      <button
-        v-for="palette in palettes"
-        :key="palette.value"
-        @click="currentPalette = palette"
-        :active="currentPalette === palette">
-        {{ palette.display }}
-      </button>
+      <div v-if="showEffects" >
+        <button
+          v-for="palette in palettes"
+          :key="palette.value"
+          @click="currentPalette = palette"
+          :active="currentPalette === palette">
+          {{ palette.display }}
+        </button>
+      </div>
       <a href="/report.html">report.html</a>
     </footer>
     <div v-if="showEffects" class="effects">
@@ -74,14 +78,19 @@ export default {
       image: 'https://iv.netlify.com/assets/images/preview.jpg',
       loaded: false,
       showBio: false,
-      showEffects: true,
       currentPalette: {},
       palettes: [
         { value:'palette1', display: 'Shore' },
         { value:'palette2', display: 'Dawn' },
         { value:'palette3', display: 'Cloud' },
-        { value:'palette4', display: 'Rainbow' }
+        { value:'palette4', display: 'Rainbow' },
+        { value:'palette5', display: 'Shade ' }
       ]
+    }
+  },
+  computed: {
+    showEffects () {
+      return this.$store.state.showEffects
     }
   },
   metaInfo () {
@@ -121,8 +130,16 @@ export default {
   },
   mounted () {
     setTimeout(() => { this.loaded = true }, 5000)
+  },
+  methods: {
+    switchEffects (val) {
+      if (val === undefined) {
+        this.$store.dispatch('switchEffects', !this.showEffects)
+      } else {
+        this.$store.dispatch('switchEffects', val)
+      }
+    }
   }
-
 }
 </script>
 
@@ -273,7 +290,19 @@ footer {
       background: linear-gradient(90deg, #ff0000, #ffd504, #28d428, #21e2e2, #191fe6, #f107be);
       background-size: 300% 100%;
     }
+    &.palette5 {
+      display: none;
+    }
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transform-origin: top;
+  transition: 0.2s;
+}
+.fade-enter, .fade-leave-to {
+  transform: scaleY(0.5);
+  opacity: 0;
 }
 
 </style>

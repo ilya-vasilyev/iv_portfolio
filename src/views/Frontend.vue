@@ -131,7 +131,7 @@ export default {
         targets: '.skills',
         translateY: 50,
         opacity: 0,
-        filter: 'blur(5px)',
+        filter: this.$store.state.showEffects ? 'blur(5px)' : false,
         duration: 200,
         easing: 'easeInSine',
         complete: callback
@@ -147,7 +147,7 @@ export default {
         targets: '.skills',
         translateY: 0,
         opacity: 1,
-        filter: 'blur(0px)',
+        filter: this.$store.state.showEffects ? 'blur(0px)' : false,
         duration: 300,
         easing: 'easeOutBack'
       })

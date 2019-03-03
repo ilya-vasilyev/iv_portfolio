@@ -112,7 +112,7 @@ export default {
         targets: '#chart',
         scaleY: 0.4,
         opacity: 0.5,
-        filter: 'blur(10px)',
+        filter: this.$store.state.showEffects ? 'blur(10px)' : false,
         duration: 300,
         easing: 'easeInBack',
         complete: callback.bind(this)
@@ -124,7 +124,7 @@ export default {
         targets: '#chart',
         scaleY: 1,
         opacity: 1,
-        filter: 'blur(0px)',
+        filter: this.$store.state.showEffects ? 'blur(0px)' : false,
         duration: 200,
         easing: 'easeOutBack'
       })

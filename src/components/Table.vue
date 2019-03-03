@@ -123,8 +123,6 @@ export default {
   min-height: 500px;
   margin: 0 auto;
   background: transparent;
-  color: currentColor;
-
 }
 .tabulator-responsive-collapse {
   margin-bottom: 30px;
