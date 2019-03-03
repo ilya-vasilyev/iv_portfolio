@@ -21,11 +21,16 @@ h1 {
   margin: 80px 0 0;
 }
 
+h2 {
+  padding: 0 20px;
+}
+
 p {
   text-align: left;
   max-width: 600px;
   margin: 30px auto;
   padding: 0 20px;
+  line-height: 2;
 }
 
 nav {
@@ -83,7 +88,7 @@ button {
   box-shadow: 0 0 0 tranaparent;
   transition: box-shadow 0.2s;
 
-  &:not([active]):hover {
+  &:not([active]):not(.inline):hover {
     padding: 9px 19px;
     border-width: 2px;
   }
@@ -92,6 +97,26 @@ button {
     box-shadow: 0 10px 0 currentColor;
     cursor: default;
   }
+
+  &.inline {
+    display: inline-block;
+    border: none;
+    background: none;
+    font-size: inherit;
+    padding: 0;
+    margin: 0;
+    text-decoration: underline;
+    user-select: auto;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
 }
 
 small {opacity: 0.6;}
+
+hr {
+  width: 50%;
+  max-width: 600px;
+}
