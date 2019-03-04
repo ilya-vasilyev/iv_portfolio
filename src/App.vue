@@ -139,7 +139,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+@import url('./assets/variables.scss');
 @import url('https://fonts.googleapis.com/css?family=Six+Caps');
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:300,400,600');
