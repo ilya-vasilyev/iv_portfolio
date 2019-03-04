@@ -1,10 +1,10 @@
 <template>
   <main>
-    <p>Hi, I'm 
-      <span>Ilya</span>
-      <span>Vasilyev</span>, 
-      <span>front-end developer</span>, 
-      this is my personal page, stuffed to the gills with highly annoying, CPU intensive and absolutely unnecesary visual effects.
+    <p>Hello, I'm 
+      <b>Ilya</b>
+      <b>Vasilyev</b>, 
+      <b>front-end developer</b>, 
+      and this is my personal page, stuffed to the gills with highly annoying, CPU intensive and absolutely unnecesary visual effects.
       I've created them just because I can. 
       And you can 
       <button
