@@ -7,30 +7,25 @@
     itemtype="http://schema.org/Person"
   >
     <nav>
-      <h1 @click="showBio = true" tabindex="1">
-        ILYA VASILYEV
-      </h1>
-      <hr>
+      <h1 @click="showBio = true" tabindex="1">ILYA VASILYEV</h1>
       <transition name="fade">
-        <Bio v-if="showBio"/>
+        <Bio v-show="showBio"/>
       </transition>
       <small
         @click="showBio = !showBio"
-        tabindex="1">
-        {{ showBio ? 'hide' : 'show' }} basic info
+        tabindex="1"
+        class="inline bio-toggle">
+        {{ showBio ? 'hide' : 'show' }} bio
       </small>
-      <hr>
       <router-link
         v-for="el in nav"
         :key="el.to"
         :to="{ name: el.to }"
         :style="{letterSpacing: el.spacing + 'px'}"
         :selected="el.to === $route.name"
-        class="link"
-      >
+        class="link">
         {{ el.text }}
       </router-link>
-      <hr>
     </nav>
     <router-view />
     <footer>
@@ -161,9 +156,26 @@ export default {
   }
 }
 
-nav {
+.bio-toggle {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 15px auto 30px;
+  padding: 10px 0;
+  border-top: 1px solid #444;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  cursor: pointer;
 
+  &:hover {
+    opacity: 1;
+  }
+}
+
+nav {
+  
   h1 {
+    cursor: pointer;
     font-family: 'Six Caps', sans-serif;
     font-size: 91px;
   }
