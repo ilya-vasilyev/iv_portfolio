@@ -6,7 +6,7 @@
     itemscope
     itemtype="http://schema.org/Person"
   >
-    <nav>
+    <header>
       <h1 @click="showBio = true" tabindex="1">ILYA VASILYEV</h1>
       <transition name="fade">
         <Bio v-show="showBio"/>
@@ -17,17 +17,11 @@
         class="inline bio-toggle">
         {{ showBio ? 'hide' : 'show' }} bio
       </small>
-      <router-link
-        v-for="el in nav"
-        :key="el.to"
-        :to="{ name: el.to }"
-        :style="{letterSpacing: el.spacing + 'px'}"
-        :selected="el.to === $route.name"
-        class="link">
-        {{ el.text }}
-      </router-link>
-    </nav>
+      <Navigation />
+    </header>
     <router-view />
+    <Navigation />
+
     <footer>
       <div class="footer-dots"/>
       <button
@@ -56,9 +50,11 @@
 
 <script>
 import Bio from '@/components/Bio.vue'
+import Navigation from '@/components/Navigation.vue'
 export default {
   components: {
-    Bio
+    Bio,
+    Navigation
   },
   data () {
     return {
