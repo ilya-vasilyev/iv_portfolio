@@ -19,32 +19,60 @@
       </small>
       <Navigation />
     </header>
+
+    <div class="dot-setarator" />
     <router-view />
     <Navigation />
 
     <footer>
       <div class="footer-dots"/>
-      <button
-        @click="switchEffects()"
-        :active="showEffects">
-        effects: {{showEffects ? 'ON' : 'OFF'}}
-      </button>
-      <div v-if="showEffects" >
+
+      <div>
+        <h5>Effects</h5>
         <button
-          v-for="palette in palettes"
-          :key="palette.value"
-          @click="currentPalette = palette"
-          :active="currentPalette === palette">
-          {{ palette.display }}
+          @click="switchEffects()"
+          :active="showEffects"
+          class="inline">
+          {{showEffects ? 'ON' : 'OFF'}}
         </button>
       </div>
-      <a href="/report.html">report.html</a>
+
+      <div v-if="showEffects">
+      <h5>Themes</h5>
+        <span v-for="palette in palettes" :key="palette.value">
+          <button
+            @click="currentPalette = palette"
+            :active="currentPalette === palette"
+            class="inline">
+            {{ palette.display }}
+          </button>
+          &nbsp;
+        </span>
+      </div>
+
+      <div>
+        <h5>Contacts</h5>
+        <a href="#">GitHub</a>
+        &nbsp;
+        <a href="#">LinkedIn</a>
+        &nbsp;
+        <a href="#">Facebook</a>
+      </div>
+
+      <div>
+        <h5>Analytics</h5>
+        <a href="/report.html">Bundle analyzer report</a>
+      </div>
+
+      <small class="date">Made in 2019</small>
     </footer>
+
     <div v-if="showEffects" class="effects">
       <div class="colorist" :class="{ [currentPalette.value]: true }" />
       <div class="fog big" />
       <div class="fog small" />
     </div>
+
   </div>
 </template>
 
@@ -58,11 +86,6 @@ export default {
   },
   data () {
     return {
-      nav: [
-        { to: 'frontend', text: 'frontend dev', spacing: 14 },
-        { to: 'motion', text: 'motion designer', spacing: 9 },
-        { to: 'minimalism', text: 'minimalist', spacing: 19 }
-      ],
       title: 'Ilya Vasilyev | homepage',
       description: 'personal web page of Ilya Vasilyev',
       url: 'https://iv.netlify.com/',
@@ -161,7 +184,7 @@ export default {
     opacity: 1;
   }
 }
-
+  
 header {
   h1 {
     cursor: pointer;
@@ -205,7 +228,26 @@ label {
 }
 
 footer {
-  position: relative;
+
+  button.inline {
+    font-weight: 300;
+    text-decoration: none;
+  }
+
+  a {
+    font-weight: 300;
+    text-decoration: none;
+    color: $backColor;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .date {
+    display: block;
+    margin: 30px 0 0;
+  }
 }
 .footer-dots {
   width: 100%;
