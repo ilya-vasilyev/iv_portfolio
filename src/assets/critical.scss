@@ -5,52 +5,23 @@
 }
 
 body {
+  font-family: sans-serif;
+  color: $textColor;
   margin: 0;
 }
 
-a {
-  color: currentColor;
-}
-
-h1 {
-  color: currentColor;
-  font-size: 30px;
-  letter-spacing: 6px;
-  line-height: 1;
-  margin: 80px 0 0;
-}
-
-h2 {
-  padding: 0 20px;
-}
-
-p {
-  text-align: left;
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 0 20px;
-  line-height: 2;
-  &::first-letter {
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 0;
-  }
+header {
+  width: 300px;
+  margin: 0 auto;
+  white-space: nowrap;
 }
 
 nav {
-  width: 300px;
   display: flex;
-  margin: 0 auto;
   flex-direction: column;
   align-items: center;
-  white-space: nowrap;
 
-  hr {
-    margin: 40px 0;
-    width: 100%;
-  }
-
-  a.link {
+  a.router-link {
     font-size: 20px;
     line-height: 1;
     margin: 0 0 20px;
@@ -69,14 +40,51 @@ main {
 }
 
 footer {
+  position: relative;
   background: $textColor;
   color: $backColor;
-  padding: 100px 20px;
+  padding: 60px 20px;
   margin-top: 200px;
+  line-height: 2;
 
   button {
     background: $textColor;
     color: $backColor;
+  }
+}
+
+a {
+  color: $textColor;
+}
+
+h1 {
+  font-size: 30px;
+  letter-spacing: 6px;
+  line-height: 1;
+  margin: 60px 0 0;
+}
+
+h2 {
+  padding: 0 20px;
+}
+
+h5 {
+  font-size: 24px;
+  font-weight: 300;
+  margin: 15px 0 0;
+}
+
+p {
+  text-align: left;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 0 20px;
+  line-height: 2;
+
+  &::first-letter {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 0;
   }
 }
 
@@ -92,18 +100,23 @@ button {
   box-shadow: 0 0 0 tranaparent;
   transition: box-shadow 0.2s;
 
-  &:not([active]):not(.inline):hover {
-    padding: 9px 19px;
-    border-width: 2px;
-  }
 
-  &[active] {
-    box-shadow: 0 10px 0 currentColor;
-    cursor: default;
+  &.prime {
+
+    &[active] {
+      box-shadow: 0 10px 0 currentColor;
+      cursor: default;
+    }
+
+    &:hover {
+      padding: 9px 19px;
+      border-width: 2px;
+    }
   }
 
   &.inline {
     display: inline-block;
+    font-weight: 400;
     border: none;
     background: none;
     font-size: inherit;
@@ -111,11 +124,18 @@ button {
     margin: 0;
     text-decoration: underline;
     user-select: auto;
+    
+    &[active] {
+      font-weight: 700;
+      box-shadow: 0 4px 0 currentColor; 
+      cursor: default;
+    }
 
     &:hover {
       opacity: 0.6;
     }
   }
+
 }
 
 small {opacity: 0.7;}
@@ -123,4 +143,9 @@ small {opacity: 0.7;}
 hr {
   width: 50%;
   max-width: 600px;
+}
+
+.dot-setarator {
+  border-top: 5px dotted #444;
+  margin: 30px 0 60px;
 }

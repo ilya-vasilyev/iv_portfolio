@@ -20,7 +20,10 @@
       class="tldr-image"
     >
     <div>
-      <button v-if="!tldrImage" @click="tldrImage = true">
+      <button
+        v-if="!tldrImage"
+        @click="tldrImage = true"
+        class="prime">
         TL;DR
       </button>
     </div>
@@ -31,18 +34,21 @@
       <button
         :active="viewMode === 'chart'"
         @click="loadChart()"
+        class="prime"
       >
         view as <b>CHART</b>
       </button>
       <button
         :active="viewMode === 'table'"
         @click="loadTable()"
+        class="prime"
       >
         view as <b>TABLE</b>
       </button>
       <button
         :active="viewMode === 'raw'"
         @click="loadRaw()"
+        class="prime"
       >
         view as <b>JSON</b>
       </button>

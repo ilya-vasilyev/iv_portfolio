@@ -1,5 +1,5 @@
 <template>
   <div class="component-loading">
-    <p>loading...</p>
+    <span>loading...</span>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <main class="minimalism">
 
-    <p class="intro">
+    <p>
       This page is the collection of life <b>principles</b>, which help to go through it.
       Some call this lifestyle a <b>minimalism</b>, this sounds nice and feels right.
       It's not only about Scandinavian interior design, it's about finding a meaningful existence.
@@ -51,14 +51,9 @@ export default {
 .minimalism {
   margin: 0 auto;
 
-  .intro {
-    max-width: 600px;
-    margin: 0 auto 120px ;
-  }
-
   .principles {
     max-width: 900px;
-    margin: 0 auto;
+    margin: 60px auto 0;
     display: flex;
     flex-direction: row;
     justify-content: center;

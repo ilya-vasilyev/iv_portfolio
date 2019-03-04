@@ -7,7 +7,8 @@
           v-for="mode in modes"
           :key="mode.display"
           :active="currentMode === mode.display"
-          @click="load(mode)">
+          @click="load(mode)"
+          class="prime">
           {{ mode.display }}
         </button>
       </div>

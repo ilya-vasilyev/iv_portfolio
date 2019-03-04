@@ -143,13 +143,7 @@ export default {
 .app {
   overflow-x: hidden;
   font-family: 'Fira Sans Condensed', sans-serif;
-  background: #fff;
-  color: #444;
-
-  ::selection {
-    background: #444;
-    color: rgba(255, 255, 255, 0);
-  }
+  background: $backColor;
 }
 
 .bio-toggle {
@@ -158,7 +152,7 @@ export default {
   text-align: center;
   margin: 15px auto 30px;
   padding: 10px 0;
-  border-top: 1px solid #444;
+  border-top: 1px solid $textColor;
   opacity: 0.7;
   transition: opacity 0.2s;
   cursor: pointer;
@@ -168,15 +162,17 @@ export default {
   }
 }
 
-nav {
-  
+header {
   h1 {
     cursor: pointer;
     font-family: 'Six Caps', sans-serif;
     font-size: 91px;
   }
+}
 
-  a.link {
+nav {
+
+  a.router-link {
     font-family: 'Source Code Pro', monospace;
     white-space: nowrap;
 
@@ -312,5 +308,7 @@ footer {
   transform: scaleY(0.5);
   opacity: 0;
 }
+
+
 
 </style>
