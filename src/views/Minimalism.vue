@@ -1,6 +1,5 @@
 <template>
   <main class="minimalism">
-
     <p>
       This page is the collection of life <b>principles</b>, which help to go through it.
       Some call this lifestyle a <b>minimalism</b>, this sounds nice and feels right.
@@ -11,12 +10,12 @@
       <div
         v-for="(principle, i) in principles"
         :key="i"
-        class="principle">
-        <h2>{{principle.title}}</h2>
-        <small>{{principle.description}}</small>
+        class="principle"
+      >
+        <h2>{{ principle.title }}</h2>
+        <small>{{ principle.description }}</small>
       </div>
     </section>
-
   </main>
 </template>
 
@@ -39,7 +38,7 @@ export default {
       ]
     }
   },
-  metaInfo() {
+  metaInfo () {
     return {
       title: 'minimalism'
     }
@@ -60,7 +59,6 @@ export default {
     align-items: stretch;
     flex-wrap: wrap;
   }
- 
 
   .principle {
     width: 300px;

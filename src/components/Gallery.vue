@@ -1,6 +1,5 @@
 <template>
   <section class="gallery">
-
     <div class="gallery-chunk">
       <img
         src="https://iv.netlify.com/static/p_lng_cover.jpg"
@@ -62,7 +61,6 @@
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
       </p>
     </div>
-
   </section>
 </template>
 

@@ -1,14 +1,14 @@
 <template>
   <section>
-    <h2>This is chart</h2>
     <div class="chart-container">
       <div class="chart-controls">
         <button
           v-for="mode in modes"
           :key="mode.display"
           :active="currentMode === mode.display"
+          class="prime"
           @click="load(mode)"
-          class="prime">
+        >
           {{ mode.display }}
         </button>
       </div>
@@ -24,12 +24,6 @@
 import { bb } from 'billboard.js'
 export default {
   name: 'Chart',
-  props: {
-    data: {
-      type: Array,
-      default: () => {}
-    }
-  },
   data () {
     return {
       bbDefaults: {
@@ -47,7 +41,7 @@ export default {
           type: 'bar',
           props: {
             field: 'level',
-            areas:['front']
+            areas: ['front']
           }
         },
         {
@@ -74,7 +68,7 @@ export default {
           props: {
             fieldX: 'years',
             fieldY: 'level',
-            areas: ['front', 'devops', 'back'],
+            areas: ['front', 'devops', 'back']
           }
         },
         {
@@ -122,7 +116,8 @@ export default {
         {
           value: 0,
           duration: 0
-        }, {
+        },
+        {
           value: 1,
           duration: 250,
           delay: this.$anime.stagger(50, { start: 0 }),
@@ -149,7 +144,8 @@ export default {
         {
           value: 0,
           duration: 0
-        }, {
+        },
+        {
           value: 1,
           duration: 300,
           delay: this.$anime.stagger(100, { start: 100 }),
@@ -160,7 +156,8 @@ export default {
         {
           value: -15,
           duration: 0
-        }, {
+        },
+        {
           value: 0,
           duration: 300,
           delay: this.$anime.stagger(100, { start: 100 }),
@@ -188,7 +185,8 @@ export default {
           {
             value: 0,
             duration: 0
-          }, {
+          },
+          {
             value: 1,
             duration: 750,
             delay: this.$anime.stagger(100, { start: 0 }),
@@ -213,7 +211,8 @@ export default {
           {
             value: 0,
             duration: 0
-          }, {
+          },
+          {
             value: 1,
             duration: 200,
             delay: this.$anime.stagger(100, { start: 500 }),
@@ -281,8 +280,7 @@ export default {
             },
             y: { show: false }
           },
-          bar: { width: { ratio: 0.8 } },
-          
+          bar: { width: { ratio: 0.8 } }
         })
         this.showChart()
         this.showBars()
@@ -311,12 +309,13 @@ export default {
           data.xs[skill.name] = skill.name + '_' + fieldX
         })
 
-      data.axis.x.min = skills.reduce((a, c) => (c[fieldX] < a ? c[fieldX] : a), 3) 
+      data.axis.x.min = skills.reduce((a, c) => (c[fieldX] < a ? c[fieldX] : a), 3)
       data.axis.x.max = skills.reduce((a, c) => (c[fieldX] > a ? c[fieldX] : a), 3)
       data.axis.y.min = skills.reduce((a, c) => (c[fieldY] < a ? c[fieldY] : a), 3)
       data.axis.y.max = skills.reduce((a, c) => (c[fieldY] > a ? c[fieldY] : a), 3)
 
       this.hideChart(rebuild)
+
       function rebuild () {
         this.$options.chart.destroy()
         this.$options.chart = bb.generate({
@@ -372,6 +371,7 @@ export default {
       const data = Object.entries(accumulator)
 
       this.hideChart(rebuild)
+
       function rebuild () {
         this.$options.chart.destroy()
         this.$options.chart = bb.generate({
@@ -390,7 +390,6 @@ export default {
             innerRadius: 20,
             expand: false
           }
-          // color: { pattern: ['#444', '#666', '#888'] }
         })
         this.showChart()
         this.showPie()
@@ -409,17 +408,16 @@ export default {
   max-width: 600px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 
 .chart-controls {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 30px auto 0;
   display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-
 
 @media (min-width: 900px) {
   .chart-container {
@@ -430,6 +428,7 @@ export default {
   .chart-controls {
     flex-shrink: 0;
     max-width: 250px;
+    margin-top: 0;
     margin-right: 50px;
     flex-direction: column;
     align-items: flex-end;

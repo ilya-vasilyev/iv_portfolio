@@ -7,43 +7,56 @@
     itemtype="http://schema.org/Person"
   >
     <header>
-      <h1 @click="showBio = true" tabindex="1">ILYA VASILYEV</h1>
-      <transition name="fade">
-        <Bio v-show="showBio"/>
+      <h1
+        tabindex="1"
+        @click="showBio = true"
+      >
+        ILYA VASILYEV
+      </h1>
+      <hr class="no-margin">
+      <transition name="collapse">
+        <Bio v-show="showBio" />
       </transition>
       <small
-        @click="showBio = !showBio"
         tabindex="1"
-        class="inline bio-toggle">
+        class="inline bio-toggle"
+        @click="showBio = !showBio"
+      >
         {{ showBio ? 'hide' : 'show' }} bio
       </small>
       <Navigation />
     </header>
 
-    <div class="dot-setarator" />
+    <hr>
     <router-view />
+    <hr>
     <Navigation />
 
     <footer>
-      <div class="footer-dots"/>
+      <div class="footer-dots" />
 
       <div>
         <h5>Effects</h5>
         <button
-          @click="switchEffects()"
           :active="showEffects"
-          class="inline">
-          {{showEffects ? 'ON' : 'OFF'}}
+          class="inline"
+          @click="switchEffects()"
+        >
+          {{ showEffects ? 'ON' : 'OFF' }}
         </button>
       </div>
 
       <div v-if="showEffects">
-      <h5>Themes</h5>
-        <span v-for="palette in palettes" :key="palette.value">
+        <h5>Themes</h5>
+        <span
+          v-for="palette in palettes"
+          :key="palette.value"
+        >
           <button
-            @click="currentPalette = palette"
             :active="currentPalette === palette"
-            class="inline">
+            class="inline"
+            @click="currentPalette = palette"
+          >
             {{ palette.display }}
           </button>
           &nbsp;
@@ -67,12 +80,21 @@
       <small class="date">Made in 2019</small>
     </footer>
 
-    <div v-if="showEffects" class="effects">
-      <div class="colorist" :class="{ [currentPalette.value]: true }" />
-      <div class="fog big" />
-      <div class="fog small" />
+    <div
+      v-if="showEffects"
+      class="effects"
+    >
+      <div
+        class="colorist"
+        :class="{ [currentPalette.value]: true }"
+      />
+      <transition name="fade">
+        <div v-if="loaded">
+          <div class="fog big" />
+          <div class="fog small" />
+        </div>
+      </transition>
     </div>
-
   </div>
 </template>
 
@@ -94,11 +116,11 @@ export default {
       showBio: false,
       currentPalette: {},
       palettes: [
-        { value:'palette1', display: 'Shore' },
-        { value:'palette2', display: 'Dawn' },
-        { value:'palette3', display: 'Cloud' },
-        { value:'palette4', display: 'Rainbow' },
-        { value:'palette5', display: 'Shade ' }
+        { value: 'palette1', display: 'Shore' },
+        { value: 'palette2', display: 'Dawn' },
+        { value: 'palette3', display: 'Cloud' },
+        { value: 'palette4', display: 'Rainbow' },
+        { value: 'palette5', display: 'Shade ' }
       ]
     }
   },
@@ -143,7 +165,7 @@ export default {
     this.currentPalette = this.palettes[0]
   },
   mounted () {
-    setTimeout(() => { this.loaded = true }, 5000)
+    setTimeout(() => { this.loaded = true }, 1000)
   },
   methods: {
     switchEffects (val) {
@@ -173,9 +195,8 @@ export default {
   display: block;
   width: 100%;
   text-align: center;
-  margin: 15px auto 30px;
+  margin: 0 auto 60px;
   padding: 10px 0;
-  border-top: 1px solid $textColor;
   opacity: 0.7;
   transition: opacity 0.2s;
   cursor: pointer;
@@ -184,7 +205,7 @@ export default {
     opacity: 1;
   }
 }
-  
+
 header {
   h1 {
     cursor: pointer;
@@ -238,7 +259,7 @@ footer {
     font-weight: 300;
     text-decoration: none;
     color: $backColor;
-    
+
     &:hover {
       text-decoration: underline;
     }
@@ -342,15 +363,35 @@ footer {
   }
 }
 
-.fade-enter-active, .fade-leave-active {
+.collapse-enter-active, .collapse-leave-active {
   transform-origin: top;
   transition: 0.2s;
 }
-.fade-enter, .fade-leave-to {
+.collapse-enter, .collapse-leave-to {
   transform: scaleY(0.5);
   opacity: 0;
 }
 
+.fade-enter-active, .fade-leave-active {
+  transition: 5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 
+.component-loading,
+.component-error  {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  margin: 40px auto;
+  height: 400px;
+  color: $textColor;
+  * {
+    margin: 1rem;
+  }
+}
 
 </style>

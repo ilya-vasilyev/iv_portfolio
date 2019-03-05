@@ -1,56 +1,63 @@
 <template>
   <main>
-    <p>Hello, I'm 
+    <p>
+      Hello, I'm
       <b>Ilya</b>
-      <b>Vasilyev</b>, 
-      <b>front-end developer</b>, 
+      <b>Vasilyev</b>,
+      <b>front-end developer</b>,
       and this is my personal page, stuffed to the gills with highly annoying, CPU intensive and absolutely unnecesary visual effects.
-      I've created them just because I can. 
-      And you can 
+      I've created them just because I can.
+      And you can
       <button
+        class="inline"
         @click="$store.dispatch('switchEffects', !$store.state.showEffects)"
-        class="inline">turn them {{$store.state.showEffects ? 'OFF' : 'ON'}}</button> 
+      >
+        turn them {{ $store.state.showEffects ? 'OFF' : 'ON' }}
+      </button>
       anytime.
-
     </p>
     <img
       v-show="tldrImage"
-      src="../assets/images/peacock.gif"
-      alt=""
+      :src="tldrImageSrc"
       class="tldr-image"
     >
     <div>
       <button
         v-if="!tldrImage"
+        class="prime"
         @click="tldrImage = true"
-        class="prime">
+      >
         TL;DR
       </button>
     </div>
 
+    <hr>
+
+    <h2>Skills</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
+    <h5>View as:</h5>
     <div class="skill-controls">
       <button
         :active="viewMode === 'chart'"
         class="prime"
         @click="loadSkillComponent('chart')"
       >
-        view as <b>CHART</b>
+        <b>CHART</b>
       </button>
       <button
         :active="viewMode === 'table'"
         class="prime"
         @click="loadSkillComponent('table')"
       >
-        view as <b>TABLE</b>
+        <b>TABLE</b>
       </button>
       <button
         :active="viewMode === 'raw'"
         class="prime"
         @click="loadSkillComponent('raw')"
       >
-        view as <b>JSON</b>
+        <b>JSON</b>
       </button>
     </div>
 
@@ -75,18 +82,20 @@
     <noscript>
       Can't show with JavaScript turned off
     </noscript>
-    <br>
-    <br>
+
+    <hr>
+
+    <h2>Timeline</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <br>
-    <br>
-    <h2>Recent timeline</h2>
-    <Timeline />
-    <br>
-    <br>
+
+    <div class="timeline-container">
+      <Timeline v-if="showTimeline" />
+    </div>
+
+    <hr>
+
+    <h2>This site</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <br>
-    <br>
   </main>
 </template>
 
@@ -129,8 +138,10 @@ export default {
   data  () {
     return {
       tldrImage: false,
+      tldrImageSrc: '',
       viewMode: 'chart',
-      isSkillComponentLoaded: { chart: false, table: false, raw: false }
+      isSkillComponentLoaded: { chart: false, table: false, raw: false },
+      showTimeline: false
     }
   },
   metaInfo () {
@@ -140,6 +151,8 @@ export default {
   },
   mounted () {
     this.loadSkillComponent('chart')
+    window.addEventListener('scroll', this.loadTimeline)
+    setTimeout(() => { this.tldrImageSrc = '../assets/images/peacock.gif' }, 1000)
   },
   methods: {
     hideSkills (callback) {
@@ -176,6 +189,13 @@ export default {
           this.showSkills()
         })
       })
+    },
+    loadTimeline (e) {
+      let timeline = document.querySelector('.timeline-container').getBoundingClientRect().top
+      if (timeline - window.innerHeight < 0) {
+        this.showTimeline = true
+        window.removeEventListener('scroll', this.loadTimeline)
+      }
     }
   }
 }
@@ -184,15 +204,11 @@ export default {
 <style lang="scss">
 
 .skill-controls {
-  margin: 120px auto;
+  margin: 0 auto 30px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-
-  @media (min-width: 540px) {
-    flex-direction: row;
-  }
 }
 
 .tldr-image {

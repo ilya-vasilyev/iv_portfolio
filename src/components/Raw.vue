@@ -1,6 +1,5 @@
 <template>
   <section class="raw-container">
-    <h2>This is JSON</h2>
     <div
       class="raw"
       aria-hidden="true"
@@ -35,7 +34,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 @import 'prismjs/themes/prism-tomorrow.css';
 
 .raw-container {
