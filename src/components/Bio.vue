@@ -1,12 +1,14 @@
 <template>
   <div class="bio">
-
     <p class="row">
       <small class="key">first name</small>
       <span class="value">
         <span itemprop="name">Ilya</span>
-        <span aria-hidden="true" class="transcription">/iːl'jɑː/</span>
-        <i @click="loadAudio('firstName')" class="icon speaker" />
+        <span
+          aria-hidden="true"
+          class="transcription"
+          @click="loadAudio('firstName')"
+        >/iːl'jɑː/</span>
       </span>
     </p>
 
@@ -14,8 +16,11 @@
       <small class="key">last name</small>
       <span class="value">
         <span>Vasilyev</span>
-        <span aria-hidden="true" class="transcription">/væs'iːljeəv/</span>
-        <i @click="loadAudio('lastName')" class="icon speaker" />
+        <span
+          aria-hidden="true"
+          class="transcription"
+          @click="loadAudio('lastName')"
+        >/væs'iːljeəv/</span>
       </span>
     </p>
 
@@ -28,13 +33,7 @@
 
     <p class="row">
       <small class="key">from</small>
-      <span class="value">Moscow, Russia<a
-          href="https://www.google.com/maps/place/Moscow/"
-          target="_blank"
-          tabindex="-1">
-          <i class="icon globe" />
-        </a>
-      </span>
+      <span class="value">Moscow, Russia</span>
     </p>
 
     <p class="row">
@@ -46,34 +45,33 @@
 
     <p class="row">
       <small class="key">Big Five personality traits:</small>
-      <span class="value"></span>
-    </p>
-    
-    <p class="row">
-      <small class="key">openness to experience</small>
-      <span class="value">100%</span>
-    </p>
-    
-    <p class="row">
-      <small class="key">agreeableness</small>
-      <span class="value">71%</span>
-    </p>
-    
-    <p class="row">
-      <small class="key">conscientiousness</small>
-      <span class="value">67%</span>
-    </p>
-    
-    <p class="row">
-      <small class="key">neuroticism</small>
-      <span class="value">63%</span>
-    </p>
-    
-    <p class="row">
-      <small class="key">extraversion</small>
-      <span class="value">46%</span>
+      <span class="value" />
     </p>
 
+    <p class="row">
+      <small class="key">– openness to experience</small>
+      <span class="value">100%</span>
+    </p>
+
+    <p class="row">
+      <small class="key">– agreeableness</small>
+      <span class="value">71%</span>
+    </p>
+
+    <p class="row">
+      <small class="key">– conscientiousness</small>
+      <span class="value">67%</span>
+    </p>
+
+    <p class="row">
+      <small class="key">– neuroticism</small>
+      <span class="value">63%</span>
+    </p>
+
+    <p class="row">
+      <small class="key">– extraversion</small>
+      <span class="value">46%</span>
+    </p>
   </div>
 </template>
 
@@ -88,7 +86,7 @@ export default {
         : currentTime.getFullYear() - 1991
     }
   },
-  mounted() {
+  mounted () {
     this.$options.firstName = new Audio(require('../assets/audio/first_name.mp3'))
     this.$options.lastName = new Audio(require('../assets/audio/last_name.mp3'))
   },
@@ -100,7 +98,6 @@ export default {
 }
 </script>
 
-
 <style lang="scss">
 .bio {
   width: 100%;
@@ -108,7 +105,7 @@ export default {
 
   a {
     margin: 0;
-		line-height: 0;
+    line-height: 0;
   }
 
   .row {
@@ -133,34 +130,9 @@ export default {
   }
 
   .transcription {
-    opacity: 0.6;
+    opacity: 0.7;
     margin-left: 10px;
-  }
-
-  .icon {
-    user-select: none;
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-    margin-left: 10px;
-    background: 50% 50% no-repeat;
-    background-size: contain;
     cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.2s;
-
-    &:hover {
-    opacity: 1;
-    }
-
-    &.speaker {
-      background-image: url('../assets/images/speaker.svg');
-    }
-
-    &.globe {
-      background-image: url('../assets/images/globe.svg');
-    }
   }
 }
 </style>
