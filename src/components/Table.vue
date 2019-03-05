@@ -1,7 +1,5 @@
 <template>
   <section>
-    <h2>This is table</h2>
-    <div ref="table" aria-hidden="true"/>
     <label for="tableShowNew">tableShowNew</label>
     <input
       id="tableShowNew"
@@ -9,6 +7,18 @@
       :value="filters.isNew"
       @change="toggleFilter('isNew', !filters.isNew)"
     >
+    <label for="tableShowProgress">tableShowProgress</label>
+    <input
+      id="tableShowProgress"
+      type="checkbox"
+      :value="showProgress"
+      checked="true"
+      @change="setColumns()"
+    >
+    <div
+      ref="table"
+      aria-hidden="true"
+    />
   </section>
 </template>
 
@@ -20,34 +30,25 @@ export default {
   data: function () {
     return {
       filters: {
-        isNew: false,
-        isDisgrace: false
-      }
+        isNew: false
+      },
+      showProgress: true
     }
   },
-  mounted () {
-    this.$options.tabulator = new Tabulator(this.$refs.table, {
-      layout: 'fitColumns',
-      resizableColumns: 'header',
-      columnMinWidth: 100,
-      data: this.$store.state.skills,
-      initialFilter: [
-        { field: 'isNew', type: '!=', value: true },
-        { field: 'isDisgrace', type: '!=', value: true }
-      ],
-      initialSort: [
-        { column: 'level', dir: 'desc' }
-      ],
-      columns: [
-        { title: 'Name', field: 'name', minWidth: 150, widthGrow: 2 },
+  computed: {
+    columns () {
+      return [
+        { title: 'name', field: 'name', minWidth: 150, widthGrow: 2 },
 
         { title: 'years', field: 'years', align: 'right' },
 
         { title: 'level',
           field: 'level',
-          formatter: 'progress',
+          align: this.showProgress ? 'left' : 'right',
+          formatter: this.showProgress ? 'progress' : 'plaintext',
+          tooltip: true,
           formatterParams: {
-            min: 0,
+            min: -0.1,
             max: 10,
             color: '#444'
           }
@@ -55,9 +56,11 @@ export default {
 
         { title: 'rating',
           field: 'rating',
-          formatter: 'progress',
+          align: this.showProgress ? 'left' : 'right',
+          formatter: this.showProgress ? 'progress' : 'plaintext',
+          tooltip: true,
           formatterParams: {
-            min: 0,
+            min: -0.1,
             max: 10,
             color: '#444'
           }
@@ -75,6 +78,22 @@ export default {
           }
         }
       ]
+    }
+  },
+  mounted () {
+    this.$options.tabulator = new Tabulator(this.$refs.table, {
+      layout: 'fitColumns',
+      resizableColumns: 'header',
+      columnMinWidth: 100,
+      data: this.$store.state.skills,
+      initialFilter: [
+        { field: 'isNew', type: '!=', value: true },
+        { field: 'isDisgrace', type: '!=', value: true }
+      ],
+      initialSort: [
+        { column: 'level', dir: 'desc' }
+      ],
+      columns: this.columns
     })
     window.addEventListener('resize', () => this.$options.tabulator.redraw())
   },
@@ -85,6 +104,10 @@ export default {
       Object.entries(this.filters).forEach(([field, val]) => {
         if (!val) this.$options.tabulator.addFilter(field, '!=', true)
       })
+    },
+    setColumns () {
+      this.showProgress = !this.showProgress
+      this.$options.tabulator.setColumns(this.columns)
     }
   }
 }
@@ -106,8 +129,8 @@ export default {
     color: $textColor;
   }
 
-  .tabulator-responsive-collapse {
-    margin-bottom: 30px;
+  .tabulator-row:last-child .tabulator-cell {
+    border-bottom: none;
   }
 }
 
