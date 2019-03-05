@@ -89,8 +89,10 @@ export default {
     }
   },
   mounted () {
-    this.$options.firstName = new Audio(require('../assets/audio/first_name.mp3'))
-    this.$options.lastName = new Audio(require('../assets/audio/last_name.mp3'))
+    setTimeout(() => {
+      this.$options.firstName = new Audio(require('../assets/audio/first_name.mp3'))
+      this.$options.lastName = new Audio(require('../assets/audio/last_name.mp3'))
+    }, 1000)
   },
   methods: {
     loadAudio (file) {

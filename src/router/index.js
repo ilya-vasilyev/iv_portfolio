@@ -10,17 +10,17 @@ export default new VueRouter({
       path: '/frontend',
       alias: '/',
       name: 'frontend',
-      component: () => import(/* webpackChunkName: 'a' */ '@/views/Frontend.vue')
+      component: () => import(/* webpackChunkName: 'frontend' */ '@/views/Frontend.vue')
     },
     {
       path: '/motion',
       name: 'motion',
-      component: () => import(/* webpackChunkName: 'b' */ '@/views/Motion.vue')
+      component: () => import(/* webpackChunkName: 'motion' */ '@/views/Motion.vue')
     },
     {
       path: '/minimalism',
       name: 'minimalism',
-      component: () => import(/* webpackChunkName: 'b' */ '@/views/Minimalism.vue')
+      component: () => import(/* webpackChunkName: 'minimalism' */ '@/views/Minimalism.vue')
     },
     {
       path: '**',
