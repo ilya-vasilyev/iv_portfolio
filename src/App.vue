@@ -13,12 +13,12 @@
       >
         ILYA VASILYEV
       </h1>
-      <hr class="no-margin">
       <transition name="collapse">
         <Bio v-show="showBio" />
       </transition>
+      <hr class="no-margin">
       <small
-        tabindex="1"
+        tabindex="-1"
         class="inline bio-toggle"
         @click="showBio = !showBio"
       >
@@ -197,6 +197,7 @@ export default {
   text-align: center;
   margin: 0 auto 60px;
   padding: 10px 0;
+  outline: none;
   opacity: 0.7;
   transition: opacity 0.2s;
   cursor: pointer;
@@ -223,18 +224,20 @@ nav {
     &[selected] {
       font-weight: 800;
 
-      &::before {
-        content: '>';
-        display: inline-block;
-        opacity: 0.5;
-        animation: leftRight 1s infinite forwards;
-      }
+      @media (min-width: 500px) {
+        &::before {
+          content: '>';
+          display: inline-block;
+          opacity: 0.5;
+          animation: leftRight 1s infinite forwards;
+        }
 
-      &::after {
-        content: '<';
-        display: inline-block;
-        opacity: 0.5;
-        animation: leftRight 1s 0.5s infinite backwards;
+        &::after {
+          content: '<';
+          display: inline-block;
+          opacity: 0.5;
+          animation: leftRight 1s 0.5s infinite backwards;
+        }
       }
     }
    }

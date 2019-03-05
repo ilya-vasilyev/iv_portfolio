@@ -1,5 +1,7 @@
 <template>
   <div class="bio">
+    <hr class="no-margin">
+    <br>
     <p class="row">
       <small class="key">first name</small>
       <span class="value">
@@ -101,7 +103,7 @@ export default {
 <style lang="scss">
 .bio {
   width: 100%;
-  margin: 30px 0;
+  margin: 0 0 15px;
 
   a {
     margin: 0;
