@@ -72,11 +72,6 @@
         <a href="#">Facebook</a>
       </div>
 
-      <div>
-        <h5>Analytics</h5>
-        <a href="/report.html">Bundle analyzer report</a>
-      </div>
-
       <small class="date">Made in 2019</small>
     </footer>
 

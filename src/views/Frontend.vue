@@ -4,8 +4,16 @@
       Hello, I'm
       <b>Ilya</b>
       <b>Vasilyev</b>,
-      <b>front-end developer</b>,
-      and this is my personal page, stuffed to the gills with highly annoying, CPU intensive and absolutely unnecesary visual effects.
+      <b>front-end web developer</b>,
+      specialised in
+      <b>
+        Vue.js
+      </b>
+      , visualization, animation and interactivity.
+    </p>
+
+    <p>
+      And this is my personal portfolio website, stuffed to the gills with highly annoying, CPU intensive and absolutely unnecesary visual effects.
       I've created them just because I can.
       And you can
       <button
@@ -15,6 +23,13 @@
         turn them {{ $store.state.showEffects ? 'OFF' : 'ON' }}
       </button>
       anytime.
+      This whole project exists only to demonstrate my skills and abilities in web development.
+      Here you would know almost everything about me – I can't see any other reasons how you ended up on this page and why you're reading this.
+      If you want to dig deeper see
+      <a
+        href="https://github.com/ilya-vasilyev/iv_portfolio"
+        target="_blank"
+      >source code on Github</a>.
     </p>
     <img
       v-show="tldrImage"
@@ -30,11 +45,13 @@
         TL;DR
       </button>
     </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
     <hr>
 
-    <h2>Skills</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h2>Toolkit</h2>
+    <p>You're probably intereseted <i>(why shouldn't you be?)</i> in my skills end experience in web development.</p>
+    <p>In case you're too lazy to appreciate my data visualization efforts, here is the point: <b>Vue</b>, no <i>React</i>, disgraceful <i>AngularJS</i> </p>
 
     <h5>View as:</h5>
     <div class="skill-controls">
@@ -85,6 +102,22 @@
 
     <hr>
 
+    <h2>JAMstack</h2>
+    <p>
+      I have to say that I really like the idea of JAMstack.
+      Today frontend is as powerfull as ever and we need to utilize this.
+      Back-end logic for most projects is the same and can be reused, so why don't just plug it in?
+      Don't get me wrong, back-end is great if it's available on demand, as a service<br>
+      <ul>
+        <li>Firebase</li>
+        <li>Netlify</li>
+        <li>Serverless</li>
+        <li>Fn project</li>
+      </ul>
+    </p>
+
+    <hr>
+
     <h2>Timeline</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
@@ -95,7 +128,51 @@
     <hr>
 
     <h2>This site</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>
+      <b>Design</b>
+      – well, I design on the go
+    </p>
+    <p>
+      <b>Vue</b>
+      – (or Nuxt)
+    </p>
+    <p>
+      <b>Billboard</b>
+      – ...
+    </p>
+    <p>
+      <b>Tabulator</b>
+      – ...
+    </p>
+    <p>
+      <b>Anime</b>
+      – ...
+    </p>
+    <p>
+      <b>CSS grids</b>
+      – althoug I prefer flexbox...
+    </p>
+    <p>
+      <b>SEO</b>
+      – ...
+    </p>
+    <p>
+      <b>Webpack</b>
+      – it was the first time I set up webpack completeley from ground up, with pre-rendering, dynamic import of components, the results in development mode is petty messy:
+      <ul>
+        <li>hot reload is not working on styles in .vue components</li>
+        <li>refreshing on any page extept "/" results in pre-rendered html</li>
+      </ul>
+      but come on, it works. You can examine Bundle Analyzer report
+      <a
+        href="./report.html"
+        target="_blank"
+      >here</a>.
+    </p>
+    <p>
+      <b>Netlify</b>
+      – ...
+    </p>
   </main>
 </template>
 
