@@ -55,7 +55,7 @@
       "name": "SVG",
       "area": "front",
       "years": 3,
-      "level": 6,
+      "level": 6.5,
       "rating": 8
     },
     {
@@ -83,7 +83,7 @@
       "name": "axios",
       "area": "front",
       "years": 1.5,
-      "level": 6,
+      "level": 5.5,
       "rating": 9
     },
     {
@@ -107,6 +107,13 @@
       "years": 4,
       "level": 5,
       "rating": 9
+    },
+    {
+      "name": "Billboard.js",
+      "area": "front",
+      "years": 2,
+      "level": 6.5,
+      "rating": 7
     },
     {
       "name": "Tailwind CSS",
