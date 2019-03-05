@@ -33,41 +33,41 @@
     <div class="skill-controls">
       <button
         :active="viewMode === 'chart'"
-        @click="loadChart()"
         class="prime"
+        @click="loadSkillComponent('chart')"
       >
         view as <b>CHART</b>
       </button>
       <button
         :active="viewMode === 'table'"
-        @click="loadTable()"
         class="prime"
+        @click="loadSkillComponent('table')"
       >
         view as <b>TABLE</b>
       </button>
       <button
         :active="viewMode === 'raw'"
-        @click="loadRaw()"
         class="prime"
+        @click="loadSkillComponent('raw')"
       >
         view as <b>JSON</b>
       </button>
     </div>
 
     <Chart
-      v-if="isChartLoaded"
+      v-if="isSkillComponentLoaded.chart"
       v-show="viewMode === 'chart'"
       class="skills"
     />
 
     <Table
-      v-if="isTableLoaded"
+      v-if="isSkillComponentLoaded.table"
       v-show="viewMode === 'table'"
       class="skills"
     />
 
     <Raw
-      v-if="isRawLoaded"
+      v-if="isSkillComponentLoaded.raw"
       v-show="viewMode === 'raw'"
       class="skills"
     />
@@ -128,11 +128,9 @@ export default {
   },
   data  () {
     return {
-      isChartLoaded: false,
-      isTableLoaded: false,
-      isRawLoaded: false,
+      tldrImage: false,
       viewMode: 'chart',
-      tldrImage: false
+      isSkillComponentLoaded: { chart: false, table: false, raw: false }
     }
   },
   metaInfo () {
@@ -141,7 +139,7 @@ export default {
     }
   },
   mounted () {
-    this.loadChart()
+    this.loadSkillComponent('chart')
   },
   methods: {
     hideSkills (callback) {
@@ -170,29 +168,11 @@ export default {
         easing: 'easeOutBack'
       })
     },
-    loadChart () {
+    loadSkillComponent (type) {
       this.hideSkills(() => {
         this.$store.dispatch('loadSkills').then(() => {
-          this.isChartLoaded = true
-          this.viewMode = 'chart'
-          this.showSkills()
-        })
-      })
-    },
-    loadTable () {
-      this.hideSkills(() => {
-        this.$store.dispatch('loadSkills').then(() => {
-          this.isTableLoaded = true
-          this.viewMode = 'table'
-          this.showSkills()
-        })
-      })
-    },
-    loadRaw () {
-      this.hideSkills(() => {
-        this.$store.dispatch('loadSkills').then(() => {
-          this.isRawLoaded = true
-          this.viewMode = 'raw'
+          this.isSkillComponentLoaded[type] = true
+          this.viewMode = type
           this.showSkills()
         })
       })
