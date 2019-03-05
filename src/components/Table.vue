@@ -91,7 +91,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+@import url('../assets/variables.scss');
 @import 'tabulator-tables/dist/css/bulma/tabulator_bulma.min.css';
 
 .tabulator {
@@ -100,12 +100,15 @@ export default {
   min-height: 500px;
   margin: 0 auto;
   background: transparent;
-}
-.tabulator-responsive-collapse {
-  margin-bottom: 30px;
-}
-.tabulator-row .tabulator-cell,
-.tabulator-header .tabulator-col .tabulator-col-content {
+
+  .tabulator-header,
+  .tabulator-tableHolder .tabulator-table {
+    color: $textColor;
+  }
+
+  .tabulator-responsive-collapse {
+    margin-bottom: 30px;
+  }
 }
 
 </style>
