@@ -7,6 +7,7 @@
       :style="{letterSpacing: el.spacing + 'px'}"
       :selected="el.to === $route.name"
       class="router-link"
+      @click.native="scrollTop()"
     >
       {{ el.text }}
     </router-link>
@@ -23,6 +24,11 @@ export default {
         { to: 'motion', text: 'motion designer', spacing: 9 },
         { to: 'minimalism', text: 'minimalist', spacing: 19 }
       ]
+    }
+  },
+  methods: {
+    scrollTop () {
+      window.scrollTo(0, 0)
     }
   }
 }
