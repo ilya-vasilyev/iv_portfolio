@@ -196,6 +196,7 @@ export default {
   opacity: 0.7;
   transition: opacity 0.2s;
   cursor: pointer;
+  user-select: none;
 
   &:hover {
     opacity: 1;

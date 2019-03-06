@@ -4,8 +4,7 @@
       class="raw"
       aria-hidden="true"
     >
-      <pre>
-        <code
+      <pre><code
           class="language-javascript"
           v-html="html"
           />

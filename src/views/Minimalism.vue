@@ -3,7 +3,7 @@
     <p>
       This page is the collection of life <b>principles</b>, which help to go through it.
       Some call this lifestyle a <b>minimalism</b>, this sounds nice and feels right.
-      It's not only about Scandinavian interior design, it's about finding a meaningful existence.
+      It's not only about Scandinavian interior design, it's about finding the meaningful existence.
     </p>
 
     <section class="principles">
@@ -68,7 +68,11 @@ export default {
     flex-direction: column;
     justify-content: flex-end;
 
-    h2 {margin: auto;}
+    h2 {
+      margin: auto;
+      font-size: 24px;
+      font-weight: 700;
+      }
     small {height: 100px;}
   }
 

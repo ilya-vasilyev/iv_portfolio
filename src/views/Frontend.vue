@@ -108,11 +108,14 @@
       Today frontend is as powerfull as ever and we need to utilize this.
       Back-end logic for most projects is the same and can be reused, so why don't just plug it in?
       Don't get me wrong, back-end is great if it's available on demand, as a service<br>
+      <mark>cloud functions</mark>
       <ul>
         <li>Firebase</li>
         <li>Netlify</li>
         <li>Serverless</li>
         <li>Fn project</li>
+        <li>Nuxt.js</li>
+        <li>Strapi</li>
       </ul>
     </p>
 
@@ -230,6 +233,9 @@ export default {
     this.loadSkillComponent('chart')
     window.addEventListener('scroll', this.loadTimeline)
     setTimeout(() => { this.tldrImageSrc = '../assets/images/peacock.gif' }, 1000)
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.loadTimeline)
   },
   methods: {
     hideSkills (callback) {
