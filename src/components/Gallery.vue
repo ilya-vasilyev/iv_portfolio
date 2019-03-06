@@ -15,10 +15,28 @@
       <p class="four">
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
       </p>
-      <img
-        src="https://iv.netlify.com/static/p_meyoudemo_cover.jpg"
+      <Slider
+        v-slot="{ curent }"
+        :total="4"
         class="five"
       >
+        <img
+          v-if="curent === 1"
+          src="https://ichef.bbci.co.uk/images/ic/720x405/p0517py6.jpg"
+        >
+        <img
+          v-if="curent === 2"
+          src="http://sciencenordic.com/sites/default/files/imagecache/620x/413474560.jpg"
+        >
+        <img
+          v-if="curent === 3"
+          src="http://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg"
+        >
+        <img
+          v-if="curent === 4"
+          src="https://img.purch.com/rc/696x392/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzEwMy83MjAvb3JpZ2luYWwvY2F0cy1idWJvbmljLXBsYWd1ZQ=="
+        >
+      </Slider>
       <p class="six">
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       </p>
@@ -65,8 +83,12 @@
 </template>
 
 <script>
+import Slider from '@/components/Slider.vue'
 export default {
   name: 'Gallery',
+  components: {
+    Slider
+  },
   data: function () {
     return {
     }
@@ -86,8 +108,13 @@ export default {
   z-index: 1;
   max-width: 1600px;
   margin: 0 auto;
+
   @media (min-width: 480px) {
     padding: 0 20px;
+  }
+
+  p {
+    line-height: 1.5;
   }
 }
 
