@@ -84,9 +84,9 @@ export default {
   cursor: grab;
 
   .wrap {
-    width: 8000px;
+    width: 15000px;
     height: 800px;
-    width: 800vmin;
+    width: 1500vmin;
     height: 80vmin;
     position: relative;
   }
@@ -95,9 +95,9 @@ export default {
   .mid,
   .near {
     position: absolute;
-    width: 8000px;
+    width: 15000px;
     height: 800px;
-    width: 800vmin;
+    width: 1500vmin;
     height: 80vmin;
     bottom: 0;
     left: 0;

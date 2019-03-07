@@ -39,9 +39,6 @@ export default {
 </script>
 
 <style lang="scss">
-.slider {
-}
-
 .slider-controls {
   display: flex;
   align-items: center;
