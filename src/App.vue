@@ -35,41 +35,44 @@
     <footer>
       <div class="footer-dots" />
 
-      <div>
-        <h5>Effects</h5>
-        <button
-          :active="showEffects"
-          class="inline"
-          @click="switchEffects()"
-        >
-          {{ showEffects ? 'ON' : 'OFF' }}
-        </button>
-      </div>
-
-      <div v-if="showEffects">
-        <h5>Themes</h5>
-        <span
-          v-for="palette in palettes"
-          :key="palette.value"
-        >
+      <div class="footer-content">
+        <div class="footer-column">
+          <h5>Effects</h5>
           <button
-            :active="currentPalette === palette"
+            :active="showEffects"
             class="inline"
-            @click="currentPalette = palette"
+            @click="switchEffects()"
           >
-            {{ palette.display }}
+            {{ showEffects ? 'ON' : 'OFF' }}
           </button>
-          &nbsp;
-        </span>
-      </div>
+        </div>
 
-      <div>
-        <h5>Contacts</h5>
-        <a href="#">GitHub</a>
-        &nbsp;
-        <a href="#">LinkedIn</a>
-        &nbsp;
-        <a href="#">Facebook</a>
+        <div
+          v-if="showEffects"
+          class="footer-column"
+        >
+          <h5>Themes</h5>
+          <span
+            v-for="palette in palettes"
+            :key="palette.value"
+          >
+            <button
+              :active="currentPalette === palette"
+              class="inline"
+              @click="currentPalette = palette"
+            >
+              {{ palette.display }}
+            </button>
+          &nbsp;
+          </span>
+        </div>
+
+        <div class="footer-column">
+          <h5>Contacts</h5>
+          <a href="#">GitHub</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Facebook</a>
+        </div>
       </div>
 
       <small class="date">Made in 2019</small>
@@ -277,6 +280,27 @@ footer {
   left: 0;
   background: 50% 50% repeat-x url('./assets/images/footer_dot.svg');
   background-size: contain;
+}
+
+.footer-content {
+
+  a {padding-right: 10px;}
+
+  @media (min-width: 600px) {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+.footer-column {
+  margin: 60px 60px 60px 0;
+
+  @media (min-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @keyframes leftRight {
