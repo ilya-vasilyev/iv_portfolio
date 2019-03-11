@@ -408,12 +408,12 @@ export default {
   max-width: 600px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 .chart-controls {
   max-width: 600px;
-  margin: 30px auto 0;
+  margin: 0 auto 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
