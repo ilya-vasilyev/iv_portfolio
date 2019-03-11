@@ -66,7 +66,7 @@
       "rating": 6
     },
     {
-      "name": "Anime.js",
+      "name": "Anime",
       "area": "front",
       "years": 0.5,
       "level": 6,
@@ -87,7 +87,7 @@
       "rating": 9
     },
     {
-      "name": "Nuxt.js",
+      "name": "Nuxt",
       "area": "front",
       "years": 0.5,
       "level": 4,
@@ -102,14 +102,14 @@
       "rating": 9
     },
     {
-      "name": "D3.js",
+      "name": "D3",
       "area": "front",
       "years": 4,
       "level": 5,
       "rating": 9
     },
     {
-      "name": "Billboard.js",
+      "name": "Billboard",
       "area": "front",
       "years": 2,
       "level": 6.5,
@@ -140,7 +140,7 @@
       "isNew": true
     },
     {
-      "name": "Babylon.js",
+      "name": "Babylon",
       "area": "front",
       "years": 0.5,
       "level": 2,
@@ -155,7 +155,7 @@
       "isNew": true
     },
     {
-      "name": "FeathersJS",
+      "name": "Feathers",
       "area": "back",
       "years": 1,
       "level": 3,
@@ -176,14 +176,14 @@
       "rating": 7
     },
     {
-      "name": "Node.js",
+      "name": "Node",
       "area": "back",
       "years": 3,
       "level": 4,
       "rating": 7
     },
     {
-      "name": "Express.js",
+      "name": "Express",
       "area": "back",
       "years": 2,
       "level": 3,
