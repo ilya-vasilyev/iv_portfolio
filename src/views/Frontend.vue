@@ -78,6 +78,8 @@
       </button>
     </div>
 
+    <div class="skills-container">
+      <div v-if="showSkillsContainer">
     <Chart
       v-if="isSkillComponentLoaded.chart"
       v-show="viewMode === 'chart'"
@@ -95,10 +97,11 @@
       v-show="viewMode === 'raw'"
       class="skills"
     />
-
     <noscript>
       Can't show with JavaScript turned off
     </noscript>
+      </div>
+    </div>
 
     <hr>
 
@@ -126,6 +129,9 @@
 
     <div class="timeline-container">
       <Timeline v-if="showTimeline" />
+      <noscript>
+        Can't show with JavaScript turned off
+      </noscript>
     </div>
 
     <hr>
@@ -221,6 +227,7 @@ export default {
       tldrImageSrc: '',
       viewMode: 'chart',
       isSkillComponentLoaded: { chart: false, table: false, raw: false },
+      showSkillsContainer: false,
       showTimeline: false
     }
   },
@@ -231,8 +238,9 @@ export default {
   },
   mounted () {
     this.loadSkillComponent('chart')
+    window.addEventListener('scroll', this.loadSkills)
     window.addEventListener('scroll', this.loadTimeline)
-    setTimeout(() => { this.tldrImageSrc = '../assets/images/peacock.gif' }, 1000)
+    setTimeout(() => { this.tldrImageSrc = '../assets/images/peacock.gif' }, 1000) // lazy loading
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.loadTimeline)
@@ -272,6 +280,13 @@ export default {
           this.showSkills()
         })
       })
+    },
+    loadSkills (e) {
+      let skills = document.querySelector('.skills-container').getBoundingClientRect().top
+      if (skills - window.innerHeight < 0) {
+        this.showSkillsContainer = true
+        window.removeEventListener('scroll', this.loadSkills)
+      }
     },
     loadTimeline (e) {
       let timeline = document.querySelector('.timeline-container').getBoundingClientRect().top
