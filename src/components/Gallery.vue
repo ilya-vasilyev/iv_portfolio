@@ -103,6 +103,7 @@ export default {
 </script>
 
 <style lang="scss">
+/* for IE */
 .gallery {
   position: relative;
   z-index: 1;
@@ -113,108 +114,118 @@ export default {
     padding: 0 20px;
   }
 
-  p {
-    line-height: 1.5;
-  }
+  p {line-height: 1.5;}
 }
 
 .gallery-chunk {
-  text-align: left;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-     "one"
-     "two"
-     "three"
-     "four"
-     "five"
-     "six"
-     "seven"
-     "eight";
+    text-align: left;
+    display: block;
+    max-width: 600px;
+    margin: 0 auto;
 
-  img {width: 100%;}
-  p {margin: 10px 10px 60px;}
+    img {width: 100%;}
+}
 
-  .one {grid-area: one;}
-  .two {grid-area: two;}
-  .three {grid-area: three;}
-  .four {grid-area: four;}
-  .five {grid-area: five;}
-  .six {grid-area: six;}
-  .seven {grid-area: seven;}
-  .eight {grid-area: eight;}
+/* for modern */
+@supports(grid-area: auto) {
 
-  @media (min-width: 480px) {
-    grid-template-columns: 1fr 1fr;
+  .gallery-chunk {
+    display: grid;
+    max-width: none;
+    grid-template-columns: 1fr;
     grid-template-areas:
-       "one one"
-       "two ."
-       "three three"
-       ". four"
-       "five five"
-       "six ."
-       "seven seven"
-       ". eight";
+      "one"
+      "two"
+      "three"
+      "four"
+      "five"
+      "six"
+      "seven"
+      "eight";
 
-     p {margin: 20px 20px 120px;}
+    p {margin: 10px 10px 60px;}
+
+    .one {grid-area: one;}
+    .two {grid-area: two;}
+    .three {grid-area: three;}
+    .four {grid-area: four;}
+    .five {grid-area: five;}
+    .six {grid-area: six;}
+    .seven {grid-area: seven;}
+    .eight {grid-area: eight;}
+
+    @media (min-width: 480px) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "one one"
+        "two ."
+        "three three"
+        ". four"
+        "five five"
+        "six ."
+        "seven seven"
+        ". eight";
+
+      p {margin: 20px 20px 120px;}
+    }
+
+    @media (min-width: 800px) {
+      grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+      grid-template-areas:
+        ". one one one"
+        ". two two ."
+        "three three three four"
+        ". five five ."
+        ". six six ."
+        "seven seven seven ."
+        ". eight eight .";
+
+      .three {margin: 0 0 120px;}
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-areas:
+        ". one one two ."
+        "four four . five five"
+        "three three . five five"
+        "three three . six six"
+        ". eight seven seven seven";
+
+      .four {margin: 20px;}
+      .one, .seven {margin: 0 0 120px;}
+    }
+
+    @media (min-width: 1280px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-areas:
+        ". one one two . four"
+        ". one one . three three"
+        "five five five . three three"
+        "five five five six . ."
+        ". . seven seven seven ."
+        ". eight seven seven seven .";
+
+      .three {margin: 0;}
+      .four {align-self: end;}
+      .five {margin: 0 0 120px;}
+    }
+
+    @media (min-width: 1440px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-areas:
+        "one one two . three three three"
+        "one one . . three three three"
+        "five five five . four four ."
+        "five five five six . seven seven"
+        ". . . . . eight eight";
+
+      .three {margin: 0;}
+      .four {margin: 0 0 120px;}
+      .five {margin: 0;}
+      .seven {margin: 0;}
+    }
+
   }
-
-  @media (min-width: 800px) {
-    grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
-    grid-template-areas:
-       ". one one one"
-       ". two two ."
-       "three three three four"
-       ". five five ."
-       ". six six ."
-       "seven seven seven ."
-       ". eight eight .";
-
-     .three {margin: 0 0 120px;}
-  }
-
-  @media (min-width: 1024px) {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas:
-       ". one one two ."
-       "four four . five five"
-       "three three . five five"
-       "three three . six six"
-       ". eight seven seven seven";
-
-     .four {margin: 20px;}
-     .one, .seven {margin: 0 0 120px;}
-  }
-
-  @media (min-width: 1280px) {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas:
-       ". one one two . four"
-       ". one one . three three"
-       "five five five . three three"
-       "five five five six . ."
-       ". . seven seven seven ."
-       ". eight seven seven seven .";
-
-     .three {margin: 0;}
-     .four {align-self: end;}
-     .five {margin: 0 0 120px;}
-  }
-
-  @media (min-width: 1440px) {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas:
-       "one one two . three three three"
-       "one one . . three three three"
-       "five five five . four four ."
-       "five five five six . seven seven"
-       ". . . . . eight eight";
-
-     .three {margin: 0;}
-     .four {margin: 0 0 120px;}
-     .five {margin: 0;}
-     .seven {margin: 0;}
-  }
-
 }
 </style>
