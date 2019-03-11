@@ -3,7 +3,7 @@
     <p>
       Hello, I'm
       <b>Ilya</b>
-      <b>Vasilyev</b>,
+      <b>Vasilyev</b> –
       <b>front-end web developer</b>,
       specialised in
       <b>
@@ -31,6 +31,36 @@
         target="_blank"
       >source code on Github</a>.
     </p>
+
+    <h2>Summary</h2>
+    <p>
+      I've been around web development since <b>2013</b>,
+      starting from <b>UI</b> and <b>UX</b> design, within startup environment,
+      prototyping apps with <b>HTML</b> and <b>CSS</b>, exploring ideas of interactive comics and books,
+      transforming this ideas into <b>interactive infographics</b> for web.
+    </p>
+
+    <p>
+      Which resulted in a startup about <b>dynamic visualizations of financial models</b>,
+      where from the tech side <b>Javascript</b> was inevitable, alongside with <b>D3</b>, <b>GSAP</b>, <b>AngularJS</b> and <b>Node.js</b>,
+      and from the founder side: <b>fin analysis</b>, <b>Lean Startup</b>,
+      <b>Business Model Canvas</b>, <b>Agile</b>, <b>digital marketing</b> and <b>sales</b> were learnt to keep it going
+      for 2 years in searching for a product-market-fit, which was never found.
+    </p>
+    <p>
+      Then there was a series of freelance and consulting projects,
+      I've discovered and started learning <b>Vue.js</b>, which is the best front-end framework so far,
+      and eventually I landed on a front-end dev job at the oldest state-independent media in Russia – <b>«Ведомости»</b>.
+      That was quite intense, with <b>micro-services</b>, <b>CI/CD</b>,
+      migration to <b>Vue with SSR</b> and never-ending backlog.
+    </p>
+    <p>
+      As for now, I want to dive deeper in <b>JAMstack</b>, <b>client-side machine learning</b>,
+      <b>graph databases</b> and generally improve my inconsistent knowledge of computer science.
+      At the same time I'm fascinated by the fact that today management is broken,
+      so I investigate the areas of <b>DDD</b>, <b>Agile scaling</b>, <b>PMO</b>, <b>The OS Canvas</b>,
+      trying to find the right way to reduce stress and increase productivity in the modern workplace.
+    </p>
     <img
       v-show="tldrImage"
       :src="tldrImageSrc"
@@ -45,13 +75,16 @@
         TL;DR
       </button>
     </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
     <hr>
 
     <h2>Toolkit</h2>
     <p>You're probably intereseted <i>(why shouldn't you be?)</i> in my skills end experience in web development.</p>
-    <p>In case you're too lazy to appreciate my data visualization efforts, here is the point: <b>Vue</b>, no <i>React</i>, disgraceful <i>AngularJS</i> </p>
+    <small>Subjective disclamer</small>
+    <p>
+      In case you're too lazy to appreciate my data visualization efforts, here is the point:
+      <b>Vue</b>, no <i>React</i>, disgraceful <i>AngularJS</i>
+    </p>
 
     <h5>View as:</h5>
     <div class="skill-controls">
@@ -80,52 +113,56 @@
 
     <div class="skills-container">
       <div v-if="showSkillsContainer">
-    <Chart
-      v-if="isSkillComponentLoaded.chart"
-      v-show="viewMode === 'chart'"
-      class="skills"
-    />
+        <Chart
+          v-if="isSkillComponentLoaded.chart"
+          v-show="viewMode === 'chart'"
+          class="skills"
+        />
 
-    <Table
-      v-if="isSkillComponentLoaded.table"
-      v-show="viewMode === 'table'"
-      class="skills"
-    />
+        <Table
+          v-if="isSkillComponentLoaded.table"
+          v-show="viewMode === 'table'"
+          class="skills"
+        />
 
-    <Raw
-      v-if="isSkillComponentLoaded.raw"
-      v-show="viewMode === 'raw'"
-      class="skills"
-    />
-    <noscript>
-      Can't show with JavaScript turned off
-    </noscript>
+        <Raw
+          v-if="isSkillComponentLoaded.raw"
+          v-show="viewMode === 'raw'"
+          class="skills"
+        />
+        <noscript>
+          Can't show with JavaScript turned off
+        </noscript>
       </div>
     </div>
 
     <hr>
 
-    <h2>JAMstack</h2>
+    <h2>Timeline</h2>
     <p>
-      I have to say that I really like the idea of JAMstack.
-      Today frontend is as powerfull as ever and we need to utilize this.
-      Back-end logic for most projects is the same and can be reused, so why don't just plug it in?
-      Don't get me wrong, back-end is great if it's available on demand, as a service<br>
-      <mark>cloud functions</mark>
-      <ul>
-        <li>Firebase</li>
-        <li>Netlify</li>
-        <li>Serverless</li>
-        <li>Fn project</li>
-        <li>Nuxt.js</li>
-        <li>Strapi</li>
+      All my life was the game of opposites:
+      <ul class="opposites">
+        <li>
+          <i>As a kid I was obsessed with 3D modeling and animation, because 2D was boring: </i>
+          <b>I ended up with the gallery full of drawings on DeviantArt.</b>
+        </li>
+        <li>
+          <i>I joined a college rock-band to play on keys, because I was not really interested in all this rock'n'roll stuff: </i>
+          <b>I ended up writing, arranging, singing, guitaring, recording and mixing alternative indie rock.</b>
+        </li>
+        <li>
+          <i>On the web I identified myself as a designer, definitely not a coder, because it's not creative enough work: </i>
+          <b>as you probably suggested, I ended up as a front-end developer.</b>
+        </li>
+        <li>
+          <i>Once in the office, it was clear to me that I'm the tech guy, having nothing in common with these strange managers: </i>
+          <b>guess what I'm interested in right now?</b>
+        </li>
       </ul>
     </p>
-
-    <hr>
-
-    <h2>Timeline</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>
+      The following is the illustrated timeline of the most significatn activities in the recent years.
+    </p>
 
     <div class="timeline-container">
       <Timeline v-if="showTimeline" />
@@ -139,40 +176,49 @@
     <h2>This site</h2>
     <p>
       <b>Design</b>
-      – well, I design on the go
+      – well, for my on projects I omit design, jumping from structural pencil sketch right into coding and styling.
+      it gives me more flexibility and freedom in making desing choices as well as it increases the speed.
     </p>
     <p>
       <b>Vue</b>
-      – (or Nuxt)
+      – honestly, I wanted to give Nuxt.js a try for this one,
+      but it was so preconfigured and I so much wanted to setup the whole project,
+      so I used clean Vue + Vue-router + Vuex, without even Vue-CLI. As you already should know, Vue is my favorite framework.
     </p>
     <p>
       <b>Billboard</b>
-      – ...
+      – not almighty yet best that I managed to find declarative chart library on top of the last vesrion of D3.
     </p>
     <p>
       <b>Tabulator</b>
-      – ...
+      – quite powerfull lib for tables, with sorting, filtering and formatting. Now, as they dropped jQuery, I decided to give it a try.
     </p>
     <p>
       <b>Anime</b>
-      – ...
+      – so far it works great for lighrweigt animations, it's small, simple and open-surced.
     </p>
     <p>
       <b>CSS grids</b>
-      – althoug I prefer flexbox...
+      – althoug I prefer flexbox in most cases, grids are good for comlex irregular layouts, so I used them for portfolio gallery.
+    </p>
+    <p>
+      <b>Browser support</b>
+      – tested down to IE11, it mostly works fine, despite using CSS grids and some ES7 features
+      <i>(Array.includes, Object.entries)</i>,
+      thanks to polyfills and
+      <i>@supports()</i> trick.
     </p>
     <p>
       <b>SEO</b>
-      – ...
+      – pre-rendering is enough for static sites like this one, and SSR would be overmuch.
+      And with microdata, meta tags, proper headers and content length I hope it would be indexed well enough.
     </p>
     <p>
       <b>Webpack</b>
-      – it was the first time I set up webpack completeley from ground up, with pre-rendering, dynamic import of components, the results in development mode is petty messy:
-      <ul>
-        <li>hot reload is not working on styles in .vue components</li>
-        <li>refreshing on any page extept "/" results in pre-rendered html</li>
-      </ul>
-      but come on, it works. You can examine Bundle Analyzer report
+      – it was the first time I set up webpack completeley from ground up,
+      with pre-rendering, an dynamic import of components.
+      Works fine but development mode is petty messy,
+      you can examine Bundle Analyzer report
       <a
         href="./report.html"
         target="_blank"
@@ -180,7 +226,7 @@
     </p>
     <p>
       <b>Netlify</b>
-      – ...
+      – just a wonderful way to host static and serverless applications, I use them since their early days.
     </p>
   </main>
 </template>
@@ -314,6 +360,10 @@ export default {
   max-width: 400px;
   position: relative;
   z-index: 1;
+}
+
+.opposites li {
+  margin: 15px 0;
 }
 
 </style>
