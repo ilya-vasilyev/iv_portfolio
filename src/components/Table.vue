@@ -1,20 +1,26 @@
 <template>
   <section>
-    <label for="tableShowNew">tableShowNew</label>
-    <input
-      id="tableShowNew"
-      type="checkbox"
-      :value="filters.isNew"
-      @change="toggleFilter('isNew', !filters.isNew)"
-    >
-    <label for="tableShowProgress">tableShowProgress</label>
-    <input
-      id="tableShowProgress"
-      type="checkbox"
-      :value="showProgress"
-      checked="true"
-      @change="setColumns()"
-    >
+    <div class="table-controls">
+      <span>
+        <input
+          id="tableShowNew"
+          type="checkbox"
+          :value="filters.isNew"
+          @change="toggleFilter('isNew', !filters.isNew)"
+        >
+        <label for="tableShowNew">Show newly learned</label>
+      </span>
+      <span>
+        <input
+          id="tableShowProgress"
+          type="checkbox"
+          :value="showProgress"
+          checked="true"
+          @change="setColumns()"
+        >
+        <label for="tableShowProgress">Show progress bars</label>
+      </span>
+    </div>
     <div
       ref="table"
       aria-hidden="true"
@@ -116,6 +122,25 @@ export default {
 <style lang="scss">
 @import url('../assets/variables.scss');
 @import 'tabulator-tables/dist/css/bulma/tabulator_bulma.min.css';
+
+.table-controls {
+  margin: 30px auto;
+
+  span {
+    white-space: nowrap;
+  }
+
+  input[type="checkbox"] {
+    cursor: pointer;
+    margin: 10px 0 10px 20px;
+  }
+
+  label {
+    cursor: pointer;
+
+    &:hover {opacity: 0.7;}
+  }
+}
 
 .tabulator {
   width: 100%;
