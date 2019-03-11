@@ -80,6 +80,7 @@ export default {
 <style lang="scss">
 .timeline {
   width: 100%;
+  margin: 60px auto;
   overflow-x: scroll;
   cursor: grab;
 
@@ -121,7 +122,7 @@ export default {
 
 .timeline-controls {
   width: 300px;
-  margin: 30px auto 0;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
 

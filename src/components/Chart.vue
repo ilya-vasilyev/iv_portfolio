@@ -417,6 +417,10 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  button {
+    width: 100%;
+  }
 }
 
 @media (min-width: 900px) {

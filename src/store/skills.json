@@ -26,7 +26,7 @@
       "area": "lang",
       "years": 0.5,
       "level": 2,
-      "rating": 6,
+      "rating": 5,
       "isNew": true
     },
     {
@@ -164,7 +164,7 @@
     {
       "name": "Strapi",
       "area": "back",
-      "years": 1,
+      "years": 0.5,
       "level": 4,
       "rating": 9
     },

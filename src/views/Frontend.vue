@@ -79,11 +79,16 @@
     <hr>
 
     <h2>Toolkit</h2>
-    <p>You're probably intereseted <i>(why shouldn't you be?)</i> in my skills end experience in web development.</p>
-    <small>Subjective disclamer</small>
+    <p>
+      You're probably intereseted <i>(why shouldn't you be?)</i> in my skills end experience in web development.
+      Fortunately I've made a visualisation for you.
+    </p>
+    <small>NOTE: all data is purely subjective and only represents my attitude.</small>
     <p>
       In case you're too lazy to appreciate my data visualization efforts, here is the point:
-      <b>Vue</b>, no <i>React</i>, disgraceful <i>AngularJS</i>
+      <br>
+      I really like <b>Vue</b>, I dislike <b>AngularJS</b>, and I disregard <b>React</b>.
+      I'm really into <b>front-end</b>, but somtimes I can a little <b>Node</b> or <b>Python</b> if necessary.
     </p>
 
     <h5>View as:</h5>
@@ -140,7 +145,7 @@
 
     <h2>Timeline</h2>
     <p>
-      All my life was the game of opposites:
+      My whole life is the game of opposites:
       <ul class="opposites">
         <li>
           <i>As a kid I was obsessed with 3D modeling and animation, because 2D was boring: </i>
