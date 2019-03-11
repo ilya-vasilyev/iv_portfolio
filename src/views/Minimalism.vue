@@ -2,8 +2,8 @@
   <main class="minimalism">
     <p>
       This page is the collection of life <b>principles</b>, which help to go through it.
-      Some call this lifestyle a <b>minimalism</b>, this sounds nice and feels right.
-      It's not only about Scandinavian interior design, it's about finding the meaningful existence.
+      Some call this lifestyle a <b>minimalism</b> – sounds nice and feels right.
+      But it's not only about Scandinavian interior design, it's about finding the <b>meaningful existence</b>.
     </p>
 
     <section class="principles">
