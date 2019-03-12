@@ -8,6 +8,7 @@ import router from './router'
 import store from './store'
 import VueAnime from './plugins/vue-anime'
 import App from './App.vue'
+import './helpers/register-sw'
 
 Vue.config.productionTip = false
 

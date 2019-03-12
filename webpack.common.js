@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const WebappWebpackPlugin = require('webapp-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const { GenerateSW } = require('workbox-webpack-plugin')
 
 const ASSET_PATH = process.env.ASSET_PATH || '/'
 
@@ -78,7 +79,7 @@ module.exports = {
     new VueLoaderPlugin(),
     new WebappWebpackPlugin({
       logo: './src/assets/images/icon.png',
-      prefix: '/assets',
+      prefix: 'assets',
       favicons: {
         appName: 'IV portfolio',
         appDescription: 'personal portfolio',
@@ -93,6 +94,9 @@ module.exports = {
     ]),
     new webpack.DefinePlugin({
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
+    }),
+    new GenerateSW({
+      globDirectory: '.',
     })
   ],
   resolve: {
