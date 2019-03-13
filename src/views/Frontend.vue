@@ -168,6 +168,7 @@
     <p>
       The following is the illustrated timeline of the most significatn activities in the recent years.
     </p>
+    <small>NOTE: you can scroll timeline horizontally or use arrow buttons below</small>
 
     <div class="timeline-container">
       <Timeline v-if="showTimeline" />
