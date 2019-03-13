@@ -9,7 +9,7 @@
       <b>
         Vue.js
       </b>
-      , visualization, animation and interactivity.
+      , visualization, animation and interactivity, with entrepreneurial experience.
     </p>
 
     <p>
