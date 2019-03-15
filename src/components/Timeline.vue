@@ -49,12 +49,12 @@ export default {
         this.progress = e.target.scrollLeft / (e.target.scrollWidth - window.innerWidth)
         this.$anime({
           targets: '.timeline .wrap .near',
-          translateX: `${-300 * this.progress}vmin`,
+          translateX: `${-260 * this.progress}vmin`,
           duration: 0
         })
         this.$anime({
           targets: '.timeline .wrap .mid',
-          translateX: `${-150 * this.progress}vmin`,
+          translateX: `${-130 * this.progress}vmin`,
           duration: 0
         })
       })
@@ -85,9 +85,6 @@ export default {
   cursor: grab;
 
   .wrap {
-    width: 15000px;
-    height: 800px;
-    width: 1500vmin;
     height: 80vmin;
     position: relative;
   }
@@ -96,27 +93,26 @@ export default {
   .mid,
   .near {
     position: absolute;
-    width: 15000px;
-    height: 800px;
-    width: 1500vmin;
     height: 80vmin;
     bottom: 0;
     left: 0;
-    background: 50% 50% no-repeat;
-    background-size: contain;
+    background: 0% 50% no-repeat;
+    background-size: cover;
   }
 
   .far {
-    /*background-image: url('../assets/images/timeline_far.svg');*/
-
+    width: 1020vmin;
+    background-image: url('../assets/images/timeline_far.svg');
   }
 
   .mid {
-    /*background-image: url('../assets/images/timeline_mid.svg');*/
+    width: 1150vmin;
+    background-image: url('../assets/images/timeline_mid.svg');
   }
 
   .near {
-    background-image: url('../assets/images/timeline.svg');
+    width: 1280vmin;
+    background-image: url('../assets/images/timeline_near.svg');
   }
 }
 
@@ -129,7 +125,7 @@ export default {
   .arrow {
     width: 80px;
     height: 80px;
-    border-radius: 60px;
+    border-radius: 40px;
     background: 50% 50% no-repeat;
     background-size: 40px 40px;
     margin: 0 10px;
