@@ -62,7 +62,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf|mp3)$/,
+        test: /\.(woff|woff2|eot|ttf|otf|mp3|mp4)$/,
         use: [
           'file-loader'
         ]
@@ -96,7 +96,7 @@ module.exports = {
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
     }),
     new GenerateSW({
-      globDirectory: '.',
+      globDirectory: '.'
     })
   ],
   resolve: {
