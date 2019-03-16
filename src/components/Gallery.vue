@@ -1,82 +1,212 @@
 <template>
   <section class="gallery">
     <div class="gallery-chunk">
-      <img
-        src="https://iv.netlify.com/static/p_lng_cover.jpg"
+      <video
+        width="100%"
+        controls
+        poster="../assets/video/p_meyoudemo_poster.jpg"
         class="one"
       >
+        <source
+          src="../assets/video/p_meyoudemo.mp4"
+          type="video/mp4"
+        >
+      </video>
       <p class="two">
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Explanaition demo with different presentation modes and with customisable colors, images and language.
+        All animation made with SVG and GSAP, assembled with Vue components.
       </p>
-      <img
-        src="https://iv.netlify.com/static/p_charts01.jpg"
+      <iframe
+        frameborder="0"
+        allowfullscreen="allowfullscreen"
+        src="https://www.youtube.com/embed/9r8w89_q8js?rel=0&showinfo=0"
         class="three"
-      >
+      />
       <p class="four">
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Video prototype of interactive comics made in Fluffy Move experimental studio.
       </p>
-      <Slider
-        v-slot="{ curent }"
-        :total="4"
+      <video
+        width="100%"
+        controls
+        poster="../assets/video/p_lbo_poster.jpg"
         class="five"
       >
-        <img
-          v-if="curent === 1"
-          src="https://ichef.bbci.co.uk/images/ic/720x405/p0517py6.jpg"
+        <source
+          src="../assets/video/p_lbo.mp4"
+          type="video/mp4"
         >
-        <img
-          v-if="curent === 2"
-          src="http://sciencenordic.com/sites/default/files/imagecache/620x/413474560.jpg"
-        >
-        <img
-          v-if="curent === 3"
-          src="http://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg"
-        >
-        <img
-          v-if="curent === 4"
-          src="https://img.purch.com/rc/696x392/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzEwMy83MjAvb3JpZ2luYWwvY2F0cy1idWJvbmljLXBsYWd1ZQ=="
-        >
-      </Slider>
+      </video>
       <p class="six">
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        New design and interfaces for full refactoring of dynamic visualisation engine.
+        Was built in collaboration with Pavel Kityan on Angular 1.6.
       </p>
-      <img
-        src="https://iv.netlify.com/static/p_creatomus00.jpg"
+      <video
+        width="100%"
+        controls
+        poster="../assets/video/p_lng_poster.jpg"
         class="seven"
       >
+        <source
+          src="../assets/video/p_lng.mp4"
+          type="video/mp4"
+        >
+      </video>
       <p class="eight">
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Interactive SVG map and dynamic visualisation of strategic infrastructure project.
       </p>
     </div>
 
     <div class="gallery-chunk">
-      <img
-        src="https://iv.netlify.com/static/p_lng_cover.jpg"
+      <Slider
+        v-slot="{ curent }"
+        :total="3"
         class="one"
       >
+        <iframe
+          v-if="curent === 1"
+          frameborder="0"
+          allowfullscreen="allowfullscreen"
+          src="//coub.com/embed/1006a2?muted=false&autostart=false&originalSize=false&startWithHD=true"
+        />
+        <iframe
+          v-if="curent === 2"
+          frameborder="0"
+          allowfullscreen="allowfullscreen"
+          src="//coub.com/embed/106hzg?muted=false&autostart=false&originalSize=false&startWithHD=true"
+        />
+        <iframe
+          v-if="curent === 3"
+          frameborder="0"
+          allowfullscreen="allowfullscreen"
+          src="//coub.com/embed/107xfa?muted=false&autostart=false&originalSize=false&startWithHD=true"
+        />
+      </Slider>
       <p class="two">
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Some short music videos.
       </p>
-      <img
-        src="https://iv.netlify.com/static/p_charts01.jpg"
+      <video
+        width="100%"
+        controls
+        poster="../assets/video/p_meat_poster.jpg"
         class="three"
       >
+        <source
+          src="../assets/video/p_meat.mp4"
+          type="video/mp4"
+        >
+      </video>
       <p class="four">
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Business game for students of Faculty of Economics of Lomonosov Moscow State University.
       </p>
-      <img
-        src="https://iv.netlify.com/static/p_meyoudemo_cover.jpg"
+      <video
+        width="100%"
+        controls
+        poster="../assets/video/p_hotel_poster.jpg"
         class="five"
       >
+        <source
+          src="../assets/video/p_hotel.mp4"
+          type="video/mp4"
+        >
+      </video>
       <p class="six">
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Business game for CFOs of subsidiary companies of AFK Sistema, was built in callaboration with risk management department of PwC Russia.
       </p>
-      <img
-        src="https://iv.netlify.com/static/p_creatomus00.jpg"
+      <Slider
+        v-slot="{ curent }"
+        :total="4"
         class="seven"
       >
+        <iframe
+          v-if="curent === 1"
+          frameborder="0"
+          allowfullscreen="allowfullscreen"
+          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Filya.vasilyev.5817%2Fvideos%2F1827509104187814%2F&show_text=0&width=560"
+        />
+        <iframe
+          v-if="curent === 2"
+          frameborder="0"
+          allowfullscreen="allowfullscreen"
+          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Filya.vasilyev.5817%2Fvideos%2F1827510357521022%2F&show_text=0&width=560"
+        />
+        <iframe
+          v-if="curent === 3"
+          frameborder="0"
+          allowfullscreen="allowfullscreen"
+          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Filya.vasilyev.5817%2Fvideos%2F1827511114187613%2F&show_text=0&width=560"
+        />
+        <iframe
+          v-if="curent === 4"
+          frameborder="0"
+          allowfullscreen="allowfullscreen"
+          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Filya.vasilyev.5817%2Fvideos%2F1827512967520761%2F&show_text=0&width=560"
+        />
+      </Slider>
       <p class="eight">
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Short sketches from Tel-Aviv for Facebook & Instagram.
+      </p>
+    </div>
+
+    <div class="gallery-chunk">
+      <iframe
+        frameborder="0"
+        allowfullscreen="allowfullscreen"
+        src="https://www.youtube.com/embed/sW_qMY44Rn0?rel=0&showinfo=0"
+        class="one"
+      />
+      <p class="two">
+        Video promo for mini footbal championship.
+      </p>
+      <iframe
+        frameborder="0"
+        allowfullscreen="allowfullscreen"
+        src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FFluffymove%2Fvideos%2F678951658912009%2F&show_text=0&width=560"
+        class="three"
+      />
+      <p class="four">
+        Totally five 3-minute cartoons, two 50-minute animated LED-background were made for children live shows at «Golden Ring» theatre. Director & Animator: Jane Nitylkina.
+      </p>
+      <iframe
+        frameborder="0"
+        allowfullscreen="allowfullscreen"
+        src="https://www.youtube.com/embed/4CKd5VbJU-M?rel=0&showinfo=0"
+        class="five"
+      />
+      <p class="six" />
+      <iframe
+        frameborder="0"
+        allowfullscreen="allowfullscreen"
+        src="https://www.youtube.com/embed/LuZ9xPAC82M?rel=0&showinfo=0"
+        class="seven"
+      />
+      <p class="eight">
+        Short film by Leo Nekrasov.
+      </p>
+    </div>
+
+    <div class="gallery-chunk">
+      <video
+        width="100%"
+        controls
+        poster="../assets/video/p_whatif_poster.jpg"
+        class="one"
+      >
+        <source
+          src="../assets/video/p_whatif.mp4"
+          type="video/mp4"
+        >
+      </video>
+      <p class="two">
+        First implementation of interactive infographics as a presentation tool for financial modeling.
+      </p>
+      <iframe
+        frameborder="0"
+        allowfullscreen="allowfullscreen"
+        src="https://www.youtube.com/embed/-LKNRQJnk8o?rel=0&amp;showinfo=0"
+        class="three"
+      />
+      <p class="four">
+        First video prototype of interactive infographics.
       </p>
     </div>
   </section>
@@ -107,14 +237,13 @@ export default {
 .gallery {
   position: relative;
   z-index: 1;
-  max-width: 1600px;
+  max-width: 1400px;
   margin: 0 auto;
 
   @media (min-width: 480px) {
     padding: 0 20px;
   }
 
-  p {line-height: 1.5;}
 }
 
 .gallery-chunk {
@@ -123,7 +252,13 @@ export default {
     max-width: 600px;
     margin: 0 auto;
 
+    p {line-height: 1.5;}
     img {width: 100%;}
+
+    iframe {
+      width: 100%;
+      height: 400px;
+    }
 }
 
 /* for modern */
@@ -144,6 +279,7 @@ export default {
       "eight";
 
     p {margin: 10px 10px 60px;}
+    iframe {height: 250px;}
 
     .one {grid-area: one;}
     .two {grid-area: two;}
@@ -167,6 +303,7 @@ export default {
         ". eight";
 
       p {margin: 20px 20px 120px;}
+      iframe {height: 400px;}
     }
 
     @media (min-width: 800px) {
@@ -181,6 +318,7 @@ export default {
         ". eight eight .";
 
       .three {margin: 0 0 120px;}
+      iframe {height: 350px;}
     }
 
     @media (min-width: 1024px) {
@@ -194,6 +332,7 @@ export default {
 
       .four {margin: 20px;}
       .one, .seven {margin: 0 0 120px;}
+      iframe {height: 300px;}
     }
 
     @media (min-width: 1280px) {
@@ -203,29 +342,13 @@ export default {
         ". one one . three three"
         "five five five . three three"
         "five five five six . ."
-        ". . seven seven seven ."
-        ". eight seven seven seven .";
+        ". eight seven seven seven ."
+        ". . seven seven seven .";
 
       .three {margin: 0;}
       .four {align-self: end;}
       .five {margin: 0 0 120px;}
     }
-
-    @media (min-width: 1440px) {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-      grid-template-areas:
-        "one one two . three three three"
-        "one one . . three three three"
-        "five five five . four four ."
-        "five five five six . seven seven"
-        ". . . . . eight eight";
-
-      .three {margin: 0;}
-      .four {margin: 0 0 120px;}
-      .five {margin: 0;}
-      .seven {margin: 0;}
-    }
-
   }
 }
 </style>
