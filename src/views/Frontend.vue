@@ -2,14 +2,10 @@
   <main>
     <p>
       Hello, I'm
-      <b>Ilya</b>
-      <b>Vasilyev</b> –
+      <span>Ilya</span>
+      <span>Vasilyev</span> –
       <b>front-end web developer</b>,
-      specialised in
-      <b>
-        Vue.js
-      </b>
-      , visualization, animation and interactivity, with entrepreneurial experience.
+      specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience.
     </p>
 
     <p>
@@ -23,7 +19,7 @@
         turn them {{ $store.state.showEffects ? 'OFF' : 'ON' }}
       </button>
       anytime.
-      This whole project exists only to demonstrate my skills and abilities in web development.
+      <b>This whole project exists only to demonstrate my skills and abilities in web development.</b>
       Here you would know almost everything about me – I can't see any other reasons how you ended up on this page and why you're reading this.
       If you want to dig deeper see
       <a
