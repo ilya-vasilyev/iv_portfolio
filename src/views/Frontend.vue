@@ -291,6 +291,7 @@ export default {
     setTimeout(() => { this.tldrImageSrc = '../assets/images/peacock.gif' }, 1000) // lazy loading
   },
   beforeDestroy () {
+    window.removeEventListener('scroll', this.loadSkills)
     window.removeEventListener('scroll', this.loadTimeline)
   },
   methods: {
