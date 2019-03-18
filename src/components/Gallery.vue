@@ -4,6 +4,8 @@
       <video
         width="100%"
         controls
+        preload="none"
+        onclick="this.play()"
         poster="../assets/video/p_meyoudemo_poster.jpg"
         class="one"
       >
@@ -28,6 +30,8 @@
       <video
         width="100%"
         controls
+        preload="none"
+        onclick="this.play()"
         poster="../assets/video/p_lbo_poster.jpg"
         class="five"
       >
@@ -43,6 +47,8 @@
       <video
         width="100%"
         controls
+        preload="none"
+        onclick="this.play()"
         poster="../assets/video/p_lng_poster.jpg"
         class="seven"
       >
@@ -87,6 +93,8 @@
       <video
         width="100%"
         controls
+        preload="none"
+        onclick="this.play()"
         poster="../assets/video/p_meat_poster.jpg"
         class="three"
       >
@@ -101,6 +109,8 @@
       <video
         width="100%"
         controls
+        preload="none"
+        onclick="this.play()"
         poster="../assets/video/p_hotel_poster.jpg"
         class="five"
       >
@@ -188,6 +198,8 @@
       <video
         width="100%"
         controls
+        preload="none"
+        onclick="this.play()"
         poster="../assets/video/p_whatif_poster.jpg"
         class="one"
       >
