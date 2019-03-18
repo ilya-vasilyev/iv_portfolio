@@ -8,6 +8,13 @@
       specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience.
     </p>
 
+    <div class="ava">
+      <img
+        src="/assets/ava.jpg"
+        alt="Ilya Vasilyev photo"
+      >
+    </div>
+
     <p>
       And this is my personal portfolio website, stuffed to the gills with highly annoying, CPU intensive and absolutely unnecesary visual effects.
       I've created them just because I can.
