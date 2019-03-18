@@ -107,7 +107,7 @@ module.exports = {
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
     }),
     new GenerateSW({
-      exclude: [/\.(?:png|jpg|jpeg|svg|mp3|mp4)$/],
+      exclude: [/\.(?:mp3|mp4)$/],
       globDirectory: '.',
       skipWaiting: true
     })
