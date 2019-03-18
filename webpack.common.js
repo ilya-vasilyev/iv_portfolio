@@ -56,16 +56,28 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'img/[name].[hash].[ext]'
+              name: 'assets/images/[name].[hash].[ext]'
             }
           }
         ]
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf|mp3|mp4)$/,
-        use: [
-          'file-loader'
-        ]
+        test: /\.(mp3)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'assets/audio/[name].[hash].[ext]'
+          }
+        }
+      },
+      {
+        test: /\.(mp4)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'assets/video/[name].[hash].[ext]'
+          }
+        }
       }
     ]
   },
@@ -89,8 +101,7 @@ module.exports = {
       }
     }),
     new CopyWebpackPlugin([
-      { from: './src/assets/images', to: './assets/images' },
-      { from: './src/assets/audio', to: './assets/audio' }
+      { from: './src/static', to: './assets' }
     ]),
     new webpack.DefinePlugin({
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)

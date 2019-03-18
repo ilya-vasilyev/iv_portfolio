@@ -66,7 +66,8 @@
     </p>
     <img
       v-show="tldrImage"
-      :src="tldrImageSrc"
+      ref="tldr-image"
+      data-src="../assets/images/peacock.gif"
       class="tldr-image"
     >
     <div>
@@ -243,6 +244,7 @@
 <script>
 import LoadingComponent from '@/components/Loading.vue'
 import ErrorComponent from '@/components/Error.vue'
+import * as tldrGif from '@/assets/images/peacock.gif'
 
 export default {
   name: 'Frontend',
@@ -295,7 +297,7 @@ export default {
     this.loadSkillComponent('chart')
     window.addEventListener('scroll', this.loadSkills)
     window.addEventListener('scroll', this.loadTimeline)
-    setTimeout(() => { this.tldrImageSrc = '../assets/images/peacock.gif' }, 1000) // lazy loading
+    setTimeout(() => { this.$refs['tldr-image'].src = tldrGif.default }, 1000) // lazy loading
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.loadSkills)
