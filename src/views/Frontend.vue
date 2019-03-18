@@ -357,6 +357,25 @@ export default {
 
 <style lang="scss">
 
+$ava-size: 150px;
+
+.ava {
+  width: $ava-size;
+  height: $ava-size;
+  margin: 0 auto;
+  position: relative;
+
+  img {
+    width: $ava-size;
+    height: $ava-size;
+    border-radius: $ava-size;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+}
+
 .skill-controls {
   margin: 0 auto 30px;
   display: flex;
