@@ -8,10 +8,11 @@
   >
     <header>
       <h1
-        tabindex="1"
-        @click="showBio = true"
+        tabindex="0"
+        itemprop="name"
+        @click="showBio = !showBio"
       >
-        ILYA VASILYEV
+        Ilya Vasilyev
       </h1>
       <transition name="collapse">
         <Bio v-show="showBio" />

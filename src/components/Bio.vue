@@ -5,7 +5,7 @@
     <p class="row">
       <small class="key">first name</small>
       <span class="value">
-        <span itemprop="name">Ilya</span>
+        <span itemprop="givenName">Ilya</span>
         <span
           aria-hidden="true"
           class="transcription"
@@ -17,7 +17,7 @@
     <p class="row">
       <small class="key">last name</small>
       <span class="value">
-        <span>Vasilyev</span>
+        <span itemprop="familyName">Vasilyev</span>
         <span
           aria-hidden="true"
           class="transcription"
@@ -74,6 +74,27 @@
       <small class="key">– extraversion</small>
       <span class="value">46%</span>
     </p>
+
+    <meta
+      itemprop="gender"
+      content="Male"
+    >
+    <meta
+      itemprop="jobTitle"
+      content="front-end developer"
+    >
+    <meta
+      itemprop="image"
+      content="/assets/ava.jpg"
+    >
+    <meta
+      itemprop="disambiguatingDescription"
+      content="front-end web developer, specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience"
+    >
+    <meta
+      itemprop="url"
+      content="/"
+    >
   </div>
 </template>
 
