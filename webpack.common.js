@@ -107,7 +107,8 @@ module.exports = {
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
     }),
     new GenerateSW({
-      globDirectory: '.'
+      globDirectory: '.',
+      skipWaiting: true
     })
   ],
   resolve: {
