@@ -103,7 +103,8 @@ module.exports = {
         appDescription: 'personal portfolio',
         developerName: 'Ilya Vasilyev',
         background: '#eee',
-        theme_color: '#444'
+        theme_color: '#444',
+        start_url: '/'
       }
     }),
     new CopyWebpackPlugin([

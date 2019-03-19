@@ -70,9 +70,31 @@
 
         <div class="footer-column">
           <h5>Contacts</h5>
-          <a href="#">GitHub</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">Facebook</a>
+          <a
+            href="#"
+            rel="noreferrer"
+          >GitHub</a>
+          <a
+            href="#"
+            rel="noreferrer"
+          >LinkedIn</a>
+          <a
+            href="#"
+            rel="noreferrer"
+          >Facebook</a>
+        </div>
+
+        <div class="footer-column">
+          <h5>Misc</h5>
+          <a
+            href="./report.html"
+            rel="noreferrer"
+            target="_blank"
+          >Bundle analyzer</a>
+          <a
+            href="https://old-2018.ilya.aivi.dev"
+            rel="noreferrer"
+          >Old version</a>
         </div>
       </div>
 
@@ -188,23 +210,6 @@ export default {
   overflow-x: hidden;
   font-family: 'Fira Sans Condensed', sans-serif;
   background: $backColor;
-}
-
-.bio-toggle {
-  display: block;
-  width: 100%;
-  text-align: center;
-  margin: 0 auto 60px;
-  padding: 10px 0;
-  outline: none;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-  cursor: pointer;
-  user-select: none;
-
-  &:hover {
-    opacity: 1;
-  }
 }
 
 header {

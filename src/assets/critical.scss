@@ -145,7 +145,7 @@ button {
 
 }
 
-small {opacity: 0.7;}
+small {opacity: 0.8;}
 
 hr {
   width: 100%;
@@ -157,5 +157,22 @@ hr {
 
   &.no-margin {
     margin: 0 auto;
+  }
+}
+
+.bio-toggle {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 60px;
+  padding: 10px 0;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    opacity: 1;
   }
 }

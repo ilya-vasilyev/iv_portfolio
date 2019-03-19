@@ -32,6 +32,7 @@
       <a
         href="https://github.com/ilya-vasilyev/iv_portfolio"
         target="_blank"
+        rel="noreferrer"
       >source code on Github</a>.
     </p>
 
@@ -228,11 +229,12 @@
       – it was the first time I set up webpack completeley from ground up,
       with pre-rendering, an dynamic import of components.
       Works fine but development mode is petty messy,
-      you can examine Bundle Analyzer report
+      you can examine
       <a
         href="./report.html"
         target="_blank"
-      >here</a>.
+        rel="noreferrer"
+      >Bundle Analyzer report</a>.
     </p>
     <p>
       <b>Netlify</b>
