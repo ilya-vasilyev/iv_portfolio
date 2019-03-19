@@ -1,78 +1,30 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Hello from '@/components/Hello'
-import Config from '@/components/Config'
-import Nav from '@/components/Nav'
-import Skills from '@/components/Skills'
-import Experience from '@/components/Experience'
-import Portfolio from '@/components/Portfolio'
-import Contact from '@/components/Contact'
-import GoBack from '@/components/GoBack'
-import Footer from '@/components/Footer'
+import VueRouter from 'vue-router'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+export default new VueRouter({
+  mode: 'history',
   routes: [
     {
-      path: '/',
-      name: 'All',
-      components: {
-        a: Hello,
-        b: Config,
-        c: Nav,
-
-        y: Contact,
-        z: Footer
-      },
+      path: '/frontend',
+      alias: '/',
+      name: 'frontend',
+      component: () => import(/* webpackChunkName: 'frontend' */ '@/views/Frontend.vue')
     },
     {
-      path: '/hello',
-      name: 'Hello',
-      components: {
-        a: Hello,
-        z: GoBack
-      },
+      path: '/motion',
+      name: 'motion',
+      component: () => import(/* webpackChunkName: 'motion' */ '@/views/Motion.vue')
     },
     {
-      path: '/Config',
-      name: 'Config',
-      components: {
-        a: Config,
-        z: GoBack
-      },
+      path: '/minimalism',
+      name: 'minimalism',
+      component: () => import(/* webpackChunkName: 'minimalism' */ '@/views/Minimalism.vue')
     },
     {
-      path: '/skills',
-      name: 'Skills',
-      components: {
-        a: Skills,
-        z: GoBack
-      },
-    },
-    {
-      path: '/experience',
-      name: 'Experience',
-      components: {
-        a: Experience,
-        z: GoBack
-      },
-    },
-    {
-      path: '/portfolio',
-      name: 'Portfolio',
-      components: {
-        a: Portfolio,
-        z: GoBack
-      },
-    },
-    {
-      path: '/contact',
-      name: 'Contact',
-      components: {
-        a: Contact,
-        z: GoBack
-      },
-    },
+      path: '**',
+      redirect: '/frontend'
+    }
   ]
 })

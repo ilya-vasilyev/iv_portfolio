@@ -1,450 +1,451 @@
-<template lang='pug'>
-  div#app
-    header
-      nav
-        section(@click="$router.push('/')").left
-          p.ava
-            svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 510")
-              path(shape-rendering="geometricPrecision" d="M251.4 8C117.3 8 8.6 116.4 8.6 250 8.6 383.7 117.3 492.1 251.4 492.1 385.6 492.1 494.3 383.7 494.3 250 494.3 116.4 385.6 8 251.4 8Zm-59.8 83.2c7.8 0 13.8 2.2 18.1 6.6 4.4 4.3 6.6 9.7 6.6 16.3 0 6.6-2.2 12.1-6.6 16.5-4.3 4.3-10.3 6.4-18.1 6.4-7.7 0-13.7-2.1-17.9-6.4-4.3-4.4-6.4-9.9-6.4-16.5 0-6.6 2.1-12.1 6.4-16.3 4.3-4.4 10.2-6.6 17.9-6.6zm-80.4 72.6 102.4 0 0 156.8 57 0 0 35.1-159.3 0 0-35.1 59.6 0 0-121.5-59.6 0zm131.1 0 43.8 0 47.4 138.4 3 14.2 3.2-14 46.5-138.6 43.8 0-75.2 192-36.5 0z")
-          p.name ilya vasilyev
-        section.right
-          div(v-for="(item, index) in menu" :class="{selected: item.path == $route.fullPath}")
-            span |
-            router-link(:to='item.path') {{item.name}}
-      h1
-        span(@click='rndTitle')#typed
-        span.animate-flicker |
-    div.workarea
-      router-view(name='a')
-      router-view(name='b')
-      router-view(name='c')
-      router-view(name='y')
-      router-view(name='z')
+<template>
+  <div
+    id="app"
+    class="app"
+    :class="{ loaded }"
+    itemscope
+    itemtype="http://schema.org/Person"
+  >
+    <header>
+      <h1
+        tabindex="0"
+        itemprop="name"
+        @click="showBio = !showBio"
+      >
+        Ilya Vasilyev
+      </h1>
+      <transition name="collapse">
+        <Bio v-show="showBio" />
+      </transition>
+      <hr class="no-margin">
+      <small
+        tabindex="-1"
+        class="inline bio-toggle"
+        @click="showBio = !showBio"
+      >
+        {{ showBio ? 'hide' : 'show' }} bio
+      </small>
+      <Navigation />
+    </header>
+
+    <hr>
+    <router-view />
+    <hr>
+    <Navigation />
+
+    <footer>
+      <div class="footer-dots" />
+
+      <div class="footer-content">
+        <div class="footer-column">
+          <div class="light-header">
+            Effects
+          </div>
+          <button
+            :active="showEffects"
+            class="inline"
+            @click="switchEffects()"
+          >
+            {{ showEffects ? 'ON' : 'OFF' }}
+          </button>
+        </div>
+
+        <div
+          v-if="showEffects"
+          class="footer-column"
+        >
+          <div class="light-header">
+            Themes
+          </div>
+          <span
+            v-for="palette in palettes"
+            :key="palette.value"
+          >
+            <button
+              :active="currentPalette === palette"
+              class="inline"
+              @click="currentPalette = palette"
+            >
+              {{ palette.display }}
+            </button>
+          &nbsp;
+          </span>
+        </div>
+
+        <div class="footer-column">
+          <div class="light-header">
+            Contacts
+          </div>
+          <a
+            href="https://github.com/ilya-vasilyev"
+            rel="noreferrer"
+            target="_blank"
+          >GitHub</a>
+          <a
+            href="https://www.linkedin.com/in/ilya-vasilyev-71a12675/"
+            rel="noreferrer"
+            target="_blank"
+          >LinkedIn</a>
+          <a
+            href="https://www.facebook.com/ilya.vasilyev.5817"
+            rel="noreferrer"
+            target="_blank"
+          >Facebook</a>
+        </div>
+
+        <div class="footer-column">
+          <div class="light-header">
+            Misc
+          </div>
+          <a
+            href="./report.html"
+            rel="noreferrer"
+            target="_blank"
+          >Bundle analyzer</a>
+          <a
+            href="./assets/lighthouse-report.html"
+            rel="noreferrer"
+            target="_blank"
+          >Lighthouse report</a>
+          <a
+            :href="'https://sitechecker.pro/seo-report/' + url"
+            rel="noreferrer"
+            target="_blank"
+          >Sitechecker</a>
+          <a
+            href="https://old-2018.ilya.aivi.dev"
+            rel="noreferrer"
+            target="_blank"
+          >Old version</a>
+        </div>
+      </div>
+
+      <small class="date">Made in 2019</small>
+    </footer>
+
+    <div
+      v-if="showEffects"
+      class="effects"
+    >
+      <div
+        class="colorist"
+        :class="{ [currentPalette.value]: true }"
+      />
+      <transition name="fade">
+        <div v-if="loaded">
+          <div class="fog big" />
+          <div class="fog small" />
+        </div>
+      </transition>
+    </div>
+  </div>
 </template>
 
 <script>
-
-import Typed from 'typed.js';
-
+import Bio from '@/components/Bio.vue'
+import Navigation from '@/components/Navigation.vue'
 export default {
-  name: 'app',
+  components: {
+    Bio,
+    Navigation
+  },
   data () {
     return {
-      menu: [
-        {name: 'home', path: '/'},
-        {name: 'skills', path: '/skills'},
-        {name: 'experience', path: '/experience'},
-        {name: 'portfolio', path: '/portfolio'},
-        {name: 'contact', path: '/contact'},
-      ],
-      titles: [
-        'hello',
-        'welcome',
-        'yo',
-        'sup',
-        'wazzup',
-        'hey ya',
-        'howdy',
-        'haaaiii',
-        'oi',
-      ],
+      title: 'Ilya Vasilyev | frontend developer | motion designer | minimalist',
+      description: 'Ilya Vasilyev – front-end web developer, specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience',
+      url: 'https://ilya.aivi.dev/',
+      image: 'https://ilya.aivi.dev/assets/og-card.jpg',
+      loaded: false,
+      showBio: false,
+      currentPalette: {},
+      palettes: [
+        { value: 'palette1', display: 'Shore' },
+        { value: 'palette2', display: 'Dawn' },
+        { value: 'palette3', display: 'Cloud' },
+        { value: 'palette4', display: 'Rainbow' },
+        { value: 'palette5', display: 'Shade ' }
+      ]
     }
   },
-  created: function() {
-    window.scrollTo(0, 0);
+  computed: {
+    showEffects () {
+      return this.$store.state.showEffects
+    }
   },
-  mounted: function() {
-    this.rndTitle()
+  metaInfo () {
+    return {
+      title: this.title,
+      links: [
+        { rel: 'canonical', href: this.url }
+      ],
+      meta: [
+        { 'http-equiv': 'Content-Type', content: 'text/html; charset=utf-8' },
+
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'description', content: this.description },
+
+        { property: 'og:title', content: this.title },
+        { property: 'og:site_name', content: 'Ilya Vasilyev' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: this.url },
+        { property: 'og:image', content: this.image },
+        { property: 'og:description', content: this.description },
+
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:site', content: this.url },
+        { name: 'twitter:title', content: this.title },
+        { name: 'twitter:description', content: this.description },
+        { name: 'twitter:creator', content: 'Ilya Vasilyev' },
+        { name: 'twitter:image:src', content: this.image },
+
+        { itemprop: 'name', content: this.title },
+        { itemprop: 'description', content: this.description },
+        { itemprop: 'image', content: this.image }
+      ]
+    }
+  },
+  created () {
+    this.currentPalette = this.palettes[0]
+  },
+  mounted () {
+    setTimeout(() => { this.loaded = true }, 1000)
   },
   methods: {
-    rndTitle: function () {
-      const titles = this.titles
-      const currentTitle = document.querySelector('#typed').textContent
-
-      function rnd() {
-        const n = Math.floor(Math.random()*(titles.length))
-        return titles[n] == currentTitle ? rnd() : n // recursive, to avoid the same title
+    switchEffects (val) {
+      if (val === undefined) {
+        this.$store.dispatch('switchEffects', !this.showEffects)
+      } else {
+        this.$store.dispatch('switchEffects', val)
       }
-
-      const nnew = titles[rnd()]
-      const typed = new Typed('#typed', {
-        strings: [currentTitle, nnew],
-        startDelay: 0,
-        backDelay: 150,
-        typeSpeed: 40,
-        backSpeed: 40,
-        showCursor: false
-      })
     }
-  },
+  }
 }
 </script>
 
-<style lang='scss'>
+<style lang="scss">
+@import url('./assets/variables.scss');
+@import url('https://fonts.googleapis.com/css?family=Six+Caps');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:300,400,600');
 
-@font-face {
-  font-family: Roboto;
-  font-weight: 300;
-  src: url('./assets/fonts/Roboto-Light.ttf');
+.app {
+  overflow-x: hidden;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  background: $backColor;
 }
-@font-face {
-  font-family: Roboto;
-  font-weight: 800;
-  src: url('./assets/fonts/Roboto-Bold.ttf');
-}
-@font-face {
-  font-family: Roboto Mono;
-  font-weight: 300;
-  src: url('./assets/fonts/RobotoMono-Light.ttf');
-}
-@font-face {
-  font-family: Roboto Mono;
-  font-weight: 800;
-  src: url('./assets/fonts/RobotoMono-Bold.ttf');
-}
-@font-face {
-  font-family: Roboto Slab;
-  font-weight: 300;
-  src: url('./assets/fonts/RobotoSlab-Light.ttf');
-}
-
-@import "./assets/_common.scss";
-
-#app {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: $textColor;
-}
-
-// GENERAL CSS
-body {
-  margin: 0;
-}
-.workarea {
-  padding: 0 .5rem;
-  max-width: 700px;
-  margin: 0 auto;
-}
-h1 {font-weight: 800}
-h2 {font-weight: 300}
-h3 {font-weight: 800}
-p {
-  line-height: 1.8;
-}
-a {
-  color: $baseColor;
-  &:active {opacity: .75}
-  text-decoration: none;
-  outline: none;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  &:focus {text-decoration: underline}
-}
-i {
-  display: block;
-  margin: 1rem auto;
-  width: 90%;
-  max-width: 500px;
-  color: $grey;
-  &:before {
-    content: "i";
-    display: inline-block;
-    margin: 0 0.25rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    font: 1rem Roboto Mono;
-    line-height: 1.5;
-    font-weight: 800;
-    border: 1px solid $grey;
-    border-radius: 1.2rem;
-  }
-}
-button, input[type="submit"] {
-  font: 1rem Roboto, Helvetica, Arial, sans-serif;
-  font-weight: 800;
-  padding: 0.5rem 1rem;
-  margin: .5rem .25rem;
-  background: $baseColor;
-  color: #fff;
-  outline: none;
-  border: none;
-  user-select: none;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  cursor: pointer;
-  &:active {opacity: .75}
-  &:focus {text-decoration: underline}
-  &.white {
-    background-color: #fff;
-    color: $baseColor;
-    // border: 1px solid $baseColor;
-  }
-  &[disabled] {
-    opacity: .5;
-    cursor: default;
-  }
-}
-.likeButton {
-  display: inline-block;
-  @extend button;
-}
-input[type="text"],input[type="email"], textarea {
-  font: .8rem Roboto Mono;
-  width: 90%;
-  padding: .5rem 5px;
-  margin:  .5rem auto;
-  outline: none;
-  border: none;
-  border-left: 5px solid #fff;
-  background: $lightColor;
-  box-shadow: inset 1px 2px 7px rgba(70, 70, 70, 0.3);
-  transition: border-color .5s;
-  &:focus {border-left: 5px solid $baseColor}
-}
-textarea {
-  min-height: 10rem;
-  max-height: 20rem;
-}
-label {
-  text-align: left;
-}
-input[type="submit"] {
-  @extend button;
-}
-::selection {
-  background: $transColor;
-  color: #fff;
-}
-::-moz-selection {
-  background: $transColor;
-  color: #fff;
-}
-sup, small {
-  margin: 0 .25rem;
-  color: $grey;
-}
-code {
-  font: 0.8rem Roboto Mono;
-  background: #eee;
-  color: $baseColor;
-  padding: 0 0.25rem;
-}
-pre {
-  font: 0.8rem Roboto Mono;
-  text-align: left;
-  overflow: auto;
-  .method {
-    user-select: none;
-    background: #fff;
-    padding: 0 0.25rem;
-    color: $baseColor;
-    font-weight: 800;
-  }
-}
-hr {
-  border: none;
-  height: 1px;
-  background: $lightGrey;
-  // border-top: 1px solid $lightColor;
-}
-
-
 
 header {
-  background: $baseColor;
-  color: #fff;
-  ::selection {
-    background: $lightColor;
-    color: #fff;
-  }
-  ::-moz-selection {
-    background: $lightColor;
-    color: #fff;
+  h1 {
+    cursor: pointer;
+    font-family: 'Six Caps', sans-serif;
+    font-size: 91px;
   }
 }
 
 nav {
-  @include flex(row, space-between, center,nowrap);
 
-  .left {
-    @include flex(row, flex-start, center,nowrap);
-    padding: .25rem;
-    text-align: left;
-    cursor: pointer;
+  a.router-link {
+    font-family: 'Source Code Pro', monospace;
+    white-space: nowrap;
 
-    &:hover .name, &:active .name {opacity: 1}
-    &:hover .ava, &:active .ava {fill: #fff;}
-
-    .ava {
-      width: 2rem;
-      min-width: 2rem;
-      height: 2rem;
-      min-height: 2rem;
-      margin: .5rem;
-      fill: $lightColor;
-    }
-    .name {
-      opacity: 0;
-      transition: opacity .1s;
-      line-height: 1;
-      @media (max-width: 600px) {
-        display: none;
-      }
-    }
-  }
-
-  .right {
-    @include flex(row, flex-end, center,wrap);
-    padding: .25rem .5rem;
-
-    div {
-      display: inline-block;
-      &:first-child span {display: none;}
-    }
-    a {
-      padding: .25rem;
-    	line-height: 2;
-      color: #fff;
-      user-select: none;
-    }
-    span {
-      padding: 0 .25rem;
-      opacity: .5;
-    	font-size: 1.3rem;
-      font-weight: 300;
-      user-select: none;
-      @media screen and (max-width: 500px) {
-        display: none;
-      }
-    }
-    .selected {
+    &[selected] {
       font-weight: 800;
-      a {
-        text-decoration: none;
+
+      @media (min-width: 500px) {
+        &::before {
+          content: '>';
+          display: inline-block;
+          opacity: 0.5;
+          animation: leftRight 1s infinite forwards;
+        }
+
+        &::after {
+          content: '<';
+          display: inline-block;
+          opacity: 0.5;
+          animation: leftRight 1s 0.5s infinite backwards;
+        }
       }
     }
+   }
+}
+
+button {
+  font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+label {
+  user-select: none;
+}
+
+footer {
+
+  button.inline {
+    font-weight: 300;
+    text-decoration: none;
   }
 
-}
-h1 {
-  margin: 0 auto;
-  padding: 3rem 0;
-  span {
-    cursor: pointer;
-    &:hover {text-decoration: underline}
-  }
-}
-h2 {
-  font-family: Roboto Slab;
-  font-size: 2rem;
-}
-.typed {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-@keyframes flickerAnimation {
-  0%   { opacity:1; }
-  49%  { opacity:1; }
-  50%  { opacity:0; }
-  100% { opacity:0; }
-}
-.animate-flicker {
-    user-select: none;
-    animation: flickerAnimation 1.5s infinite;
-}
+  a {
+    font-weight: 300;
+    text-decoration: none;
+    color: $backColor;
 
-.tooltip {
-  display: block !important;
-  z-index: 10000;
-
-  .tooltip-inner {
-    font-family: Roboto;
-    font-size: .8rem;
-    background: black;
-    color: white;
-    border-radius: 16px;
-    padding: 10px;
-  }
-
-  .tooltip-arrow {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    position: absolute;
-    margin: 5px;
-    border-color: black;
-    z-index: 1;
-  }
-
-  &[x-placement^="top"] {
-    margin-bottom: 5px;
-
-    .tooltip-arrow {
-      border-width: 5px 5px 0 5px;
-      border-left-color: transparent !important;
-      border-right-color: transparent !important;
-      border-bottom-color: transparent !important;
-      bottom: -5px;
-      left: calc(50% - 5px);
-      margin-top: 0;
-      margin-bottom: 0;
+    &:hover {
+      text-decoration: underline;
     }
   }
 
-  &[x-placement^="bottom"] {
-    margin-top: 5px;
+  .date {
+    display: block;
+    margin: 30px 0 0;
+  }
+}
+.footer-dots {
+  width: 100%;
+  height: 150px;
+  position: absolute;
+  top: -149px;
+  left: 0;
+  background: 50% 50% repeat-x url('./assets/images/footer_dot.svg');
+  background-size: contain;
+}
 
-    .tooltip-arrow {
-      border-width: 0 5px 5px 5px;
-      border-left-color: transparent !important;
-      border-right-color: transparent !important;
-      border-top-color: transparent !important;
-      top: -5px;
-      left: calc(50% - 5px);
-      margin-top: 0;
-      margin-bottom: 0;
+.footer-content {
+
+  a {
+    padding-right: 10px;
+    white-space: nowrap;
     }
+
+  @media (min-width: 600px) {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+.footer-column {
+  margin: 60px 60px 60px 0;
+
+  @media (min-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@keyframes leftRight {
+  0% {transform: translateX(-10px);}
+  50% {transform: translateX(0px);}
+  100% {transform: translateX(-10px);}
+}
+
+@keyframes fogAnimation {
+  from {background-position-y: 0px;}
+  to {background-position-y: -600px;}
+}
+
+.fog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url('./assets/images/fog.png');
+  background-repeat: repeat;
+
+  &.big {
+    opacity: 0.4;
+    background-size: 800px 600px;
+    animation: fogAnimation 30s infinite;
+    animation-timing-function: linear;
   }
 
-  &[x-placement^="right"] {
-    margin-left: 5px;
-
-    .tooltip-arrow {
-      border-width: 5px 5px 5px 0;
-      border-left-color: transparent !important;
-      border-top-color: transparent !important;
-      border-bottom-color: transparent !important;
-      left: -5px;
-      top: calc(50% - 5px);
-      margin-left: 0;
-      margin-right: 0;
-    }
+  &.small{
+    opacity: 0.3;
+    background-size: 400px 300px;
+    animation: fogAnimation 60s infinite;
+    animation-timing-function: linear;
   }
+}
 
-  &[x-placement^="left"] {
-    margin-right: 5px;
+@keyframes coloristAnimation {
+  0% {background-position-x: 0%; }
+  50% {background-position-x: 100%;}
+  100% {background-position-x: 0%;}
+}
 
-    .tooltip-arrow {
-      border-width: 5px 0 5px 5px;
-      border-top-color: transparent !important;
-      border-right-color: transparent !important;
-      border-bottom-color: transparent !important;
-      right: -5px;
-      top: calc(50% - 5px);
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-
-  &[aria-hidden='true'] {
-    visibility: hidden;
+.colorist {
+  display: none;
+  @supports (mix-blend-mode: screen) {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    mix-blend-mode: screen;
+    pointer-events: none;
     opacity: 0;
-    transition: opacity .15s, visibility .15s;
-  }
+    animation: coloristAnimation 60s ease infinite;
+    transition: opacity 60s;
 
-  &[aria-hidden='false'] {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity .15s;
+    .loaded & {
+      opacity: 1;
+    }
+
+    &.palette1 {
+      background: linear-gradient(90deg, #d439ba, #2e9ac1, #2dc1ad, #2e9ac1, #d439ba);
+      background-size: 500% 100%;
+    }
+    &.palette2 {
+      background: linear-gradient(90deg, #f3a61a, #d439ba, #5a2ed6, #d439ba, #f3a61a);
+      background-size: 500% 100%;
+    }
+    &.palette3 {
+      background: linear-gradient(90deg, #5fad97, #558596, #6663a7, #ada57d, #6eab78);
+      background-size: 500% 100%;
+    }
+    &.palette4 {
+      background: linear-gradient(90deg, #ff0000, #ffd504, #28d428, #21e2e2, #191fe6, #f107be);
+      background-size: 300% 100%;
+    }
+    &.palette5 {
+      display: none;
+    }
   }
 }
+
+.collapse-enter-active, .collapse-leave-active {
+  transform-origin: top;
+  transition: 0.2s;
+}
+.collapse-enter, .collapse-leave-to {
+  transform: scaleY(0.5);
+  opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: 5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.component-loading,
+.component-error  {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  margin: 40px auto;
+  height: 400px;
+  color: $textColor;
+  * {
+    margin: 1rem;
+  }
+}
+
 </style>
