@@ -54,6 +54,18 @@ module.exports = {
       {
         test: /\.(jpg|png|gif|svg)$/,
         loader: 'image-webpack-loader',
+        options: {
+          mozjpeg: {
+            progressive: true,
+            quality: 65
+          },
+          optipng: {
+            enabled: false
+          },
+          gifsicle: {
+            interlaced: false
+          }
+        },
         enforce: 'pre'
       },
       {
