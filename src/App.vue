@@ -21,7 +21,7 @@
       <small
         tabindex="-1"
         class="inline bio-toggle"
-        @click="showBio = !showBio"
+        @click="toggleBio()"
       >
         {{ showBio ? 'hide' : 'show' }} bio
       </small>
@@ -219,6 +219,11 @@ export default {
       } else {
         this.$store.dispatch('switchEffects', val)
       }
+      this.$ga.event('interaction', 'click', 'effects', val ? 1 : 0)
+    },
+    toggleBio () {
+      this.showBio = !this.showBio
+      this.$ga.event('interaction', 'click', 'bio', this.showBio ? 1 : 0)
     }
   }
 }

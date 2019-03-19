@@ -28,6 +28,7 @@ export default {
     this.$nextTick(() => {
       Prism.highlightAll()
     })
+    this.$ga.event('interaction', 'load', 'raw')
   }
 }
 </script>

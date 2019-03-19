@@ -86,6 +86,7 @@ export default {
   mounted () {
     this.$options.chart = { destroy: () => {} }
     this.load(this.modes[0])
+    this.$ga.event('interaction', 'load', 'chart')
   },
   methods: {
     hideChart (callback) {

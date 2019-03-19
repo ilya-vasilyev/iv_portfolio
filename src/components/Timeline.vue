@@ -41,6 +41,7 @@ export default {
   mounted () {
     dragscroll.reset()
     this.$refs.timeline.addEventListener('scroll', this.scroller, false)
+    this.$ga.event('interaction', 'load', 'timeline')
   },
   methods: {
     scroller (e) {

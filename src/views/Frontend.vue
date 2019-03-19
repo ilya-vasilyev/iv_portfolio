@@ -21,7 +21,7 @@
       And you can
       <button
         class="inline"
-        @click="$store.dispatch('switchEffects', !$store.state.showEffects)"
+        @click="toggleEffects()"
       >
         turn them {{ $store.state.showEffects ? 'OFF' : 'ON' }}
       </button>
@@ -75,7 +75,7 @@
       <button
         v-if="!tldrImage"
         class="prime"
-        @click="tldrImage = true"
+        @click="toggleTldr()"
       >
         TL;DR
       </button>
@@ -351,6 +351,16 @@ export default {
         this.showTimeline = true
         window.removeEventListener('scroll', this.loadTimeline)
       }
+    },
+    toggleEffects () {
+      this.$store.dispatch('switchEffects', !this.$store.state.showEffects)
+        .then(
+          this.$ga.event('interaction', 'click', 'effects', this.$store.state.showEffects ? 1 : 0)
+        )
+    },
+    toggleTldr () {
+      this.tldrImage = true
+      this.$ga.event('interaction', 'click', 'tldr')
     }
   }
 }

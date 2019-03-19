@@ -9,11 +9,16 @@ import store from './store'
 import VueAnime from './plugins/vue-anime'
 import App from './App.vue'
 import './helpers/register-sw'
+import VueAnalytics from 'vue-analytics'
 
 Vue.config.productionTip = false
 
 Vue.use(Meta)
 Vue.use(VueAnime)
+Vue.use(VueAnalytics, {
+  id: 'UA-136575581-1',
+  router
+})
 
 /* eslint-disable no-new */
 new Vue({

@@ -102,6 +102,7 @@ export default {
       columns: this.columns
     })
     window.addEventListener('resize', () => this.$options.tabulator.redraw())
+    this.$ga.event('interaction', 'load', 'table')
   },
   methods: {
     toggleFilter (filter, value) {
