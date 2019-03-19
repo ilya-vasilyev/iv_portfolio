@@ -131,7 +131,7 @@ module.exports = {
       '/', '/frontend', '/motion', '/minimalism'
     ]),
     new GenerateSW({
-      exclude: [/\.(?:mp3|mp4)$/],
+      exclude: [/\.(?:mp3|mp4)$/, '_redirects'],
       globDirectory: '.',
       skipWaiting: true
     })
