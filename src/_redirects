@@ -1,0 +1,9 @@
+# These rules will change if you change your site’s custom domains or HTTPS settings
+
+# Redirect domain aliases to primary domain
+https://www.ilya.aivi.dev/* https://ilya.aivi.dev/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
+https://iv.netlify.com/* https://ilya.aivi.dev/:splat 301!
+
+/index.html / 200
