@@ -6,6 +6,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const WebappWebpackPlugin = require('webapp-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { GenerateSW } = require('workbox-webpack-plugin')
+const SitemapPlugin = require('sitemap-webpack-plugin').default
 
 const ASSET_PATH = process.env.ASSET_PATH || '/'
 
@@ -101,11 +102,15 @@ module.exports = {
       }
     }),
     new CopyWebpackPlugin([
-      { from: './src/static', to: './assets' }
+      { from: './src/static', to: './assets' },
+      { from: './src/robots.txt', to: './' }
     ]),
     new webpack.DefinePlugin({
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
     }),
+    new SitemapPlugin('https://ilya.aivi.dev', [
+      '/', '/frontend', '/motion', '/minimalism'
+    ]),
     new GenerateSW({
       exclude: [/\.(?:mp3|mp4)$/],
       globDirectory: '.',
