@@ -92,8 +92,19 @@
             target="_blank"
           >Bundle analyzer</a>
           <a
+            href="./assets/lighthouse-report.html"
+            rel="noreferrer"
+            target="_blank"
+          >Lighthouse report</a>
+          <a
+            :href="'https://sitechecker.pro/seo-report/' + url"
+            rel="noreferrer"
+            target="_blank"
+          >SEO report</a>
+          <a
             href="https://old-2018.ilya.aivi.dev"
             rel="noreferrer"
+            target="_blank"
           >Old version</a>
         </div>
       </div>
