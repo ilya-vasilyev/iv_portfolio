@@ -96,7 +96,9 @@
       I'm really into <b>front-end</b>, but somtimes I can a little <b>Node</b> or <b>Python</b> if necessary.
     </p>
 
-    <h5>View as:</h5>
+    <div class="light-header">
+      View as:
+    </div>
     <div class="skill-controls">
       <button
         :active="viewMode === 'chart'"

@@ -38,7 +38,9 @@
 
       <div class="footer-content">
         <div class="footer-column">
-          <h5>Effects</h5>
+          <div class="light-header">
+            Effects
+          </div>
           <button
             :active="showEffects"
             class="inline"
@@ -52,7 +54,9 @@
           v-if="showEffects"
           class="footer-column"
         >
-          <h5>Themes</h5>
+          <div class="light-header">
+            Themes
+          </div>
           <span
             v-for="palette in palettes"
             :key="palette.value"
@@ -69,7 +73,9 @@
         </div>
 
         <div class="footer-column">
-          <h5>Contacts</h5>
+          <div class="light-header">
+            Contacts
+          </div>
           <a
             href="#"
             rel="noreferrer"
@@ -85,7 +91,9 @@
         </div>
 
         <div class="footer-column">
-          <h5>Misc</h5>
+          <div class="light-header">
+            Misc
+          </div>
           <a
             href="./report.html"
             rel="noreferrer"
