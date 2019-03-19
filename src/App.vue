@@ -77,16 +77,19 @@
             Contacts
           </div>
           <a
-            href="#"
+            href="https://github.com/ilya-vasilyev"
             rel="noreferrer"
+            target="_blank"
           >GitHub</a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/ilya-vasilyev-71a12675/"
             rel="noreferrer"
+            target="_blank"
           >LinkedIn</a>
           <a
-            href="#"
+            href="https://www.facebook.com/ilya.vasilyev.5817"
             rel="noreferrer"
+            target="_blank"
           >Facebook</a>
         </div>
 
