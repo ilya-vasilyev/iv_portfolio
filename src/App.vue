@@ -200,7 +200,9 @@ export default {
 
         { itemprop: 'name', content: this.title },
         { itemprop: 'description', content: this.description },
-        { itemprop: 'image', content: this.image }
+        { itemprop: 'image', content: this.image },
+
+        { name: 'google-site-verification', content: '_4oTOmojtdGbuD1L9U2bNguWZH2OMdIBtMjDt38-70w' }
       ]
     }
   },
