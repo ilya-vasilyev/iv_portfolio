@@ -148,7 +148,7 @@ export default {
   },
   data () {
     return {
-      title: 'Ilya Vasilyev | homepage',
+      title: 'Ilya Vasilyev | frontend developer | motion designer | minimalist',
       description: 'front-end web developer, specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience',
       url: 'https://ilya.aivi.dev/',
       image: 'https://ilya.aivi.dev/assets/og-card.jpg',
@@ -171,7 +171,7 @@ export default {
   },
   metaInfo () {
     return {
-      titleTemplate: 'Ilya Vasilyev | %s',
+      title: this.title,
       links: [
         { rel: 'canonical', href: this.url }
       ],

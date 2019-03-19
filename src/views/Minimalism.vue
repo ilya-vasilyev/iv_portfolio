@@ -37,11 +37,6 @@ export default {
         { title: 'invest in productivity growth', description: 'businesses invest in productivity growth, so should an individual' }
       ]
     }
-  },
-  metaInfo () {
-    return {
-      title: 'minimalism'
-    }
   }
 }
 </script>

@@ -292,11 +292,6 @@ export default {
       showTimeline: false
     }
   },
-  metaInfo () {
-    return {
-      title: 'frontend'
-    }
-  },
   mounted () {
     this.loadSkillComponent('chart')
     window.addEventListener('scroll', this.loadSkills)

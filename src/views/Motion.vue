@@ -22,11 +22,6 @@ export default {
   name: 'Motion',
   components: {
     Gallery
-  },
-  metaInfo () {
-    return {
-      title: 'motion design'
-    }
   }
 }
 </script>
