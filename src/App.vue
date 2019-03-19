@@ -312,7 +312,7 @@ footer {
 
 @keyframes fogAnimation {
   from {background-position-y: 0px;}
-  to {background-position-y: -533px;}
+  to {background-position-y: -600px;}
 }
 
 .fog {
@@ -326,15 +326,15 @@ footer {
   background-repeat: repeat;
 
   &.big {
-    opacity: 0.2;
-    background-size: 800px 533px;
+    opacity: 0.4;
+    background-size: 800px 600px;
     animation: fogAnimation 30s infinite;
     animation-timing-function: linear;
   }
 
   &.small{
-    opacity: 0.1;
-    background-size: 400px 266px;
+    opacity: 0.3;
+    background-size: 400px 300px;
     animation: fogAnimation 60s infinite;
     animation-timing-function: linear;
   }
