@@ -108,9 +108,9 @@ export default {
   data () {
     return {
       title: 'Ilya Vasilyev | homepage',
-      description: 'personal web page of Ilya Vasilyev',
-      url: 'https://iv.netlify.com/',
-      image: 'https://iv.netlify.com/assets/images/preview.jpg',
+      description: 'front-end web developer, specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience',
+      url: 'https://ilya.aivi.dev/',
+      image: 'https://ilya.aivi.dev/assets/og-card.jpg',
       loaded: false,
       showBio: false,
       currentPalette: {},

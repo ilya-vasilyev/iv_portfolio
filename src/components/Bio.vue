@@ -85,7 +85,7 @@
     >
     <meta
       itemprop="image"
-      content="/assets/ava.jpg"
+      content="https://ilya.aivi.dev/assets/ava.jpg"
     >
     <meta
       itemprop="disambiguatingDescription"
@@ -93,7 +93,7 @@
     >
     <meta
       itemprop="url"
-      content="/"
+      content="https://ilya.aivi.dev"
     >
   </div>
 </template>
