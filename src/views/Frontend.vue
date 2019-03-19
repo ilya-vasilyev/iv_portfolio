@@ -67,7 +67,7 @@
     <img
       v-show="tldrImage"
       ref="tldr-image"
-      data-src="../assets/images/peacock.gif"
+      alt="Peter Griffin peacock"
       class="tldr-image"
     >
     <div>
@@ -297,7 +297,7 @@ export default {
     this.loadSkillComponent('chart')
     window.addEventListener('scroll', this.loadSkills)
     window.addEventListener('scroll', this.loadTimeline)
-    setTimeout(() => { this.$refs['tldr-image'].src = tldrGif.default }, 1000) // lazy loading
+    setTimeout(() => { this.$refs['tldr-image'].src = tldrGif.default }, 4000) // lazy loading
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.loadSkills)
