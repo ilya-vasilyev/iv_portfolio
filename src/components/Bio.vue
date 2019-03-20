@@ -81,7 +81,7 @@
     >
     <meta
       itemprop="jobTitle"
-      content="front-end developer"
+      content="frontend developer"
     >
     <meta
       itemprop="image"
@@ -89,7 +89,7 @@
     >
     <meta
       itemprop="disambiguatingDescription"
-      content="front-end web developer, specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience"
+      content="frontend web developer, specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience and motion design skills. Also a minimalist"
     >
     <meta
       itemprop="url"

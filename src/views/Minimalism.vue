@@ -23,6 +23,11 @@
 
 export default {
   name: 'Minimalism',
+  metaInfo () {
+    return {
+      title: 'Ilya Vasilyev | minimalist'
+    }
+  },
   data () {
     return {
       principles: [

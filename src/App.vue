@@ -151,8 +151,8 @@ export default {
   },
   data () {
     return {
-      title: 'Ilya Vasilyev | frontend developer | motion designer | minimalist',
-      description: 'Ilya Vasilyev – front-end web developer, specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience',
+      title: 'Ilya Vasilyev | frontend developer',
+      description: 'Ilya Vasilyev – frontend developer, specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience and motion design skills. Also a minimalist',
       url: 'https://ilya.aivi.dev/',
       image: 'https://ilya.aivi.dev/assets/card.jpg',
       loaded: false,

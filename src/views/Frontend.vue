@@ -4,8 +4,21 @@
       Hello, I'm
       <span>Ilya</span>
       <span>Vasilyev</span> –
-      <b>front-end web developer</b>,
-      specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience.
+      <b>frontend web developer</b>,
+      specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience and
+      <router-link
+        :to="{ name: 'motion' }"
+        @click.native="scrollTop()"
+      >
+        motion design
+      </router-link>
+      skills. Also a
+      <router-link
+        :to="{ name: 'minimalism' }"
+        @click.native="scrollTop()"
+      >
+        minimalist
+      </router-link>.
     </p>
 
     <div class="ava">
@@ -53,8 +66,8 @@
     </p>
     <p>
       Then there was a series of freelance and consulting projects,
-      I've discovered and started learning <b>Vue.js</b>, which is the best front-end framework so far,
-      and eventually I landed on a front-end dev job at the oldest state-independent media in Russia – <b>«Ведомости»</b>.
+      I've discovered and started learning <b>Vue.js</b>, which is the best frontend framework so far,
+      and eventually I landed on a frontend dev job at the oldest state-independent media in Russia – <b>«Ведомости»</b>.
       That was quite intense, with <b>micro-services</b>, <b>CI/CD</b>,
       migration to <b>Vue with SSR</b> and never-ending backlog.
     </p>
@@ -93,7 +106,7 @@
       In case you're too lazy to appreciate my data visualization efforts, here is the point:
       <br>
       I really like <b>Vue</b>, I dislike <b>AngularJS</b>, and I disregard <b>React</b>.
-      I'm really into <b>front-end</b>, but somtimes I can a little <b>Node</b> or <b>Python</b> if necessary.
+      I'm really into <b>frontend</b>, but somtimes I can a little <b>Node</b> or <b>Python</b> if necessary.
     </p>
 
     <div class="light-header">
@@ -164,7 +177,7 @@
         </li>
         <li>
           <i>On the web I identified myself as a designer, definitely not a coder, because it's not creative enough work: </i>
-          <b>as you probably suggested, I ended up as a front-end developer.</b>
+          <b>as you probably suggested, I ended up as a frontend developer.</b>
         </li>
         <li>
           <i>Once in the office, it was clear to me that I'm the tech guy, having nothing in common with these strange managers: </i>
@@ -361,6 +374,9 @@ export default {
     toggleTldr () {
       this.tldrImage = true
       this.$ga.event('interaction', 'click', 'tldr')
+    },
+    scrollTop () {
+      window.scrollTo(0, 0)
     }
   }
 }

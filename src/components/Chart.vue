@@ -37,7 +37,7 @@ export default {
       currentMode: null,
       modes: [
         {
-          display: 'Level of knowledge of front-end libraries',
+          display: 'Level of knowledge of frontend libraries',
           type: 'bar',
           props: {
             field: 'level',

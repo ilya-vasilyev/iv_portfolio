@@ -22,6 +22,11 @@ export default {
   name: 'Motion',
   components: {
     Gallery
+  },
+  metaInfo () {
+    return {
+      title: 'Ilya Vasilyev | motion designer'
+    }
   }
 }
 </script>
