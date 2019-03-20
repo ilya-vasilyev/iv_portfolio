@@ -189,6 +189,10 @@ export default {
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: this.url },
         { property: 'og:image', content: this.image },
+        { property: 'og:image:secure_url', content: this.image },
+        { property: 'og:image:type', content: 'image/jpeg' },
+        { property: 'og:image:width', content: '984' },
+        { property: 'og:image:height', content: '780' },
         { property: 'og:description', content: this.description },
 
         { name: 'twitter:card', content: 'summary' },
