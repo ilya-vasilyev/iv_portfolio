@@ -24,6 +24,7 @@ export default new Vuex.Store({
     },
     switchEffects ({ commit }, payload) {
       commit('setEffects', payload)
+      Vue.cookies.set('vfx', payload)
     }
   }
 })

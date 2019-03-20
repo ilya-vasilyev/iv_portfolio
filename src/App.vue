@@ -215,6 +215,9 @@ export default {
   },
   mounted () {
     setTimeout(() => { this.loaded = true }, 1000)
+    if (this.$cookies.isKey('vfx')) {
+      this.switchEffects(this.$cookies.get('vfx') === 'true')
+    }
   },
   methods: {
     switchEffects (val) {

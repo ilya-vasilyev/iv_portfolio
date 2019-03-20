@@ -10,6 +10,7 @@ import VueAnime from './plugins/vue-anime'
 import App from './App.vue'
 import './helpers/register-sw'
 import VueAnalytics from 'vue-analytics'
+import VueCookies from 'vue-cookies'
 
 Vue.config.productionTip = false
 
@@ -19,6 +20,7 @@ Vue.use(VueAnalytics, {
   id: 'UA-136575581-1',
   router
 })
+Vue.use(VueCookies)
 
 /* eslint-disable no-new */
 new Vue({
