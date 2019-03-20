@@ -1,2 +1,3 @@
 User-Agent: *
-Disallow:
+Disallow: /report.html
+Disallow: /assets/lighthouse-report.html
