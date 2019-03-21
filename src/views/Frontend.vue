@@ -49,7 +49,7 @@
       >source code on Github</a>.
     </p>
 
-    <h2>Summary</h2>
+    <h2>Profile</h2>
     <p>
       I've been around web development since <b>2013</b>,
       starting from <b>UI</b> and <b>UX</b> design, within startup environment,
@@ -96,7 +96,7 @@
 
     <hr>
 
-    <h2>Toolkit</h2>
+    <h2>Skills</h2>
     <p>
       You're probably intereseted <i>(why shouldn't you be?)</i> in my skills end experience in web development.
       Fortunately I've made a visualisation for you.
@@ -163,7 +163,7 @@
 
     <hr>
 
-    <h2>Timeline</h2>
+    <h2>Experience</h2>
     <p>
       My whole life is the game of opposites:
       <ul class="opposites">
