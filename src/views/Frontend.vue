@@ -4,7 +4,7 @@
       Hello, I'm
       <span>Ilya</span>
       <span>Vasilyev</span> –
-      <b>frontend web developer</b>,
+      <b>frontend developer</b>,
       specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience and
       <router-link
         :to="{ name: 'motion' }"
