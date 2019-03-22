@@ -5,7 +5,7 @@
       <span>Ilya</span>
       <span>Vasilyev</span> –
       <b>frontend developer</b>,
-      specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience and
+      specialized in Vue.js, visualization, animation and interactivity, with entrepreneurial experience and
       <router-link
         :to="{ name: 'motion' }"
         @click.native="scrollTop()"
