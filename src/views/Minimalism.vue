@@ -2,8 +2,8 @@
   <main class="minimalism">
     <p>
       This page is the collection of life <b>principles</b>, which help to go through it.
-      Some call this lifestyle a <b>minimalism</b> – sounds nice and feels right.
-      But it's not only about Scandinavian interior design, it's about finding the <b>meaningful existence</b>.
+      Some call this lifestyle <b>minimalism</b> – sounds nice and feels right.
+      It's not only about Scandinavian interior design, but it's also about finding a <b>meaningful existence</b>.
     </p>
 
     <section class="principles">
@@ -34,10 +34,10 @@ export default {
         { title: 'work remotely', description: 'be anywhere, keep a healthy work/life balance, become more effective and future-proof' },
         { title: 'communicate asynchronously', description: 'what can be more frustrating than being forced out of your own context into another, or being disturbed by some insignificant matters?' },
         { title: 'functionality first', description: 'the beauty of things in their functionality, I never understood purely decorative elements' },
-        { title: 'experience over ownership', description: 'ownership can\'t give you such a spectrum of emotions as experiences can, shared economy is approaching' },
+        { title: 'experience over ownership', description: 'the ownership can\'t give you such a spectrum of emotions as experiences can, shared economy is approaching' },
         { title: 'no impulsive acquisitions', description: 'only possess what you really need, ideally, more than once' },
         { title: 'durability over fashion', description: 'prefer high-quality and sustainable things, repair broken things, renew things only when their lifetime is over' },
-        { title: 'go brand-less', description: 'don\'t become free walking ad' },
+        { title: 'go brand-less', description: 'don\'t become a free walking ad' },
         { title: 'only buy what you can afford', description: 'avoid debt at all costs, unless it contributes to productivity growth or capital investment' },
         { title: 'invest in productivity growth', description: 'businesses invest in productivity growth, so should an individual' }
       ]
