@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "report": "lighthouse https://ilya.aivi.dev/ --view --output html --output-path ./dist/lighthouse-report.html"
+    "report": "lighthouse https://ilya.aivi.dev/ --view --output html --output-path ./src/static/lighthouse-report.html"
   },
   "dependencies": {
     "animejs": "^3.0.1",

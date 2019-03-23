@@ -103,7 +103,7 @@
             target="_blank"
           >Bundle analyzer</a>
           <a
-            href="./lighthouse-report.html"
+            href="./assets/lighthouse-report.html"
             rel="noreferrer"
             target="_blank"
           >Lighthouse report</a>
