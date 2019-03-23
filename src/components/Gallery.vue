@@ -15,8 +15,8 @@
         >
       </video>
       <p class="two">
-        Explanaition demo with different presentation modes and with customisable colors, images and language.
-        All animation made with SVG and GSAP, assembled with Vue components.
+        Explanation demo with different presentation modes and with customizable colors, images, and language.
+        All animation made with SVG and GSAP assembled with Vue components.
       </p>
       <iframe
         frameborder="0"
@@ -41,7 +41,7 @@
         >
       </video>
       <p class="six">
-        New design and interfaces for full refactoring of dynamic visualisation engine.
+        New design and interfaces for full refactoring of dynamic visualization engine.
         Was built in collaboration with Pavel Kityan on Angular 1.6.
       </p>
       <video
@@ -58,7 +58,7 @@
         >
       </video>
       <p class="eight">
-        Interactive SVG map and dynamic visualisation of strategic infrastructure project.
+        Interactive SVG map and dynamic visualization of a strategic infrastructure project.
       </p>
     </div>
 
@@ -120,7 +120,7 @@
         >
       </video>
       <p class="six">
-        Business game for CFOs of subsidiary companies of AFK Sistema, was built in callaboration with risk management department of PwC Russia.
+        Business game for CFOs of subsidiary companies of AFK Sistema was built in collaboration with risk management department of PwC Russia.
       </p>
       <Slider
         v-slot="{ curent }"
@@ -165,7 +165,7 @@
         class="one"
       />
       <p class="two">
-        Video promo for mini footbal championship.
+        Video promo for mini football championship.
       </p>
       <iframe
         frameborder="0"
