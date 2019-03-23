@@ -1,13 +1,14 @@
 {
   "name": "iv_portfolio",
   "version": "2.0.0",
-  "description": "static porfolio site",
+  "description": "personal portfolio website",
   "author": "Ilya Vasilyev",
-  "license": "ISC",
+  "license": "Unlicense",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "report": "lighthouse https://ilya.aivi.dev/ --view --output html --output-path ./dist/lighthouse-report.html"
   },
   "dependencies": {
     "animejs": "^3.0.1",
@@ -46,6 +47,7 @@
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^4.6.0",
+    "lighthouse": "^4.2.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
