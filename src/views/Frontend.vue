@@ -16,7 +16,9 @@
       <router-link
         :to="{ name: 'minimalism' }"
         @click.native="scrollTop()"
-      >minimalist</router-link>.
+      >
+        minimalist
+      </router-link>.
     </p>
 
     <div class="ava">
@@ -200,7 +202,7 @@
     <h2>This site</h2>
     <p>
       <b>Design</b>
-      – well, for me on projects I omit design, jumping from structural pencil sketch right into coding and styling.
+      – well, for my projects I usually omit design, jumping from structural pencil sketch right into coding and styling.
       It gives me more flexibility and freedom in making design choices as well as it increases the speed.
     </p>
     <p>

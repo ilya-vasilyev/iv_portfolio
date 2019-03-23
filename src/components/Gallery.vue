@@ -16,7 +16,7 @@
       </video>
       <p class="two">
         Explanation demo with different presentation modes and with customizable colors, images, and language.
-        All animation made with SVG and GSAP assembled with Vue components.
+        All animation made with SVG and GSAP, all assembled with Vue components.
       </p>
       <iframe
         frameborder="0"
