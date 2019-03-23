@@ -3,7 +3,7 @@
     <p>
       Web development is not the only area of my interest,
       I've done some projects within film and video production industries.
-      There were some music composing, sound engineering, filming, directing, editing and animating,
+      There was some music composing, sound engineering, filming, directing, editing and animating,
       but mostly <b>motion design and visual effects</b>.
     </p>
     <p>
