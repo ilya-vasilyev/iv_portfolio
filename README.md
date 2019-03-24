@@ -26,3 +26,4 @@ npm run build
 npm run report
 ```
 
+[Bundle analyzer report](https://ilya.aivi.dev/report.html)  |  [Lighthouse report](https://ilya.aivi.dev/assets/lighthouse-report.html)
