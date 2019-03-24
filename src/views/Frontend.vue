@@ -191,7 +191,10 @@
     <small>NOTE: you can scroll timeline horizontally or use arrow buttons below</small>
 
     <div class="timeline-container">
-      <Timeline v-if="showTimeline" />
+      <Timeline
+        v-if="showTimeline"
+        @interaction.once="$ga.event('interaction', 'scroll', 'timeline')"
+      />
       <noscript>
         Can't show with JavaScript turned off
       </noscript>

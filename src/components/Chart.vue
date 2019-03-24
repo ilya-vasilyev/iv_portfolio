@@ -224,6 +224,7 @@ export default {
     },
 
     load ({ display, type, props }) {
+      this.$ga.event('interaction', 'switch', 'chart')
       this.currentMode = display
       switch (type) {
         case 'bar':

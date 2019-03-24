@@ -45,6 +45,7 @@ export default {
   },
   methods: {
     scroller (e) {
+      this.$emit('interaction')
       if (this.timeout) window.cancelAnimationFrame(this.timeout)
       this.timeout = window.requestAnimationFrame(() => {
         this.progress = e.target.scrollLeft / (e.target.scrollWidth - window.innerWidth)
@@ -62,6 +63,7 @@ export default {
     },
     scrollTimeline (pos) {
       if (this.lockScroll) return
+      this.$emit('interaction')
       this.lockScroll = true
       this.$anime({
         targets: '.timeline',
