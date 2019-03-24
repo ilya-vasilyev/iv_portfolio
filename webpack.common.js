@@ -121,8 +121,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: './src/static', to: './assets' },
-      { from: './src/robots.txt', to: './' },
-      { from: './src/_redirects', to: './' }
+      { from: './src/robots.txt', to: './' }
     ]),
     new webpack.DefinePlugin({
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
