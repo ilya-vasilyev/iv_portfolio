@@ -74,27 +74,6 @@
 
         <div class="footer-column">
           <div class="light-header">
-            Contacts
-          </div>
-          <a
-            href="https://github.com/ilya-vasilyev"
-            rel="noreferrer"
-            target="_blank"
-          >GitHub</a>
-          <a
-            href="https://www.linkedin.com/in/ilya-vasilyev-71a12675/"
-            rel="noreferrer"
-            target="_blank"
-          >LinkedIn</a>
-          <a
-            href="https://www.facebook.com/ilya.vasilyev.5817"
-            rel="noreferrer"
-            target="_blank"
-          >Facebook</a>
-        </div>
-
-        <div class="footer-column">
-          <div class="light-header">
             Misc
           </div>
           <a
@@ -118,6 +97,43 @@
             target="_blank"
           >Old version</a>
         </div>
+
+        <div class="footer-column">
+          <div class="light-header">
+            Contacts
+          </div>
+          <a
+            href="https://github.com/ilya-vasilyev"
+            rel="noreferrer"
+            target="_blank"
+          >GitHub</a>
+          <a
+            href="https://www.linkedin.com/in/ilya-vasilyev-71a12675/"
+            rel="noreferrer"
+            target="_blank"
+          >LinkedIn</a>
+          <a
+            href="https://www.facebook.com/ilya.vasilyev.5817"
+            rel="noreferrer"
+            target="_blank"
+          >Facebook</a>
+          <a
+            href="https://www.instagram.com/vasilyev_ilya/"
+            rel="noreferrer"
+            target="_blank"
+          >Instagram</a>
+          <a
+            href="https://www.youtube.com/user/PanteleymonPan4ik/videos"
+            rel="noreferrer"
+            target="_blank"
+          >YouTube</a>
+          <a
+            href="https://angel.co/ilya-vasilyev-2"
+            rel="noreferrer"
+            target="_blank"
+          >Angel.co</a>
+        </div>
+
       </div>
 
       <small class="date">Made in 2019</small>
