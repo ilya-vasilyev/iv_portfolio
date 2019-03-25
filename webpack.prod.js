@@ -16,7 +16,7 @@ module.exports = merge(common, {
     new MinifyPlugin(),
     new PrerenderSpaPlugin({
       staticDir: path.join(__dirname, 'dist'),
-      routes: [ '/', '/frontend', '/motion', '/minimalism' ]
+      routes: [ '/', '/frontend', '/motion', '/minimalism', '/cv' ]
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static'

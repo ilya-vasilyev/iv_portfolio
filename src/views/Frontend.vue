@@ -28,6 +28,14 @@
       >
     </div>
 
+    <div class="light-header">
+      Open CV:
+      <router-link to="/cv">
+        html
+      </router-link> or
+      <a href="#">pdf</a>
+    </div>
+
     <p>
       And this is my personal portfolio website, stuffed to the gills with highly annoying, CPU intensive and absolutely unnecessary visual effects.
       I've created them just because I can.

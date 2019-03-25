@@ -1,5 +1,9 @@
 <template>
+  <div v-if="$route.name === 'cv'">
+    <router-view />
+  </div>
   <div
+    v-else
     id="app"
     class="app"
     :class="{ loaded }"

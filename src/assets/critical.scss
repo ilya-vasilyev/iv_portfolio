@@ -96,6 +96,14 @@ p {
   }
 }
 
+ul {
+  margin: 0;
+}
+
+li {
+  line-height: 2;
+}
+
 button {
   font-size: 18px;
   background: $backColor;
