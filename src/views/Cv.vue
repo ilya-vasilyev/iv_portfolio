@@ -4,10 +4,31 @@
     <section>
       <p>Frontend web developer, specialized in Vue.js, visualization, animation and interactivity, with entrepreneurial experience and motion design skills.</p>
       <p class="contacts">
-        <a href="https://ilya.aivi.dev">Website</a>
-        <a href="https://ilya.aivi.dev">Facebook</a>
-        <a href="https://ilya.aivi.dev">LinkedIn</a>
-        <a href="https://ilya.aivi.dev">Angel.co</a>
+        <a
+          href="https://ilya.aivi.dev"
+          rel="noreferrer"
+          target="_blank"
+        >Website</a>
+        <a
+          href="https://github.com/ilya-vasilyev"
+          rel="noreferrer"
+          target="_blank"
+        >GitHub</a>
+        <a
+          href="https://www.linkedin.com/in/ilya-vasilyev-71a12675/"
+          rel="noreferrer"
+          target="_blank"
+        >LinkedIn</a>
+        <a
+          href="https://www.facebook.com/ilya.vasilyev.5817"
+          rel="noreferrer"
+          target="_blank"
+        >Facebook</a>
+        <a
+          href="https://angel.co/ilya-vasilyev-2"
+          rel="noreferrer"
+          target="_blank"
+        >Angel.co</a>
       </p>
     </section>
     <hr>
@@ -68,11 +89,13 @@
         </div>
         <div class="achievements">
           <ul>
+            <!-- eslint-disable -->
             <li
               v-for="(achievement, i) in experience.achievements"
               :key="i"
               v-html="achievement"
             />
+            <!-- eslint-enable -->
           </ul>
         </div>
       </div>
