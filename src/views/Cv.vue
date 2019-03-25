@@ -327,11 +327,21 @@ export default {
       font-size: 20px;
     }
 
+    p {
+      margin: 15px auto;
+    }
+
     @media (max-width: 500px) {
       flex-wrap: wrap;
 
-      .info, .achievements {
+      .info {
         width: 100%;
+        margin: 30px auto 0;
+      }
+
+      .achievements {
+        width: 100%;
+        margin: 0 auto 30px;
       }
 
       .position {

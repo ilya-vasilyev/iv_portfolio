@@ -112,7 +112,7 @@ module.exports = {
       prefix: 'assets',
       favicons: {
         appName: 'Ilya Vasilyev',
-        appDescription: 'Ilya Vasilyev – frontend developer, specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience and motion design skills',
+        appDescription: 'Ilya Vasilyev – frontend developer, specialised in Vue.js, visualization, animation, and interactivity, with entrepreneurial experience and motion design skills',
         developerName: 'Ilya Vasilyev',
         background: '#eee',
         theme_color: '#444',
