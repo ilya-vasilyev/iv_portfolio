@@ -133,7 +133,6 @@
             target="_blank"
           >Angel.co</a>
         </div>
-
       </div>
 
       <small class="date">Made in 2019</small>
@@ -191,7 +190,7 @@ export default {
   metaInfo () {
     return {
       title: this.title,
-      links: [
+      link: [
         { rel: 'canonical', href: this.url }
       ],
       meta: [
