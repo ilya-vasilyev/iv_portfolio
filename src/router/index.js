@@ -23,6 +23,11 @@ export default new VueRouter({
       component: () => import(/* webpackChunkName: 'minimalism' */ '@/views/Minimalism.vue')
     },
     {
+      path: '/cv',
+      name: 'cv',
+      component: () => import(/* webpackChunkName: 'cv' */ '@/views/Cv.vue')
+    },
+    {
       path: '**',
       redirect: '/frontend'
     }

@@ -6,19 +6,18 @@
       <span>Vasilyev</span> –
       <b>frontend developer</b>,
       specialized in Vue.js, visualization, animation and interactivity, with entrepreneurial experience and
+
+      <!-- eslint-disable -->
       <router-link
         :to="{ name: 'motion' }"
         @click.native="scrollTop()"
-      >
-        motion design
-      </router-link>
+      >motion design</router-link>
       skills. Also a
       <router-link
         :to="{ name: 'minimalism' }"
         @click.native="scrollTop()"
-      >
-        minimalist
-      </router-link>.
+      >minimalist</router-link>.
+      <!-- eslint-enable -->
     </p>
 
     <div class="ava">
@@ -26,6 +25,18 @@
         src="/assets/ava.jpg"
         alt="Ilya Vasilyev photo"
       >
+    </div>
+
+    <div class="light-header">
+      Open CV:
+      <!-- eslint-disable -->
+      <router-link
+        to="/cv"
+        @click.native="scrollTop()"
+      >html</router-link>
+      or
+      <a href="/assets/Ilya_Vasilyev_CV.pdf">pdf</a>
+      <!-- eslint-enable -->
     </div>
 
     <p>

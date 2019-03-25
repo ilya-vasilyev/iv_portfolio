@@ -111,8 +111,8 @@ module.exports = {
       logo: './src/assets/images/icon.png',
       prefix: 'assets',
       favicons: {
-        appName: 'IV portfolio',
-        appDescription: 'personal portfolio',
+        appName: 'Ilya Vasilyev',
+        appDescription: 'Ilya Vasilyev – frontend developer, specialised in Vue.js, visualization, animation and interactivity, with entrepreneurial experience and motion design skills',
         developerName: 'Ilya Vasilyev',
         background: '#eee',
         theme_color: '#444',
@@ -127,7 +127,7 @@ module.exports = {
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
     }),
     new SitemapPlugin('https://ilya.aivi.dev', [
-      '/', '/frontend', '/motion', '/minimalism'
+      '/', '/frontend', '/motion', '/minimalism', '/cv'
     ]),
     new GenerateSW({
       exclude: [/\.(?:mp3|mp4)$/, '_redirects'],
