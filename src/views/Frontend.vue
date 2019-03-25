@@ -35,7 +35,7 @@
         @click.native="scrollTop()"
       >html</router-link>
       or
-      <a href="#">pdf</a>
+      <a href="/assets/Ilya_Vasilyev_CV.pdf">pdf</a>
       <!-- eslint-enable -->
     </div>
 

@@ -2,7 +2,9 @@
   <main class="cv">
     <h1>Ilya Vasilyev</h1>
     <section>
-      <p>Frontend web developer, specialized in Vue.js, visualization, animation and interactivity, with entrepreneurial experience and motion design skills.</p>
+      <p>
+        Frontend developer, specialized in Vue.js, visualization, animation, and interactivity, with entrepreneurial experience and motion design skills.
+      </p>
       <p class="contacts">
         <a
           href="https://ilya.aivi.dev"
@@ -60,7 +62,7 @@
         </span>
       </p>
     </section>
-    <hr>
+    <hr class="print-break">
     <section>
       <h2>Experience</h2>
       <div
@@ -115,13 +117,12 @@ export default {
   data () {
     return {
       skills: [
-        { title: 'Styling, UI, UX, Design', list: ['HTML', '/(sa|sc|c)ss/'] },
-        { title: 'Languages and Flavors', list: ['JavaScript', 'ES2018', 'TypeScript', 'Python'] },
-        { title: 'Frontend', list: ['Vue.js,', 'Vue-router', 'Vuex', 'axios', 'AngularJS'] },
-        { title: 'Making it Alive', list: ['GSAP', 'Anime.js', 'CSS transitions', 'CSS keyframes', 'requestAnimationFrame()'] },
-        { title: 'Information Visualization', list: ['SVG', 'D3', 'D3'] },
-        { title: 'Backend Frameworks', list: ['Node.js', 'Express', 'Feathers.js'] },
-        { title: 'Testing tools', list: ['Cypress', 'Storybook', 'Jest'] },
+        { title: 'Languages', list: ['JavaScript', 'ES2018', 'TypeScript', 'Python'] },
+        { title: 'Frontend', list: ['Vue.js', 'Vue-router', 'Vuex', 'axios', 'AngularJS'] },
+        { title: 'Animation', list: ['GSAP', 'Anime.js', 'SVG', 'CSS transitions', 'CSS keyframes', 'requestAnimationFrame()'] },
+        { title: 'Visualization', list: ['SVG', 'D3', 'Billboard.js'] },
+        { title: 'Backend', list: ['Node.js', 'Express', 'Feathers.js'] },
+        { title: 'Testing', list: ['Cypress', 'Storybook', 'Jest'] },
         { title: 'DevOps', list: ['Git', 'Webpack', 'Docker'] }
       ],
       experiences: [
@@ -251,6 +252,14 @@ export default {
     }
   }
 
+  ul {
+    margin: 0;
+  }
+
+  li {
+    line-height: 1.5;
+  }
+
   .contacts {
     text-align: center;
 
@@ -270,6 +279,7 @@ export default {
       min-width: 150px;
       text-align: right;
       padding-right: 10px;
+      margin: 4px 0;
       opacity: 0.75;
     }
 
@@ -304,12 +314,12 @@ export default {
 
     .info {
       width: 40%;
-      margin: 30px 0;
+      margin: 15px 0;
     }
 
     .achievements {
       width: 60%;
-      margin: 30px 0;
+      margin: 15px 0;
     }
 
     .position {
@@ -341,6 +351,10 @@ export default {
 
     .experience {
       page-break-inside: avoid;
+    }
+
+    .print-break {
+      page-break-after: always;
     }
   }
 }
