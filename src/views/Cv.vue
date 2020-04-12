@@ -3,7 +3,10 @@
     <h1>Ilya Vasilyev</h1>
     <section>
       <p>
-        Frontend developer, specialized in Vue.js, visualization, animation, and interactivity, with entrepreneurial experience and motion design skills.
+        UI designer and UX specialist focused on making complex web app simple and accessible.
+      </p>
+      <p>
+        Also frontend developer, specialized in Vue.js, visualization, animation, and interactivity, with entrepreneurial experience and motion design skills.
       </p>
       <p class="contacts">
         <a
@@ -49,15 +52,6 @@
               :key="i"
               class="skill-item"
             >{{ item }}</span>
-          </span>
-        </span>
-
-        <span class="skill-row">
-          <span class="skill-title">Super power</span>
-          <span class="skill-list">
-            <small>
-              Can easily find a piece of code on Stack Overflow that evals input from user, and then push it to master without thinking, so you better practice code review, pull requests, auto tests and CI/CD, for your own sake.
-            </small>
           </span>
         </span>
       </p>
@@ -117,15 +111,37 @@ export default {
   data () {
     return {
       skills: [
-        { title: 'Languages', list: ['JavaScript', 'ES2018', 'TypeScript', 'Python'] },
-        { title: 'Frontend', list: ['Vue.js', 'Vue-router', 'Vuex', 'axios', 'AngularJS'] },
-        { title: 'Animation', list: ['GSAP', 'Anime.js', 'SVG', 'CSS transitions', 'CSS keyframes', 'requestAnimationFrame()'] },
+        { title: 'Design', list: ['Figma', 'Photoshop', 'AfterEffects', 'Miro'] },
+        { title: 'Languages', list: ['JavaScript', 'TypeScript'] },
+        { title: 'Frontend', list: ['Vue', 'Vuex', 'Axios', 'GraphQL', 'Tailwind'] },
+        { title: 'Animation', list: ['GSAP', 'Anime.js', 'SVG', 'CSS animations'] },
         { title: 'Visualization', list: ['SVG', 'D3', 'Billboard.js'] },
-        { title: 'Backend', list: ['Node.js', 'Express', 'Feathers.js'] },
+        { title: 'Backend', list: ['Node.js', 'Express', 'Feathers.js', 'Strapi'] },
         { title: 'Testing', list: ['Cypress', 'Storybook', 'Jest'] },
-        { title: 'DevOps', list: ['Git', 'Webpack', 'Docker'] }
+        { title: 'DevOps', list: ['Git', 'Webpack', 'Docker', 'Netlify'] }
       ],
       experiences: [
+        {
+          company: 'Creatomus Solutions',
+          positions: ['UI/UX designer'],
+          dates: '2019 — present',
+          description: 'An interactive house configurator startup, that grew up from the winning of Garage48 GreenTech hackathon in Tallinn',
+          achievements: [
+            '<b>visual and interaction</b> design of special marketing tools',
+            '<b>UX research</b> and <b>UI redesign</b> for the main product'
+          ]
+        },
+        {
+          company: 'Saavu',
+          positions: ['frontend developer', 'UI/UX designer'],
+          dates: '2019 — present',
+          description: 'Finnish startup exploring mass communication solutions for events organizers, content creators and influencers',
+          achievements: [
+            'developed frontend parts of new services from <b>Figma mockups</b> to <b>integration tests</b>',
+            'built and implemented common <b>style guides</b>',
+            '<b>graphic design</b> and <b>motion design</b> for marketing'
+          ]
+        },
         {
           company: 'Vedomosti',
           positions: ['frontend developer'],
@@ -135,13 +151,13 @@ export default {
             'rebuilt old HBR Russia site with <b>Vue</b>, using <b>SSR</b>',
             'made a series of special partnership projects, also with <b>Vue<b>',
             'maintained frontend part of multiple legacy apps, made mostly with <b>Ruby, Rails, SLIM templates, CoffeeScript, AngularJS, and SASS</b> (someone really hates braces)',
-            'tried to help management with implementing <b>Agile</b> within the conservative and hierarchical organisation'
+            'tried to help management with implementing <b>Agile</b> within the conservative and hierarchical organization'
           ]
         },
         {
           company: 'MeYou',
           positions: ['frontend developer', 'UI/UX designer'],
-          dates: '2014 — 2019 (occasional)',
+          dates: '2014 — 2019 (part-time)',
           description: 'A communication startup for events (networking, polls, Q&A, PR)',
           achievements: [
             'set up <b>git</b> and trained the team to use it',
@@ -164,14 +180,15 @@ export default {
           ]
         },
         {
-          company: 'CREATOMUS',
+          company: 'Creatomus Solutions',
           positions: ['UI/UX designer', 'frontend developer'],
           dates: '2015',
           description: 'An interactive house configurator startup, that grew up from the winning of Garage48 GreenTech hackathon in Tallinn',
           achievements: [
+            'participated in the hackathon for the <b>first time ever</b>',
             'joined the team of architects as a <b>designer</b>',
             'built the <b>frontend</b> part of the prototype',
-            '<b>won</b> the hackathon'
+            'we <b>won</b> the hackathon'
           ]
         },
         {
@@ -190,7 +207,7 @@ export default {
         {
           company: 'Fluffy Move Studio',
           positions: ['director', 'editor', 'motion designer', 'VFX artist', 'sound engineer', 'composer', 'manager'],
-          dates: '2013 — 2019 (occasional)',
+          dates: '2013 — 2019 (part-time)',
           description: 'Small family studio, started as an experimental animation lab, now creates custom video content',
           achievements: [
             'produced a <b>series of cartoons</b> for children show including six short films and two full-length animated backgrounds in <b>After Effects</b>',
@@ -228,7 +245,7 @@ export default {
   }
 
   h2 {
-    margin-top: 30px;
+    margin: 40px 0;
     font-size: 25px;
     text-align: center;
     font-weight: 400;

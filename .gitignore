@@ -5,6 +5,7 @@
 *.desktop
 *.thumb
 *.sublime*
+.vscode
 .~*
 ~*
 *~
