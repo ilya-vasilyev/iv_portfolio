@@ -119,10 +119,11 @@ module.exports = {
         start_url: '/'
       }
     }),
-    new CopyWebpackPlugin([
-      { from: './src/static', to: './assets' },
-      { from: './src/robots.txt', to: './' }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: './src/static', to: './assets' },
+        { from: './src/robots.txt', to: './' }
+      ] }),
     new webpack.DefinePlugin({
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
     }),
